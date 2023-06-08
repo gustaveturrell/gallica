@@ -1,9 +1,26 @@
 /* Style changes*/
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import "vue/fonts.css";
 
 /* update font variable */
 :root {
   --font-family-sans-serif: 'Raleway', -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
   --pst-font-family-base: var(--font-family-sans-serif);
   --pst-background-color: #f5f4e9;
+  --font-sans-serif: "Ubuntu", "Source Sans Pro", sans-serif !important;
+  --font-monospace: "Fira Code", "Roboto Mono", monospace !important;
+}
+
+
+body:{  
+  font-size: 0.9rem;
+  font-family: var(--font-sans-serif);
+}
+
+caption-text {
+   font-size: 0.9rem;
+}
+
+div[class*="highlight-"] {
+font-family: var(--font-monospace);    
 }
