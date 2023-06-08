@@ -22,8 +22,6 @@ caption-text {
 
 
 code.literal {
-  padding: 2px 4px;
-  border-radius: 2px;
   font-family: var(--font-monospace);
   color: #e96900;
   background-color: #f8f8f8;
