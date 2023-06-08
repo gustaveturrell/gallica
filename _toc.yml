@@ -2,14 +2,8 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: index.md
+root: index
 parts:
-  - caption: Chapters
-    numbered: true
-    maxdepth: 2
+  - caption: Name of Part 1
     chapters:
-      - file: book/markdown
-      - file: book/notebooks/pipeline/pipeline.ipynb
-  - caption: Appendices
-    chapters:
-      - file: book/bibliography
+    - file: book/notebooks/pipeline/pipeline.ipynb
