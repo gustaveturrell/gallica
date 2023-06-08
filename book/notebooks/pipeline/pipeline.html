@@ -1,0 +1,2086 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Pipeline de collecte des données &#8212; Gallica Images</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/notebooks/pipeline/pipeline';</script>
+    <link rel="canonical" href="https://gustaveturrell.github.io/gallica/book/notebooks/pipeline/pipeline.html" />
+    <link rel="shortcut icon" href="../../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Bibliography" href="../../bibliography.html" />
+    <link rel="prev" title="1. Markdown Files" href="../../markdown.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../markdown.html">1. Markdown Files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Pipeline de collecte des données</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gustaveturrell/gallica/master?urlpath=tree/book/notebooks/pipeline/pipeline.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gustaveturrell/gallica/blob/master/book/notebooks/pipeline/pipeline.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gustaveturrell/gallica" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gustaveturrell/gallica/edit/main/book/notebooks/pipeline/pipeline.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gustaveturrell/gallica/issues/new?title=Issue%20on%20page%20%2Fbook/notebooks/pipeline/pipeline.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/book/notebooks/pipeline/pipeline.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pipeline de collecte des données</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-entrepots-de-la-bnf">2.1. Les entrepôts de la BnF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-collecte-de-metadonnees-a-travers-oai-py">2.1.1. La collecte de métadonnées à travers <code class="docutils literal notranslate"><span class="pre">oai.py</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-d-un-parser">2.1.2. Création d’un <em>parser</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#telechargement-d-un-set-disponible-dans-l-entrepot">2.1.3. Téléchargement d’un set disponible dans l’entrepôt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collecte-des-images-a-travers-document-py">2.1.4. Collecte des images à travers <code class="docutils literal notranslate"><span class="pre">document.py</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fouille-de-donnee-research-multiprocessing-py">2.2. Fouille de donnée <code class="docutils literal notranslate"><span class="pre">research_multiprocessing.py</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pipeline-de-collecte-des-donnees">
+<h1><span class="section-number">2. </span>Pipeline de collecte des données<a class="headerlink" href="#pipeline-de-collecte-des-donnees" title="Permalink to this heading">#</a></h1>
+<p>Le stage a pour objet le projet <a class="reference external" href="https://gallica.bnf.fr/accueil/fr/content/accueil-fr?mode=desktop">Gallica Images</a> (2023-2026), qui vise à agréger et à indexer (à
+l’aide de briques IA) les contenus iconographiques de Gallica sous la forme d’une base de
+données publique dotée d’un moteur de recherche. Une des sources d’inspiration de ce
+projet est le démonstrateur <a class="reference external" href="https://gallica.bnf.fr/blog/21062021/gallicapix-un-nouvel-outil-dexploration-iconographique?mode=desktop">GallicaPix</a>.</p>
+<p>Le stage s’inscrira dans la phase de sélection du partenaire industriel chargé des
+développements informatiques et dans celle de la préparation du lancement du projet (été
+2023). Il aura pour objet la conception et le développement d’un banc de test du pipeline de
+traitement d’images qui sera produit par le partenaire industriel lors de l’année 1 du projet,
+consacrée à la réalisation d’un MVP (minimum viable product) portant sur la collectionImages de Gallica.
+Ce banc de test servira à l’évaluation des performances du pipeline ainsi
+qu’à sa recette finale.</p>
+<p>Ce notebook à pour objectif la démonstration des différentes étapes du pipeline de l’entrepôt <a class="reference external" href="https://www.openarchives.org/">Open Archives Initiative - Protocol for Metadata Harvesting</a> pour la collecte des métadonnées à la récupération des différentes images présent dans Gallica Images.</p>
+<div class="dropdown admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ce jupyter est automatiquement charger avec les modules et packages compris. Pour lancer notebook à l’intérieur d’un <a class="reference external" href="https://colab.research.google.com/github/gustaveturrell/gallicapix/blob/master/notebooks/pipeline/pipeline.ipynb">Google Colab</a> ou localement, vous devez
+préalablement télécharger les différents modules et installer les packages requis.</p>
+<p>Une fois <strong>modules.zip</strong> télécharger et dézipper <strong>requirements.txt</strong> indique les librairies disponible sur le gestionnaire de paquet <strong>pip</strong>
+et <strong>modules.zip</strong> contient les différents modules <strong>.py</strong>. Le dossier et à placer au même niveau que le <strong>.ipynb</strong></p>
+<p>:Fichiers de téléchargement: <a class="reference download internal" download="" href="../../../_downloads/4395cf99e32072806efe70a44df14dc9/modules.zip"><span class="xref download myst">modules</span></a></p>
+</div>
+<section id="les-entrepots-de-la-bnf">
+<h2><span class="section-number">2.1. </span>Les entrepôts de la BnF<a class="headerlink" href="#les-entrepots-de-la-bnf" title="Permalink to this heading">#</a></h2>
+<p>La BnF gère deux types d’entrepôts où sont stockés l’ensemble des métadonnées relatives à ses documents.</p>
+<p>Le premier ensemble de données correspond aux notices des documents numériques dont la consultation est ouverte à tout public. Un sous-ensemble important de ces notices est consultable via Gallica en particulier. Cet entrepôt contient l’ensemble des notices des documents numériques consultables dans Gallica et pour lesquels la BnF possède les fichiers numériques. La granularité de cet entrepôt est le document numérique « unitaire », tel que consulté dans Gallica : un document numérique consultable identifié par un identifiant ark unique, un enregistrement (« record »).</p>
+<p>On appellera cet entrepôt <a class="reference external" href="https://api.bnf.fr/fr/node/170">OAI-NUM</a>. Son interrogation permet d’obtenir les métadonnées d’un document numérique dont l’identifiant ark a par exemple été trouvé dans Gallica. Il est également possible d’obtenir une liste d’identifiants de documents appartenant à un ensemble prédéfini dans l’entrepôt (appelé « set » dans la terminologie OAI).</p>
+<div class="literal-block-wrapper docutils container" id="setsxml">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1 </span><span class="caption-text">Extrait XML de la requête <a class="reference external" href="http://oai.bnf.fr/oai2//OAIHandler?verb=ListSets">ListSets</a> qui liste l’ensemble des sets présent dans l’entrepôt</span><a class="headerlink" href="#setsxml" title="Permalink to this code">#</a></div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;set&gt;</span>
+<span class="nt">&lt;setSpec&gt;</span>gallica:typedoc:periodiques<span class="nt">&lt;/setSpec&gt;</span>
+<span class="nt">&lt;setName&gt;</span>Gallica<span class="w"> </span>:<span class="w"> </span>types<span class="w"> </span>de<span class="w"> </span>documents<span class="w"> </span>:<span class="w"> </span>périodiques<span class="w"> </span>imprimés<span class="nt">&lt;/setName&gt;</span>
+<span class="nt">&lt;setDescription&gt;</span>
+<span class="nt">&lt;oai_dc:dc</span><span class="w"> </span><span class="na">xmlns:oai_dc=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/oai_dc/&quot;</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;dc:description</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;fre&quot;</span><span class="nt">&gt;</span>Cet<span class="w"> </span>ensemble<span class="w"> </span>donne<span class="w"> </span>accès<span class="w"> </span>aux<span class="w"> </span>journaux,<span class="w"> </span>revues<span class="w"> </span>et<span class="w"> </span>autres<span class="w"> </span>publications<span class="w"> </span>périodiques<span class="w"> </span>imprimées<span class="w"> </span>de<span class="w"> </span>Gallica.<span class="nt">&lt;/dc:description&gt;</span>
+<span class="nt">&lt;dc:description</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;eng&quot;</span><span class="nt">&gt;</span>This<span class="w"> </span>set<span class="w"> </span>provides<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>printed<span class="w"> </span>press,<span class="w"> </span>journals<span class="w"> </span>and<span class="w"> </span>serials<span class="w"> </span>in<span class="w"> </span>Gallica.<span class="nt">&lt;/dc:description&gt;</span>
+<span class="nt">&lt;/oai_dc:dc&gt;</span>
+<span class="nt">&lt;/setDescription&gt;</span>
+<span class="nt">&lt;/set&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>Arborescence des collections
+L’arborescence des sets et analogue aux dossiers et sous dossiers, dans l’exemple ci dessus gallica est le le dossier racine et et périodiques le dossier enfant de typedoc qui lui même le dossier enfant de gallica.<br />
+Cela permet de récupérer des ensembles de records disposant de parent commun.</p>
+</div>
+<section id="la-collecte-de-metadonnees-a-travers-oai-py">
+<h3><span class="section-number">2.1.1. </span>La collecte de métadonnées à travers <code class="docutils literal notranslate"><span class="pre">oai.py</span></code><a class="headerlink" href="#la-collecte-de-metadonnees-a-travers-oai-py" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install -r modules/requirements.txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">modules.oai</span> <span class="kn">import</span> <span class="n">OAINUM</span>
+<span class="kn">from</span> <span class="nn">fnmatch</span> <span class="kn">import</span> <span class="n">fnmatch</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Créer une instance <code class="docutils literal notranslate"><span class="pre">gallica</span></code> et récupère l’ensemble des sets présent à l’intérieur de l’entrepôt</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gallica</span> <span class="o">=</span> <span class="n">OAINUM</span><span class="p">(</span><span class="s1">&#39;http://oai.bnf.fr/oai2//OAIHandler&#39;</span><span class="p">)</span>
+<span class="n">setspec</span><span class="p">,</span><span class="n">setname</span> <span class="o">=</span> <span class="n">gallica</span><span class="o">.</span><span class="n">listSets</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">setspec</span><span class="p">),</span><span class="n">setspec</span><span class="p">[</span><span class="mi">250</span><span class="p">],</span> <span class="n">setname</span><span class="p">[</span><span class="mi">250</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(544, &#39;gallica:corpus:BNUStr059&#39;, &#39;Presse satirique alsacienne&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Il est également possible de récupérer les métadonnées associées à document si on dispose de son <a class="reference external" href="https://www.bnf.fr/fr/lidentifiant-ark-archival-resource-key">ARK</a> sous différent type de format pour les métadonnées. Par défaut le type de format pour métadonnées est le format <strong>Dublin Core Simple</strong> <em>(oai_dc)</em> mais il également possible de récupérer le format <strong>TEL-Application profile</strong> <em>(tel_ap)</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">document_oai_dc</span> <span class="o">=</span> <span class="n">gallica</span><span class="o">.</span><span class="n">getRecord</span><span class="p">(</span><span class="s1">&#39;btv1b6937398m&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">document_oai_dc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;contributor&#39;: [],
+ &#39;coverage&#39;: [],
+ &#39;creator&#39;: [],
+ &#39;date&#39;: [&#39;1600&#39;],
+ &#39;description&#39;: [&#39;Collectionneur : Gaignières, Roger de (1642-1715). &#39;
+                 &#39;Collectionneur&#39;],
+ &#39;format&#39;: [&#39;35 gravures coloriées ; formats divers&#39;,
+            &#39;image/jpeg&#39;,
+            &#39;Nombre total de vues :  36&#39;],
+ &#39;identifier&#39;: [&#39;http://gallica.bnf.fr/ark:/12148/btv1b6937398m&#39;],
+ &#39;language&#39;: [],
+ &#39;publisher&#39;: [],
+ &#39;relation&#39;: [&#39;Notice de recueil : &#39;
+              &#39;http://catalogue.bnf.fr/ark:/12148/cb40356863k&#39;,
+              &#39;Appartient à : Recueil de costumes étrangers formé par M. de &#39;
+              &#39;Gaignières, faisant suite aux costumes de france - Contrées du &#39;
+              &#39;Nord - 1296 à 1577&#39;,
+              &#39;Notice du catalogue : &#39;
+              &#39;http://catalogue.bnf.fr/ark:/12148/cb412591740&#39;],
+ &#39;rights&#39;: [&#39;domaine public&#39;],
+ &#39;source&#39;: [&#39;Bibliothèque nationale de France, département Estampes et &#39;
+            &#39;photographie, BnF, Es. RESERVE OB-112-Fo&#39;],
+ &#39;subject&#39;: [&#39;Costume -- Écosse (GB)&#39;],
+ &#39;title&#39;: [&#39;[Estampes du recueil de costumes étrangers formé par M. de &#39;
+           &#39;Gaignières, faisant suite aux costumes de france - Contrées du &#39;
+           &#39;Nord - 1296 à 1577] : [estampe]&#39;],
+ &#39;type&#39;: [&#39;image fixe&#39;, &#39;estampe&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">document_tel_ap</span> <span class="o">=</span> <span class="n">gallica</span><span class="o">.</span><span class="n">getRecord</span><span class="p">(</span><span class="s1">&#39;btv1b6937398m&#39;</span><span class="p">,</span><span class="n">metadata</span><span class="o">=</span><span class="s1">&#39;tel_ap&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">document_tel_ap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;alternativecontributor&#39;: [],
+ &#39;bibliographicCitation&#39;: [&#39;[Estampes du recueil de costumes étrangers formé &#39;
+                           &#39;par M. de Gaignières, faisant suite aux costumes &#39;
+                           &#39;de france - Contrées du Nord - 1296 à 1577] : &#39;
+                           &#39;[estampe]. [1600]&#39;],
+ &#39;date&#39;: [&#39;009&#39;],
+ &#39;description&#39;: [&quot;Gravures insérées par R. de Gaignières dans l&#39;album de &quot;
+                 &#39;dessins de costumes (p. 1-12, 20, 25-45, 47, 49)&#39;,
+                 &#39;Après la page de titre, page manuscrite : &quot;Table du XXe &#39;
+                 &quot;volume - Modes d&#39;Angleterre depuis 1296 jusqu&#39;en 1577 ; &quot;
+                 &quot;modes d&#39;Ecosse ; modes de Suède et de Laponie ; modes de &quot;
+                 &#39;Hongrie, modes de la Moscovie ; Modes de la Pologne et de la &#39;
+                 &#39;Prusse -N° 1461&#39;],
+ &#39;extent&#39;: [&#39;35 gravures coloriées&#39;],
+ &#39;format&#39;: [&#39;image/jpeg&#39;],
+ &#39;fullText&#39;: [&#39;http://gallica.bnf.fr/ark:/12148/btv1b6937398m/texteBrut&#39;],
+ &#39;identifier&#39;: [&#39;http://gallica.bnf.fr/ark:/12148/btv1b6937398m/texteBrut&#39;],
+ &#39;isFormatOf&#39;: [&#39;http://catalogue.bnf.fr/ark:/12148/btv1b6937398m&#39;],
+ &#39;location&#39;: [&#39;Bibliothèque nationale de France&#39;, &#39;751131015&#39;],
+ &#39;seeOnline&#39;: [&#39;http://gallica.bnf.fr/ark:/12148/btv1b6937398m&#39;],
+ &#39;source&#39;: [&#39;Bibliothèque nationale de France, département Estampes et &#39;
+            &#39;photographie, BnF, Es. RESERVE OB-112-Fo&#39;],
+ &#39;subject&#39;: [&#39;Costume -- Écosse (GB)&#39;],
+ &#39;title&#39;: [&#39;[Estampes du recueil de costumes étrangers formé par M. de &#39;
+           &#39;Gaignières, faisant suite aux costumes de france - Contrées du &#39;
+           &#39;Nord - 1296 à 1577] : [estampe]&#39;],
+ &#39;type&#39;: [&#39;Still image&#39;],
+ &#39;typeOfResource&#39;: [&#39;still image&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>La BnF dipose de trois types de format de métadonnées sous l’entrepôt OAINUM:</p>
+<ol class="arabic simple">
+<li><p><strong>Dublin Cores Simple (oai_dc)</strong> : les principes retenus à la BnF dans l’utilisation des éléments du Dublin Core simple sont présentés dans le <a class="reference external" href="https://multimedia-ext.bnf.fr/pdf/guide_dublin_core_bnf_2008.pdf">Guide d’utilisation du Dublin Core à la BnF</a>.</p></li>
+<li><p><strong>TEL-Application profile (tel_ap)</strong> : il s’agit d’un profil d’application du Dublin Core spécifiquement développé dans le cadre du projet européen The European Library. En plus des éléments du Dublin Core simple, le TEL – Application profile utilise quelques éléments du Dublin Code qualifié (ex. dcterms:issued), de MODS (ex. mods:location), et quelques éléments spécifiques à TEL-AP pour préciser le lien aux ressources numérisées lorsque c’est pertinent (tel:seeonline vers la ressource numérisée, et tel:fulltext vers le texte OCRisé).</p></li>
+<li><p><strong>MPEG21-DIDL (didl)</strong> : utile en particulier pour la représentation de la granularité des objets numériques (fascicules de périodiques, légendes des photographies dans un album). À l’intérieur de la structure DIDL, le format choisi est le Dublin Core simple.</p></li>
+</ol>
+</div>
+</section>
+<section id="creation-d-un-parser">
+<h3><span class="section-number">2.1.2. </span>Création d’un <em>parser</em><a class="headerlink" href="#creation-d-un-parser" title="Permalink to this heading">#</a></h3>
+<p>L’instance <code class="docutils literal notranslate"><span class="pre">gallica</span></code> dispose seulement de l’implémentation du format <strong>‘oai_dc’</strong> et <strong>‘tel_ap’</strong> avec des <em>parser</em> par défaut. Il existe la possibilité de créer son propre parser notamment pour le format de métadonnées ‘didl’ qui n’est pour lors pas implémenter.<br />
+Le <em>parser</em> extrait seulement les balises et élements enfant de <code class="docutils literal notranslate"><span class="pre">&lt;metadata&gt;</span></code>. Pour implémenter soit même son propre parseur il est nécessaire de créer un dictionnaire python qui comprend trois clée <code class="docutils literal notranslate"><span class="pre">fields</span></code>, <code class="docutils literal notranslate"><span class="pre">namespaces</span></code>, <code class="docutils literal notranslate"><span class="pre">prefix</span></code>, le premier étant le chemin XPath pointant vers la donnée à extraire, le second étant l’ensemble des namespaces nécessaire, ainsi que le prefix obligatoire lors de la requête désignant un des trois type de format de métadonnées disponible dans l’entrepôt.<br />
+<em>Un exemple pour la <a class="reference external" href="http://oai.bnf.fr/oai2//OAIHandler?verb=GetRecord&amp;identifier=oai:bnf.fr:gallica/ark:/12148/bpt6k5499065k&amp;metadataPrefix=didl">requête</a> concernant le document diposant l’ark <a class="reference external" href="https://gallica.bnf.fr/ark:/12148/bpt6k5499065k">bpt6k5499065k</a> sous le format</em> <a class="reference external" href="https://fr.wikipedia.org/wiki/MPEG-21">DIDL</a>:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+METADATA</label><div class="sd-tab-content docutils">
+<div class="literal-block-wrapper docutils container" id="metadataxml">
+<div class="code-block-caption"><span class="caption-number">Listing 2.2 </span><span class="caption-text">Extrait XML des élements enfant de &lt;metadata&gt;</span><a class="headerlink" href="#metadataxml" title="Permalink to this code">#</a></div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="nt">&lt;metadata&gt;</span>
+</span><span class="linenos"> 2</span><span class="nt">&lt;didl:DIDL</span><span class="w"> </span><span class="na">xmlns:didl=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:02-DIDL-NS&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:02-DIDL-NS http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-21_schema_files/did/didl.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 3</span><span class="nt">&lt;didl:Item&gt;</span>
+<span class="linenos"> 4</span><span class="nt">&lt;didl:Descriptor&gt;</span>
+<span class="linenos"> 5</span><span class="nt">&lt;didl:Statement</span><span class="w"> </span><span class="na">mimeType=</span><span class="s">&quot;text/xml; charset=UTF-8&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 6</span><span class="nt">&lt;dii:Identifier</span><span class="w"> </span><span class="na">xmlns:dii=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:01-DII-NS&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:01-DII-NS http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-21_schema_files/dii/dii.xsd&quot;</span><span class="nt">&gt;</span>http://gallica.bnf.fr/ark:/12148/bpt6k5499065k<span class="nt">&lt;/dii:Identifier&gt;</span>
+<span class="linenos"> 7</span><span class="nt">&lt;/didl:Statement&gt;</span>
+<span class="linenos"> 8</span><span class="nt">&lt;/didl:Descriptor&gt;</span>
+<span class="linenos"> 9</span><span class="nt">&lt;didl:Descriptor&gt;</span>
+<span class="linenos">10</span><span class="nt">&lt;didl:Statement</span><span class="w"> </span><span class="na">mimeType=</span><span class="s">&quot;text/xml; charset=UTF-8&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">11</span><span class="nt">&lt;oai_dc:dc</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:oai_dc=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/oai_dc/&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">12</span><span class="nt">&lt;dc:identifier&gt;</span>http://gallica.bnf.fr/ark:/12148/bpt6k5499065k<span class="nt">&lt;/dc:identifier&gt;</span>
+<span class="linenos">13</span><span class="nt">&lt;dc:title&gt;</span>Cour<span class="w"> </span>de<span class="w"> </span>cassation<span class="w"> </span>de<span class="w"> </span>Leipzig.<span class="w"> </span>Affaire<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>réunion<span class="w"> </span>alsacienne<span class="w"> </span>de<span class="w"> </span>Mulhouse.<span class="w"> </span>Prévention<span class="w"> </span>d&#39;association<span class="w"> </span>autorisée.<span class="w"> </span>Mémoire<span class="w"> </span>à<span class="w"> </span>consulter.<span class="w"> </span>Consultation.<span class="w"> </span>[Par<span class="w"> </span>J.-F.<span class="w"> </span>Dupont<span class="w"> </span>(de<span class="w"> </span>Bussac).]<span class="nt">&lt;/dc:title&gt;</span>
+<span class="linenos">14</span><span class="nt">&lt;dc:creator&gt;</span>Dupont<span class="w"> </span>de<span class="w"> </span>Bussac,<span class="w"> </span>Jacques<span class="w"> </span>François<span class="w"> </span>(1803-1873).<span class="w"> </span>Auteur<span class="w"> </span>du<span class="w"> </span>texte<span class="nt">&lt;/dc:creator&gt;</span>
+<span class="linenos">15</span><span class="nt">&lt;dc:contributor&gt;</span>Cour<span class="w"> </span>de<span class="w"> </span>cassation<span class="w"> </span>de<span class="w"> </span>Leipzig.<span class="w"> </span>Éditeur<span class="w"> </span>scientifique<span class="nt">&lt;/dc:contributor&gt;</span>
+<span class="linenos">16</span><span class="nt">&lt;dc:publisher&gt;</span>impr.<span class="w"> </span>de<span class="w"> </span>Barthier<span class="w"> </span>(Paris)<span class="nt">&lt;/dc:publisher&gt;</span>
+<span class="linenos">17</span><span class="nt">&lt;dc:date&gt;</span>1873<span class="nt">&lt;/dc:date&gt;</span>
+<span class="linenos">18</span><span class="nt">&lt;dc:format&gt;</span>Gr.<span class="w"> </span>in-8°<span class="w"> </span>,<span class="w"> </span>51<span class="w"> </span>p.<span class="nt">&lt;/dc:format&gt;</span>
+<span class="linenos">19</span><span class="nt">&lt;dc:language&gt;</span>fre<span class="nt">&lt;/dc:language&gt;</span>
+<span class="linenos">20</span><span class="nt">&lt;dc:language&gt;</span>français<span class="nt">&lt;/dc:language&gt;</span>
+<span class="linenos">21</span><span class="nt">&lt;dc:relation&gt;</span>Notice<span class="w"> </span>du<span class="w"> </span>catalogue<span class="w"> </span>:<span class="w"> </span>http://catalogue.bnf.fr/ark:/12148/cb303815454<span class="nt">&lt;/dc:relation&gt;</span>
+<span class="linenos">22</span><span class="nt">&lt;dc:type</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;eng&quot;</span><span class="nt">&gt;</span>text<span class="nt">&lt;/dc:type&gt;</span>
+<span class="linenos">23</span><span class="nt">&lt;dc:type</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;fre&quot;</span><span class="nt">&gt;</span>monographie<span class="w"> </span>imprimée<span class="nt">&lt;/dc:type&gt;</span>
+<span class="linenos">24</span><span class="nt">&lt;dc:type</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;eng&quot;</span><span class="nt">&gt;</span>monographie<span class="w"> </span>imprimée<span class="nt">&lt;/dc:type&gt;</span>
+<span class="linenos">25</span><span class="nt">&lt;dc:source&gt;</span>Bibliothèque<span class="w"> </span>nationale<span class="w"> </span>de<span class="w"> </span>France,<span class="w"> </span>département<span class="w"> </span>Philosophie,<span class="w"> </span>histoire,<span class="w"> </span>sciences<span class="w"> </span>de<span class="w"> </span>l&#39;homme,<span class="w"> </span>4-LB57-4383<span class="nt">&lt;/dc:source&gt;</span>
+<span class="linenos">26</span><span class="nt">&lt;dc:rights</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;fre&quot;</span><span class="nt">&gt;</span>domaine<span class="w"> </span>public<span class="nt">&lt;/dc:rights&gt;</span>
+<span class="linenos">27</span><span class="nt">&lt;dc:rights</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;eng&quot;</span><span class="nt">&gt;</span>public<span class="w"> </span>domain<span class="nt">&lt;/dc:rights&gt;</span>
+<span class="linenos">28</span><span class="nt">&lt;dc:description&gt;</span>Appartient<span class="w"> </span>à<span class="w"> </span>l’ensemble<span class="w"> </span>documentaire<span class="w"> </span>:<span class="w"> </span>Alsace1<span class="nt">&lt;/dc:description&gt;</span>
+<span class="linenos">29</span><span class="nt">&lt;dc:format&gt;</span>Nombre<span class="w"> </span>total<span class="w"> </span>de<span class="w"> </span>vues<span class="w"> </span>:<span class="w"> </span>56<span class="nt">&lt;/dc:format&gt;</span>
+<span class="linenos">30</span><span class="nt">&lt;dc:description&gt;</span>Avec<span class="w"> </span>mode<span class="w"> </span>texte<span class="nt">&lt;/dc:description&gt;</span>
+<span class="linenos">31</span><span class="nt">&lt;/oai_dc:dc&gt;</span>
+<span class="linenos">32</span><span class="nt">&lt;/didl:Statement&gt;</span>
+<span class="linenos">33</span><span class="nt">&lt;/didl:Descriptor&gt;</span>
+<span class="linenos">34</span><span class="nt">&lt;didl:Component&gt;</span>
+<span class="linenos">35</span><span class="nt">&lt;didl:Resource</span><span class="w"> </span><span class="na">mimeType=</span><span class="s">&quot;application/pdf&quot;</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;http://gallica.bnf.fr/ark:/12148/bpt6k5499065k&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos">36</span><span class="nt">&lt;/didl:Component&gt;</span>
+<span class="linenos">37</span><span class="nt">&lt;/didl:Item&gt;</span>
+<span class="linenos">38</span><span class="nt">&lt;/didl:DIDL&gt;</span>
+<span class="hll"><span class="linenos">39</span><span class="nt">&lt;/metadata&gt;</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+XML (Tree)</label><div class="sd-tab-content docutils">
+<div class="literal-block-wrapper docutils container" id="xmltreeoai">
+<div class="code-block-caption"><span class="caption-number">Listing 2.3 </span><span class="caption-text">L’ensemble de l’arborescence XML</span><a class="headerlink" href="#xmltreeoai" title="Permalink to this code">#</a></div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">&lt;OAI-PMH</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 2</span><span class="nt">&lt;responseDate&gt;</span>2023-06-05T09:34:20Z<span class="nt">&lt;/responseDate&gt;</span>
+<span class="linenos"> 3</span><span class="nt">&lt;request</span><span class="w"> </span><span class="na">verb=</span><span class="s">&quot;GetRecord&quot;</span><span class="w"> </span><span class="na">identifier=</span><span class="s">&quot;oai:bnf.fr:gallica/ark:/12148/bpt6k5499065k&quot;</span><span class="w"> </span><span class="na">metadataPrefix=</span><span class="s">&quot;didl&quot;</span><span class="nt">&gt;</span>http://oai.bnf.fr/oai2//OAIHandler<span class="nt">&lt;/request&gt;</span>
+<span class="linenos"> 4</span><span class="nt">&lt;GetRecord&gt;</span>
+<span class="linenos"> 5</span><span class="nt">&lt;record&gt;</span>
+<span class="linenos"> 6</span><span class="nt">&lt;header&gt;</span>
+<span class="linenos"> 7</span><span class="nt">&lt;identifier&gt;</span>oai:bnf.fr:gallica/ark:/12148/bpt6k5499065k<span class="nt">&lt;/identifier&gt;</span>
+<span class="linenos"> 8</span><span class="nt">&lt;datestamp&gt;</span>2018-04-26<span class="nt">&lt;/datestamp&gt;</span>
+<span class="linenos"> 9</span><span class="nt">&lt;setSpec&gt;</span>gallica:corpus:Alsace1<span class="nt">&lt;/setSpec&gt;</span>
+<span class="linenos">10</span><span class="nt">&lt;setSpec&gt;</span>gallica:theme:9:94<span class="nt">&lt;/setSpec&gt;</span>
+<span class="linenos">11</span><span class="nt">&lt;setSpec&gt;</span>gallica:typedoc:monographies<span class="nt">&lt;/setSpec&gt;</span>
+<span class="linenos">12</span><span class="nt">&lt;/header&gt;</span>
+<span class="hll"><span class="linenos">13</span><span class="nt">&lt;metadata&gt;</span>
+</span><span class="linenos">14</span><span class="nt">&lt;didl:DIDL</span><span class="w"> </span><span class="na">xmlns:didl=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:02-DIDL-NS&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:02-DIDL-NS http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-21_schema_files/did/didl.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">15</span><span class="nt">&lt;didl:Item&gt;</span>
+<span class="linenos">16</span><span class="nt">&lt;didl:Descriptor&gt;</span>
+<span class="linenos">17</span><span class="nt">&lt;didl:Statement</span><span class="w"> </span><span class="na">mimeType=</span><span class="s">&quot;text/xml; charset=UTF-8&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">18</span><span class="nt">&lt;dii:Identifier</span><span class="w"> </span><span class="na">xmlns:dii=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:01-DII-NS&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:01-DII-NS http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-21_schema_files/dii/dii.xsd&quot;</span><span class="nt">&gt;</span>http://gallica.bnf.fr/ark:/12148/bpt6k5499065k<span class="nt">&lt;/dii:Identifier&gt;</span>
+<span class="linenos">19</span><span class="nt">&lt;/didl:Statement&gt;</span>
+<span class="linenos">20</span><span class="nt">&lt;/didl:Descriptor&gt;</span>
+<span class="linenos">21</span><span class="nt">&lt;didl:Descriptor&gt;</span>
+<span class="linenos">22</span><span class="nt">&lt;didl:Statement</span><span class="w"> </span><span class="na">mimeType=</span><span class="s">&quot;text/xml; charset=UTF-8&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">23</span><span class="nt">&lt;oai_dc:dc</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:oai_dc=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/oai_dc/&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">24</span><span class="nt">&lt;dc:identifier&gt;</span>http://gallica.bnf.fr/ark:/12148/bpt6k5499065k<span class="nt">&lt;/dc:identifier&gt;</span>
+<span class="linenos">25</span><span class="nt">&lt;dc:title&gt;</span>Cour<span class="w"> </span>de<span class="w"> </span>cassation<span class="w"> </span>de<span class="w"> </span>Leipzig.<span class="w"> </span>Affaire<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>réunion<span class="w"> </span>alsacienne<span class="w"> </span>de<span class="w"> </span>Mulhouse.<span class="w"> </span>Prévention<span class="w"> </span>d&#39;association<span class="w"> </span>autorisée.<span class="w"> </span>Mémoire<span class="w"> </span>à<span class="w"> </span>consulter.<span class="w"> </span>Consultation.<span class="w"> </span>[Par<span class="w"> </span>J.-F.<span class="w"> </span>Dupont<span class="w"> </span>(de<span class="w"> </span>Bussac).]<span class="nt">&lt;/dc:title&gt;</span>
+<span class="linenos">26</span><span class="nt">&lt;dc:creator&gt;</span>Dupont<span class="w"> </span>de<span class="w"> </span>Bussac,<span class="w"> </span>Jacques<span class="w"> </span>François<span class="w"> </span>(1803-1873).<span class="w"> </span>Auteur<span class="w"> </span>du<span class="w"> </span>texte<span class="nt">&lt;/dc:creator&gt;</span>
+<span class="linenos">27</span><span class="nt">&lt;dc:contributor&gt;</span>Cour<span class="w"> </span>de<span class="w"> </span>cassation<span class="w"> </span>de<span class="w"> </span>Leipzig.<span class="w"> </span>Éditeur<span class="w"> </span>scientifique<span class="nt">&lt;/dc:contributor&gt;</span>
+<span class="linenos">28</span><span class="nt">&lt;dc:publisher&gt;</span>impr.<span class="w"> </span>de<span class="w"> </span>Barthier<span class="w"> </span>(Paris)<span class="nt">&lt;/dc:publisher&gt;</span>
+<span class="linenos">29</span><span class="nt">&lt;dc:date&gt;</span>1873<span class="nt">&lt;/dc:date&gt;</span>
+<span class="linenos">30</span><span class="nt">&lt;dc:format&gt;</span>Gr.<span class="w"> </span>in-8°<span class="w"> </span>,<span class="w"> </span>51<span class="w"> </span>p.<span class="nt">&lt;/dc:format&gt;</span>
+<span class="linenos">31</span><span class="nt">&lt;dc:language&gt;</span>fre<span class="nt">&lt;/dc:language&gt;</span>
+<span class="linenos">32</span><span class="nt">&lt;dc:language&gt;</span>français<span class="nt">&lt;/dc:language&gt;</span>
+<span class="linenos">33</span><span class="nt">&lt;dc:relation&gt;</span>Notice<span class="w"> </span>du<span class="w"> </span>catalogue<span class="w"> </span>:<span class="w"> </span>http://catalogue.bnf.fr/ark:/12148/cb303815454<span class="nt">&lt;/dc:relation&gt;</span>
+<span class="linenos">34</span><span class="nt">&lt;dc:type</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;eng&quot;</span><span class="nt">&gt;</span>text<span class="nt">&lt;/dc:type&gt;</span>
+<span class="linenos">35</span><span class="nt">&lt;dc:type</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;fre&quot;</span><span class="nt">&gt;</span>monographie<span class="w"> </span>imprimée<span class="nt">&lt;/dc:type&gt;</span>
+<span class="linenos">36</span><span class="nt">&lt;dc:type</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;eng&quot;</span><span class="nt">&gt;</span>monographie<span class="w"> </span>imprimée<span class="nt">&lt;/dc:type&gt;</span>
+<span class="linenos">37</span><span class="nt">&lt;dc:source&gt;</span>Bibliothèque<span class="w"> </span>nationale<span class="w"> </span>de<span class="w"> </span>France,<span class="w"> </span>département<span class="w"> </span>Philosophie,<span class="w"> </span>histoire,<span class="w"> </span>sciences<span class="w"> </span>de<span class="w"> </span>l&#39;homme,<span class="w"> </span>4-LB57-4383<span class="nt">&lt;/dc:source&gt;</span>
+<span class="linenos">38</span><span class="nt">&lt;dc:rights</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;fre&quot;</span><span class="nt">&gt;</span>domaine<span class="w"> </span>public<span class="nt">&lt;/dc:rights&gt;</span>
+<span class="linenos">39</span><span class="nt">&lt;dc:rights</span><span class="w"> </span><span class="na">xml:lang=</span><span class="s">&quot;eng&quot;</span><span class="nt">&gt;</span>public<span class="w"> </span>domain<span class="nt">&lt;/dc:rights&gt;</span>
+<span class="linenos">40</span><span class="nt">&lt;dc:description&gt;</span>Appartient<span class="w"> </span>à<span class="w"> </span>l’ensemble<span class="w"> </span>documentaire<span class="w"> </span>:<span class="w"> </span>Alsace1<span class="nt">&lt;/dc:description&gt;</span>
+<span class="linenos">41</span><span class="nt">&lt;dc:format&gt;</span>Nombre<span class="w"> </span>total<span class="w"> </span>de<span class="w"> </span>vues<span class="w"> </span>:<span class="w"> </span>56<span class="nt">&lt;/dc:format&gt;</span>
+<span class="linenos">42</span><span class="nt">&lt;dc:description&gt;</span>Avec<span class="w"> </span>mode<span class="w"> </span>texte<span class="nt">&lt;/dc:description&gt;</span>
+<span class="linenos">43</span><span class="nt">&lt;/oai_dc:dc&gt;</span>
+<span class="linenos">44</span><span class="nt">&lt;/didl:Statement&gt;</span>
+<span class="linenos">45</span><span class="nt">&lt;/didl:Descriptor&gt;</span>
+<span class="linenos">46</span><span class="nt">&lt;didl:Component&gt;</span>
+<span class="linenos">47</span><span class="nt">&lt;didl:Resource</span><span class="w"> </span><span class="na">mimeType=</span><span class="s">&quot;application/pdf&quot;</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;http://gallica.bnf.fr/ark:/12148/bpt6k5499065k&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos">48</span><span class="nt">&lt;/didl:Component&gt;</span>
+<span class="linenos">49</span><span class="nt">&lt;/didl:Item&gt;</span>
+<span class="linenos">50</span><span class="nt">&lt;/didl:DIDL&gt;</span>
+<span class="hll"><span class="linenos">51</span><span class="nt">&lt;/metadata&gt;</span>
+</span><span class="linenos">52</span><span class="nt">&lt;/record&gt;</span>
+<span class="linenos">53</span><span class="nt">&lt;/GetRecord&gt;</span>
+<span class="linenos">54</span><span class="nt">&lt;/OAI-PMH&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+OAI_DC (default)</label><div class="sd-tab-content docutils">
+<div class="literal-block-wrapper docutils container" id="oaidcparser">
+<div class="code-block-caption"><span class="caption-number">Listing 2.4 </span><span class="caption-text">Parser par défaut implémenter pour oai_dc</span><a class="headerlink" href="#oaidcparser" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="n">fields</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">:</span>       <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:title/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;creator&#39;</span><span class="p">:</span>     <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:creator/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;subject&#39;</span><span class="p">:</span>     <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:subject/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:description/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;publisher&#39;</span><span class="p">:</span>   <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:publisher/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;contributor&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:contributor/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;relation&#39;</span><span class="p">:</span>    <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:relation/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;coverage&#39;</span><span class="p">:</span>    <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:coverage/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;identifier&#39;</span><span class="p">:</span>  <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:identifier/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;rights&#39;</span><span class="p">:</span>      <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:rights[@xml:lang=&quot;fre&quot;]/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span>        <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:type[@xml:lang=&quot;fre&quot;]/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;language&#39;</span><span class="p">:</span>    <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:language/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;date&#39;</span><span class="p">:</span>        <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:date/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;format&#39;</span><span class="p">:</span>      <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:format/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;source&#39;</span><span class="p">:</span>      <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;oai_dc:dc/dc:source/text()&#39;</span><span class="p">),},</span>
+<span class="n">namespaces</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;oai_dc&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.openarchives.org/OAI/2.0/oai_dc/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dc&#39;</span> <span class="p">:</span> <span class="s1">&#39;http://purl.org/dc/elements/1.1/&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+TEL_AP (default)</label><div class="sd-tab-content docutils">
+<div class="literal-block-wrapper docutils container" id="telapparser">
+<div class="code-block-caption"><span class="caption-number">Listing 2.5 </span><span class="caption-text">Parser par défaut implémenter pour tel_ap</span><a class="headerlink" href="#telapparser" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">fields</span><span class="o">=</span><span class="p">{</span> 
+    <span class="s1">&#39;identifier&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/tel:fullText/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dc:title/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;alternative&#39;</span>
+    <span class="s1">&#39;contributor&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dc:contributor/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;subject&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dc:subject/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dc:description/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;typeOfResource&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/mods:typeOfResource/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dc:type/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dcterms:extent/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;bibliographicCitation&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dcterms:bibliographicCitation/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dc:date/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dc:format/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dc:source/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/mods:location/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;isFormatOf&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/dcterms:isFormatOf/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;seeOnline&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/tel:seeOnline/text()&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;fullText&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;telap:record/tel:fullText/text()&#39;</span><span class="p">),},</span>    
+<span class="n">namespaces</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;telap&#39;</span><span class="p">:</span><span class="s1">&#39;http://catalogue.bnf.fr/namespaces/TEL_ApplicationProfile&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dc&#39;</span> <span class="p">:</span> <span class="s1">&#39;http://purl.org/dc/elements/1.1/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mods&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.loc.gov/mods&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dcterms&#39;</span><span class="p">:</span> <span class="s1">&#39;http://purl.org/dc/terms/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tel&#39;</span><span class="p">:</span> <span class="s1">&#39;http://krait.kb.nl/coop/tel/handbook/telterms.html&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">didl</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;fields&#39;</span><span class="p">:{</span>
+        <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;textList&#39;</span><span class="p">,</span> <span class="s1">&#39;didl:DIDL/didl:Item/didl:Descriptor/didl:Statement/oai_dc:dc/dc:source/text()&#39;</span><span class="p">)},</span>
+    <span class="s1">&#39;namespaces&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;didl&#39;</span><span class="p">:</span><span class="s1">&#39;urn:mpeg:mpeg21:2002:02-DIDL-NS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dii&#39;</span><span class="p">:</span> <span class="s1">&#39;&quot;urn:mpeg:mpeg21:2002:01-DII-NS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;oai_dc&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.openarchives.org/OAI/2.0/oai_dc/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dc&#39;</span><span class="p">:</span><span class="s1">&#39;http://purl.org/dc/elements/1.1/&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;prefix&#39;</span><span class="p">:</span> <span class="s1">&#39;didl&#39;</span>
+<span class="p">}</span>
+
+<span class="n">document_didl</span> <span class="o">=</span> <span class="n">gallica</span><span class="o">.</span><span class="n">getRecord</span><span class="p">(</span><span class="s1">&#39;bpt6k5499065k&#39;</span><span class="p">,</span><span class="n">metadata</span><span class="o">=</span><span class="n">didl</span><span class="p">)</span>
+<span class="n">document_didl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;source&#39;: [&quot;Bibliothèque nationale de France, département Philosophie, histoire, sciences de l&#39;homme, 4-LB57-4383&quot;]}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="telechargement-d-un-set-disponible-dans-l-entrepot">
+<span id="chunksize-research"></span><h3><span class="section-number">2.1.3. </span>Téléchargement d’un set disponible dans l’entrepôt<a class="headerlink" href="#telechargement-d-un-set-disponible-dans-l-entrepot" title="Permalink to this heading">#</a></h3>
+<p>Le téléchargement d’un set, c’est-à-dire d’une collection disponible dans l’entrepôt se fait de manière séquentielle. Lors d’une requête, les records nous sont envoyés par lots. La première requête nous retourne également un <strong>resumptionToken</strong> qui nous permet de lancer une deuxième requête à laquelle le <strong>resumptionToken</strong> seras attaché. Cela nous permet requête par requête <em>(page par page)</em> de collecter l’ensemble des records. Il nous indique également le nombre de records présent pour cette collection.</p>
+<div class="literal-block-wrapper docutils container" id="tokenoai">
+<div class="code-block-caption"><span class="caption-number">Listing 2.6 </span><span class="caption-text">Exemple de resumptionToken pour une collection (141542 records)</span><a class="headerlink" href="#tokenoai" title="Permalink to this code">#</a></div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;resumptionToken</span><span class="w"> </span><span class="na">expirationDate=</span><span class="s">&quot;2023-06-05T11:07:26Z&quot;</span><span class="w"> </span><span class="na">completeListSize=</span><span class="s">&quot;141542&quot;</span><span class="w"> </span><span class="na">cursor=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>93!8!68469958!6018!100!141542!oai_dc<span class="nt">&lt;/resumptionToken&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Par défaut, l’ensemble des sets sont télécharger dans un dossier <code class="docutils literal notranslate"><span class="pre">'./data/json'</span></code> qui comprendras l’ensemble des sous-dossiers correspondant aux différents sets, il est possible de changer de chemin lors de l’instanciation de la classe. <strong>Si le dossier n’existe pas celui-ci seras créer automatiquement.</strong>
+Il est également important de noter que lors de l’appel de la fonction <code class="docutils literal notranslate"><span class="pre">pullSets</span></code> il est possible de préciser la taille maximale d’un fichier.
+<strong>.json</strong> lors de l’écriture des records. Par défaut, celui-ci est fixé à <strong>20mb</strong>, pour des grosses collections, il est possible d’augmenter la taille maximum, mais il n’est généralement pas recommandé de descendre en dessous, ce détail à son importance lors de la fouille de donnée, nous y reviendrons par la suite.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dir_</span> <span class="o">=</span> <span class="s1">&#39;./data/sets/&#39;</span>
+<span class="n">gallica</span> <span class="o">=</span> <span class="n">OAINUM</span><span class="p">(</span><span class="s1">&#39;http://oai.bnf.fr/oai2//OAIHandler&#39;</span><span class="p">,</span><span class="n">directory</span><span class="o">=</span><span class="n">dir_</span><span class="p">)</span>
+<span class="c1">#sets_str = [&#39;gallica:corpus:BNUStr059&#39;, &#39;gallica:corpus:EnPCcorp18&#39;]</span>
+<span class="n">sets</span> <span class="o">=</span> <span class="p">[</span><span class="n">setspec</span><span class="p">[</span><span class="mi">250</span><span class="p">],</span><span class="n">setspec</span><span class="p">[</span><span class="mi">290</span><span class="p">]]</span>
+<span class="n">sets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;gallica:corpus:BNUStr059&#39;, &#39;gallica:corpus:EnPCcorp18&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gallica</span><span class="o">.</span><span class="n">pullSets</span><span class="p">(</span><span class="o">*</span><span class="n">sets</span><span class="p">,</span><span class="n">mb</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting records gallica:corpus:BNUStr059: 2639records [00:05, 471.93records/s]
+Collecting records gallica:corpus:EnPCcorp18: 313records [00:00, 457.10records/s]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lors du téléchargement d’une collection un fichier <strong>.log</strong> est créé, celui indique les records qui n’ont pas pu être récupérés car supprimé de l’entrepôt. En effet, certains records sont supprimés ainsi que leur métadonnée, mais si leurs identifiants persistent.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pathfinder_log</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">directory</span><span class="p">:</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">dir_</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">fnmatch</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;*.log&#39;</span><span class="p">)]</span>
+<span class="n">logs</span> <span class="o">=</span> <span class="n">pathfinder_log</span><span class="p">(</span><span class="n">dir_</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">logs</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">log</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2023-06-08 13:50:53] - INFO | ark:/12148/cb328036848/date est suprimmé du dépôt [&#39;gallica:corpus:BNUStr059&#39;, &#39;gallica:theme:0:00&#39;, &#39;gallica:typedoc:periodiques:titres&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/gallica-images-docnotfind.png"><img alt="document introuvable sur gallica" class="align-center" src="../../../_images/gallica-images-docnotfind.png" style="width: 900px;" /></a>
+</section>
+<section id="collecte-des-images-a-travers-document-py">
+<h3><span class="section-number">2.1.4. </span>Collecte des images à travers <code class="docutils literal notranslate"><span class="pre">document.py</span></code><a class="headerlink" href="#collecte-des-images-a-travers-document-py" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nest_asyncio</span>
+<span class="n">nest_asyncio</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">De par sa conception, asyncio n&#39;autorise pas l&#39;imbrication de sa boucle d&#39;événements. Cela présente un problème pratique : dans un environnement où la boucle d&#39;événements est déjà en cours d&#39;exécution, il est impossible d&#39;exécuter des tâches et d&#39;attendre le résultat. Essayer de le faire donnera l&#39;erreur &quot;RuntimeError : Cette boucle d&#39;événements est déjà en cours d&#39;exécution&quot;.</span>
+<span class="sd">Le problème apparaît dans divers environnements, tels que les serveurs Web, les applications graphiques et les blocs-notes Jupyter.</span>
+<span class="sd">Ce module corrige asyncio pour permettre l&#39;utilisation imbriquée de asyncio.run et loop.run_until_complete</span>
+<span class="sd">Note: seulement nécessaire à l&#39;intérieur d&#39;un jupyterbook</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">modules.record</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>  <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">skimage</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>La possibilité de récupérer les métadonnées sous le format <strong>oai_dc</strong> est avec le parseur par défaut</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="s1">&#39;btv1b9077367m&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;contributor&#39;: [],
+ &#39;coverage&#39;: [&#39;06 février 1934&#39;],
+ &#39;creator&#39;: [&#39;Agence de presse Meurisse. Agence photographique &#39;
+             &#39;(commanditaire)&#39;],
+ &#39;date&#39;: [&#39;1934&#39;],
+ &#39;description&#39;: [&#39;Image de presse&#39;],
+ &#39;format&#39;: [&#39;27 photogr. nég. sur verre : n. et b.&#39;,
+            &#39;image/jpeg&#39;,
+            &#39;Nombre total de vues :  27&#39;],
+ &#39;identifier&#39;: [&#39;http://gallica.bnf.fr/ark:/12148/btv1b9077367m&#39;],
+ &#39;language&#39;: [&#39;fre&#39;],
+ &#39;publisher&#39;: [&#39;[Agence Meurisse] (Paris)&#39;],
+ &#39;relation&#39;: [&#39;Notice du catalogue : &#39;
+              &#39;http://catalogue.bnf.fr/ark:/12148/cb42479434g&#39;],
+ &#39;rights&#39;: [&#39;domaine public&#39;],
+ &#39;source&#39;: [&#39;Bibliothèque nationale de France, département Estampes et &#39;
+            &#39;photographie, EI-13&#39;],
+ &#39;subject&#39;: [&#39;France -- 1934 (Manifestation du 6 février)&#39;],
+ &#39;title&#39;: [&#39;[Recueil. Les évènements du 06 février 1934] : [lot de &#39;
+           &#39;photographies de presse] / [Agence Meurisse]&#39;],
+ &#39;type&#39;: [&#39;image fixe&#39;, &#39;photographie&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>La possibilité également de récupérer <strong>toutes les images</strong> correspondant à ce document</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span><span class="o">.</span><span class="n">images</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f1/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f2/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f3/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f4/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f5/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f6/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f7/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f8/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f9/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f10/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f11/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f12/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f13/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f14/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f15/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f16/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f17/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f18/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f19/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f20/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f21/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f22/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f23/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f24/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f25/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f26/full/full/0/native.jpg&#39;,
+ &#39;https://gallica.bnf.fr/iiif/ark:/12148/btv1b9077367m/f27/full/full/0/native.jpg&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">22</span><span class="p">])</span>
+<span class="n">img_rgb</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">gray2rgb</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rgb</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/ff534ea813d169f02b599590b9b6933db24df69d6e5c6331548142cf2a517ae5.png" src="../../../_images/ff534ea813d169f02b599590b9b6933db24df69d6e5c6331548142cf2a517ae5.png" />
+</div>
+</div>
+<p>Il est possible de télécharger les images correspondant au document de façon asynchrone. Des limitations subviennent pendant l’utilisation de l’API <a class="reference external" href="https://iiif.io/">IIIF</a> de la BnF <em>(hors serveur internet à la BnF)</em>. Un algorithme de <a class="reference external" href="https://fr.wikipedia.org/wiki/Seau_perc%C3%A9">seau percé</a> est mise en place afin d’éviter les erreurs dues aux limitations mise en place par l’API.</p>
+<a class="reference internal image-reference" href="../../../_images/fetch_images.jpg"><img alt="../../../_images/fetch_images.jpg" class="align-center" src="../../../_images/fetch_images.jpg" style="width: 1000px;" /></a>
+<p><code class="docutils literal notranslate"><span class="pre">client_timeout</span></code> créer un délai d’expiration d’attente de réponse pour l’application et <code class="docutils literal notranslate"><span class="pre">get_manifest_timeout</span></code> et <code class="docutils literal notranslate"><span class="pre">get_img_timeout</span></code> <em>overide</em> ce paramètre chacun pour le type de requête concernant <em>(par défaut, ils sont égaux à l’application)</em> <code class="docutils literal notranslate"><span class="pre">concurrents_img</span></code> paramètre le nombre de requêtes autorisé dans une fenêtre égale à <code class="docutils literal notranslate"><span class="pre">second_img</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="s1">&#39;btv1b106081655&#39;</span><span class="p">)</span>
+
+ <span class="o">&gt;&gt;</span> <span class="n">doc</span><span class="o">.</span><span class="n">leaky_bucket</span> 
+<span class="p">{</span><span class="s1">&#39;concurrents_img&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+ <span class="s1">&#39;seconds_img&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+ <span class="s1">&#39;client_timeout&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+ <span class="s1">&#39;get_img_timeout&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+ <span class="s1">&#39;get_manifest_timeout&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+ <span class="s1">&#39;chunksize&#39;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="dropdown admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Ces paramètres n’engendrent pas d’erreur due aux limitations. Il est possible de réécrire ce dictionnaire une fois la classe instancier, mais il est déconseillé d’augmenter le nombre de requêtes autorisé, si le code n’est pas lancé sur le serveur interne de la BnF</p>
+</div>
+<p><strong>Chaque image est téléchargé selon les paramètres par défaut de la classe.</strong> disponible dans <code class="docutils literal notranslate"><span class="pre">.params_dft</span></code>. Il est possible de réécrire ces paramètres selon les standards mis en place à travers le protocol <a class="reference external" href="https://en.wikipedia.org/wiki/International_Image_Interoperability_Framework">IIIF</a>. La document de l’API est disponible <a class="reference external" href="https://iiif.io/api/image/3.0/"><strong>ici</strong></a> elle fournit l’ensemble des <em>form</em> disponible et associées à chaque clée du dictionnaire <code class="docutils literal notranslate"><span class="pre">.params_dft</span></code>.</p>
+<p>L’utilisateur peut également passer une liste d’images à télécharger à travers la clée <code class="docutils literal notranslate"><span class="pre">.params_df['image']</span></code>. Si une liste est présente l’ensemble des autres paramètres s’appliqueront aux images à moins de passer également une autre liste de même taille où les indices des éléments deviendrons les paramètres à associées.</p>
+<p><strong>Une fois l’image télécharger, le nom de l’image contiendras l’ark et l’ensemble des paramètres associées à celle-ci.</strong> La clée<code class="docutils literal notranslate"><span class="pre">.params_dft['name']</span></code> indique la possibilité d’ajouter un attribut dans le nom du fichier afin de créer une classe d’image <em>(par défaut, il correspondant à la date de téléchargement)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="s1">&#39;btv1b106081655&#39;</span><span class="p">)</span>
+
+ <span class="o">&gt;&gt;</span> <span class="n">doc</span><span class="o">.</span><span class="n">params_dft</span>
+<span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;202306051337&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;region&#39;</span><span class="p">:</span> <span class="s1">&#39;full&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;full&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;rotation&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;quality&#39;</span><span class="p">:</span> <span class="s1">&#39;native&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;extension&#39;</span><span class="p">:</span> <span class="s1">&#39;jpg&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Si liste il y a, elles doivent être de même taille</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;first_img&#39;</span><span class="p">,</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;dft&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;last_img&#39;</span><span class="p">]</span> <span class="p">,</span>
+    <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span><span class="s1">&#39;f2&#39;</span><span class="p">,</span><span class="s1">&#39;f5&#39;</span><span class="p">,</span><span class="s1">&#39;f6&#39;</span><span class="p">,</span><span class="s1">&#39;f16&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;size&#39;</span> <span class="p">:[</span><span class="s1">&#39;full&#39;</span><span class="p">,</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;pct:20&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;full&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;quality&#39;</span><span class="p">:[</span><span class="s1">&#39;native&#39;</span><span class="p">,</span><span class="o">*</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;native&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Récupérer l’ensemble des images mais sous deux format différent avec une taille de 50%</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;extension&#39;</span><span class="p">:[</span><span class="s1">&#39;jpg&#39;</span><span class="p">,</span><span class="s1">&#39;png&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;pct:50&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Le dossiers de téléchargement par est <code class="docutils literal notranslate"><span class="pre">./data/images/</span></code>, un nouveau dossier est créer si le dossier présent dans l’argument n’existe pas.
+Lors du téléchargement d’image(s) un fichier <strong>.log</strong> est créer qui recense les erreurs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span><span class="o">.</span><span class="n">fetch_image</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;./data/img/same_lenght&#39;</span><span class="p">,</span><span class="n">params_img</span><span class="o">=</span><span class="n">params1</span><span class="p">)</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">fetch_image</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;./data/img/jpg_png_50percent&#39;</span><span class="p">,</span><span class="n">params_img</span><span class="o">=</span><span class="n">params2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████| 5/5 [00:05&lt;00:00,  1.03s/it]
+100%|█████████████████████████████| 54/54 [00:18&lt;00:00,  2.87it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">news_params_with_wrong_size</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;first_img&#39;</span><span class="p">,</span><span class="s1">&#39;last_img&#39;</span><span class="p">]</span> <span class="p">,</span>
+    <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span><span class="s1">&#39;f2&#39;</span><span class="p">,</span><span class="s1">&#39;f5&#39;</span><span class="p">,</span><span class="s1">&#39;f6&#39;</span><span class="p">,</span><span class="s1">&#39;f16&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="c1">#doc.fetch_image(directory=&#39;./data/img/from_error&#39;,params_img=news_params_with_wrong_size)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition error">
+<p class="admonition-title">Error</p>
+<p>ValueError: Lenght is not the same between list [2, 5]</p>
+</div>
+</section>
+</section>
+<section id="fouille-de-donnee-research-multiprocessing-py">
+<h2><span class="section-number">2.2. </span>Fouille de donnée <code class="docutils literal notranslate"><span class="pre">research_multiprocessing.py</span></code><a class="headerlink" href="#fouille-de-donnee-research-multiprocessing-py" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nest_asyncio</span>
+<span class="n">nest_asyncio</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">De par sa conception, asyncio n&#39;autorise pas l&#39;imbrication de sa boucle d&#39;événements. Cela présente un problème pratique : dans un environnement où la boucle d&#39;événements est déjà en cours d&#39;exécution, il est impossible d&#39;exécuter des tâches et d&#39;attendre le résultat. Essayer de le faire donnera l&#39;erreur &quot;RuntimeError : Cette boucle d&#39;événements est déjà en cours d&#39;exécution&quot;.</span>
+<span class="sd">Le problème apparaît dans divers environnements, tels que les serveurs Web, les applications graphiques et les blocs-notes Jupyter.</span>
+<span class="sd">Ce module corrige asyncio pour permettre l&#39;utilisation imbriquée de asyncio.run et loop.run_until_complete</span>
+<span class="sd">Note: seulement nécessaire à l&#39;intérieur d&#39;un jupyterbook</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">modules.research_multiprocessing</span> <span class="kn">import</span> <span class="n">mapping2csv</span>
+<span class="kn">from</span> <span class="nn">modules.iiif_from_csv</span> <span class="kn">import</span> <span class="n">collecting_images</span>
+<span class="kn">from</span> <span class="nn">modules.record</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>  <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">skimage</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour des raisons pratiques un ensemble de collection est disponible au téléchargement via ce lien <a class="reference external" href="https://drive.google.com/drive/folders/1PIurNg4_3YLPwNNN378EEyWRASdg324n?usp=drive_link">Google Drive</a>. Il contient un ensemble de fichiers <strong>.json</strong> appartenant à différentes collections <em>(set)</em></p>
+</div>
+<p>Le module <code class="docutils literal notranslate"><span class="pre">research_multiprocessing</span></code> repose sur la recherche chaîne de caractère à l’intérieur des métadonnées. Pour ce faire il suffit de créer un dictionnaire dont la clée indique le <code class="docutils literal notranslate"><span class="pre">group</span></code> associée aux <code class="docutils literal notranslate"><span class="pre">match</span></code> c’est à dire aux chaînes de caractères (sous forme de <a class="reference external" href="https://docs.python.org/fr/3/howto/regex.html">regex</a>). Cela nous permet de créer <strong>des listes d’autoritée</strong> pour un ensemble d’expression. Si une expression est trouvée, le module retourne <code class="docutils literal notranslate"><span class="pre">(ark,group,match,from)</span></code> le <code class="docutils literal notranslate"><span class="pre">from</span></code> et la correspondance de la clée par rapport aux métadonnée récupérer via l’entrepôt est visible sur Gallica. L’ensemble des correspondances est regroupées sous un fichier <strong>.csv</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<a class="reference internal image-reference" href="../../../_images/mapping2csv.jpg"><img alt="../../../_images/mapping2csv.jpg" class="align-center" src="../../../_images/mapping2csv.jpg" style="width: 1000px;" /></a>
+<p>Lors du lancement de <code class="docutils literal notranslate"><span class="pre">mapping2csv</span></code> le module liste l’ensemble de fichier <strong>.json</strong> présent dans le dossier. L’argument <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> indique le nombre de groupe de fichier que l’ont veut distribuer sur chaque <em>process</em>. Le nombre de <em>process</em> dépend du nombre <em>Core</em> présent sur la machine.<br />
+La création d’un process exige un certain temps, il est donc essentiel d’avoir des fichiers <strong>.json</strong> <a class="reference internal" href="#chunksize-research"><span class="std std-ref">ni trop gros, ni trop petit</span></a> en terme de taille. Mais également un <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> qui prend en considération le nombre de <strong>Core</strong>.</p>
+<p>Avant la création de chaque batch <em>(dont leurs taille dépend de <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> et du nombre total de fichier)</em>. Les fichiers sont mélanger cela permet de rééquilibré la distribution des fichiers par process, car certains fichiers peuvent contenir plus de records <em>(même si une la taille maximun par fichier est de 20mb, un fichier peu très bien faire une taille de 3mb)</em></p>
+<p><strong>Il faut également être prudent lors de la recherche d’expression, par exemple rechercher le mot “il” où “elle” peut générer un fichier CSV avec une taille de plusieurs giga ocet. Mais également se limiter à un dictionnaire résonnable</strong></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">directory_of_records</span> <span class="o">=</span> <span class="s1">&#39;./data/json/&#39;</span>
+<span class="n">chunksize</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">n_json</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">directory</span><span class="p">:</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> 
+                                <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">fnmatch</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;*.json&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Le dossier comprend </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">n_json</span><span class="p">(</span><span class="n">directory_of_records</span><span class="p">))</span><span class="si">}</span><span class="s1"> fichiers .json, pour chunksize=20, chaque process traiteras </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">n_json</span><span class="p">(</span><span class="n">directory_of_records</span><span class="p">))</span><span class="o">//</span><span class="n">chunksize</span><span class="si">}</span><span class="s1"> fichiers&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Le dossier comprend 453 fichiers .json, pour chunksize=20, chaque process traiteras 22 fichiers
+</pre></div>
+</div>
+</div>
+</div>
+<p>Création d’un dictionnaire, recherche de l’expression Gustave Doré sous le groupe artiste, recherche estampe sous d’une forme de liste d’autorité, recherche des dates correspondant au 20ème sièce, 19ème siècle et 18ème siècle. Recherche un nombre d’expression correspondant à des techniques artistique.
+Pour la construction des regex nous utilisons <strong>\b</strong> (le double barre oblique est essentiel pour la compilation) qui signifie <em>boundary</em> elle sert a délimiter les limites d’un mot <strong>\b</strong><em>Paris</em><strong>\b</strong> évite la capture de <em>Parisiens</em></p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>La compilation des expréssions régulère se fait en <code class="docutils literal notranslate"><span class="pre">re.IGNORECASE</span></code>, c’est à dire qu’elle ne sont pas sensible aux majuscules et minuscule</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regex</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;artiste&quot;</span><span class="p">:[</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bGustave Doré</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;estampe&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bestampe</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">best.</span><span class="se">\\</span><span class="s2">b&quot;</span> <span class="p">],</span>
+    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">b19\d</span><span class="si">{2}</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">b18\d</span><span class="si">{2}</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">b17\d</span><span class="si">{2}</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">],</span> 
+    <span class="s2">&quot;techniques&quot;</span><span class="p">:[</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bmine de plomb</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bfiligrane</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bdétrempe</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bsanguine</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bcraie</span><span class="se">\b</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">btempera</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bcrayon</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bplume</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bpointe de métal</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bfusain</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">brehauts</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bgraphite</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bmétallogallique</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bfeutre</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bstylo</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bcarbone</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bpierre noire</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bpastel</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bgouache</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bmine</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bgouache</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bhuile</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bpinceau</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bpeinture</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">baquarelle</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">baquarelle</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bencre</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bencre</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bencre de chine</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">blavis</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bcrachis</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bbistre</span><span class="se">\\</span><span class="s2">b&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>La barre de progression risque de mettre un certain temps avant de démarrer (le temps de création des process et premiers résultats), sur ma machine (16 core) l’opération total à pris 2:43min</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapping2csv</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory_of_records</span><span class="p">,</span><span class="n">chunksize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">authority</span><span class="o">=</span><span class="n">regex</span><span class="p">,</span><span class="n">write_at</span><span class="o">=</span><span class="s1">&#39;./data/csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████| 23/23 [02:22&lt;00:00,  6.19s/it]
+Reading files: 100%|█████████| 46/46 [00:23&lt;00:00,  1.95CSVTEMP/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8,039,918 rows for 238.45mb for the CSV
+7,506,857 records read for a mean of 326,385.09 by process for 16 process by default
+8,039,918 matching found with 0 file(s) error(s) during the process
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Importation du CSV to low_memory=False, attention ici les &#39;ARK&#39; ne sont pas unique,</span>
+<span class="sd">car un &#39;ARK&#39; peut appartenir à plusieurs group d&#39;expressions</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/csv/CSV_16-36-56-06-08-2023.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ark</th>
+      <th>group</th>
+      <th>match</th>
+      <th>from</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>bpt6k3370933q</td>
+      <td>date</td>
+      <td>1996</td>
+      <td>date</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bpt6k3377225x</td>
+      <td>date</td>
+      <td>1995</td>
+      <td>date</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>bpt6k48094479</td>
+      <td>date</td>
+      <td>1996</td>
+      <td>date</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bpt6k48038754</td>
+      <td>date</td>
+      <td>1996</td>
+      <td>date</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bpt6k3363957s</td>
+      <td>date</td>
+      <td>1996</td>
+      <td>date</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>8039913</th>
+      <td>bpt6k704210g</td>
+      <td>date</td>
+      <td>1882</td>
+      <td>date</td>
+    </tr>
+    <tr>
+      <th>8039914</th>
+      <td>bpt6k706566z</td>
+      <td>date</td>
+      <td>1889</td>
+      <td>date</td>
+    </tr>
+    <tr>
+      <th>8039915</th>
+      <td>bpt6k713509f</td>
+      <td>date</td>
+      <td>1908</td>
+      <td>date</td>
+    </tr>
+    <tr>
+      <th>8039916</th>
+      <td>bpt6k699905j</td>
+      <td>date</td>
+      <td>1874</td>
+      <td>date</td>
+    </tr>
+    <tr>
+      <th>8039917</th>
+      <td>bpt6k7141774</td>
+      <td>date</td>
+      <td>1910</td>
+      <td>date</td>
+    </tr>
+  </tbody>
+</table>
+<p>8039918 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">1. Créer une copie du dataframe et filtre le group &#39;artiste&#39;</span>
+<span class="sd">2. Suprimme la colonne group</span>
+<span class="sd">3. Renomme la colonne &#39;from&#39; en &#39;artist_from&#39; / &#39;match&#39; en &#39;artist&#39;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">df_by_artist</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;artiste&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_by_artist</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;group&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_by_artist</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="s1">&#39;artist_from&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_by_artist</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;match&#39;</span><span class="p">:</span> <span class="s1">&#39;artist&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_by_artist</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>299077</th>
+      <th>606332</th>
+      <th>606336</th>
+      <th>606340</th>
+      <th>609367</th>
+      <th>609373</th>
+      <th>609379</th>
+      <th>609385</th>
+      <th>609391</th>
+      <th>609397</th>
+      <th>...</th>
+      <th>7774341</th>
+      <th>7774353</th>
+      <th>7774379</th>
+      <th>7774418</th>
+      <th>7775661</th>
+      <th>7775744</th>
+      <th>7775784</th>
+      <th>7775790</th>
+      <th>7954648</th>
+      <th>7959642</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ark</th>
+      <td>btv1b9009264q</td>
+      <td>btv1b9051042b</td>
+      <td>btv1b9050998h</td>
+      <td>btv1b90510000</td>
+      <td>btv1b103211715</td>
+      <td>btv1b103211482</td>
+      <td>btv1b10321221g</td>
+      <td>btv1b10321188q</td>
+      <td>btv1b103211895</td>
+      <td>btv1b103212169</td>
+      <td>...</td>
+      <td>btv1b10321436w</td>
+      <td>btv1b103199797</td>
+      <td>btv1b10320441q</td>
+      <td>btv1b103207876</td>
+      <td>btv1b105357635</td>
+      <td>btv1b103206369</td>
+      <td>btv1b10319141c</td>
+      <td>btv1b10321172m</td>
+      <td>btv1b9010865p</td>
+      <td>btv1b105008076</td>
+    </tr>
+    <tr>
+      <th>artist</th>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>...</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+    </tr>
+    <tr>
+      <th>artist_from</th>
+      <td>title</td>
+      <td>title</td>
+      <td>title</td>
+      <td>title</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>...</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>title</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>title</td>
+      <td>title</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 4958 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">1. Créer une copie du dataframe et filtre le group &#39;techniques&#39;</span>
+<span class="sd">2. Suprimme la colonne group</span>
+<span class="sd">3. Renomme la colonne &#39;from&#39; en &#39;tech_from&#39; / &#39;match&#39; en &#39;techniques&#39;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">df_by_tech</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;techniques&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_by_tech</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;group&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_by_tech</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="s1">&#39;tech_from&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_by_tech</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;match&#39;</span><span class="p">:</span> <span class="s1">&#39;techniques&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_by_tech</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>3366</th>
+      <th>3752</th>
+      <th>16928</th>
+      <th>16939</th>
+      <th>16944</th>
+      <th>16946</th>
+      <th>16948</th>
+      <th>16991</th>
+      <th>17074</th>
+      <th>17087</th>
+      <th>...</th>
+      <th>7959133</th>
+      <th>7959136</th>
+      <th>7959420</th>
+      <th>7959658</th>
+      <th>7959668</th>
+      <th>7959690</th>
+      <th>7959693</th>
+      <th>7959696</th>
+      <th>7959701</th>
+      <th>7982480</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ark</th>
+      <td>bpt6k1525333w</td>
+      <td>bpt6k1525279j</td>
+      <td>btv1b84332935</td>
+      <td>btv1b8433296d</td>
+      <td>btv1b10031310g</td>
+      <td>btv1b8432224m</td>
+      <td>btv1b84061661</td>
+      <td>btv1b10031423m</td>
+      <td>btv1b8433294k</td>
+      <td>btv1b8415210z</td>
+      <td>...</td>
+      <td>btv1b7702054r</td>
+      <td>btv1b7702054r</td>
+      <td>btv1b7702250s</td>
+      <td>btv1b10501348r</td>
+      <td>btv1b10050254t</td>
+      <td>btv1b64011788</td>
+      <td>btv1b6401177v</td>
+      <td>btv1b6401176f</td>
+      <td>btv1b84126854</td>
+      <td>bpt6k72243q</td>
+    </tr>
+    <tr>
+      <th>techniques</th>
+      <td>plume</td>
+      <td>plume</td>
+      <td>Encre;encre</td>
+      <td>Encre</td>
+      <td>encre</td>
+      <td>encre</td>
+      <td>Encre</td>
+      <td>encre</td>
+      <td>Encre;encre</td>
+      <td>Encre;encre</td>
+      <td>...</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>huile</td>
+      <td>peinture</td>
+      <td>lavis;Aquarelle;gouache</td>
+      <td>aquarelle</td>
+      <td>aquarelle</td>
+      <td>aquarelle</td>
+      <td>plume;lavis</td>
+      <td>bistre</td>
+    </tr>
+    <tr>
+      <th>tech_from</th>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>...</td>
+      <td>title</td>
+      <td>format</td>
+      <td>description</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 62491 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Créer une jointure sur la colonne &#39;ark&#39;</span>
+<span class="sd">Le résulat est un df avec toutes les techniques trouver en lien avec l&#39;artiste &#39;Gustave Doré&#39;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">df_jointure</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_by_artist</span><span class="p">,</span> <span class="n">df_by_tech</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;ark&#39;</span><span class="p">)</span>
+<span class="n">df_jointure</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>47</th>
+      <th>48</th>
+      <th>49</th>
+      <th>50</th>
+      <th>51</th>
+      <th>52</th>
+      <th>53</th>
+      <th>54</th>
+      <th>55</th>
+      <th>56</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ark</th>
+      <td>btv1b10320574p</td>
+      <td>btv1b103200361</td>
+      <td>btv1b10206303r</td>
+      <td>btv1b102063046</td>
+      <td>btv1b103197173</td>
+      <td>btv1b103197173</td>
+      <td>btv1b10319720c</td>
+      <td>btv1b103205771</td>
+      <td>btv1b10319696k</td>
+      <td>btv1b10320569h</td>
+      <td>...</td>
+      <td>btv1b10322340k</td>
+      <td>btv1b10319725m</td>
+      <td>btv1b10320585j</td>
+      <td>btv1b10319723q</td>
+      <td>btv1b10319723q</td>
+      <td>btv1b103197262</td>
+      <td>btv1b103197497</td>
+      <td>btv1b10319743j</td>
+      <td>btv1b10319748s</td>
+      <td>btv1b103205809</td>
+    </tr>
+    <tr>
+      <th>artist</th>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>...</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+      <td>Gustave Doré</td>
+    </tr>
+    <tr>
+      <th>artist_from</th>
+      <td>relation</td>
+      <td>relation</td>
+      <td>title</td>
+      <td>title</td>
+      <td>title</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>...</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>title</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+      <td>relation</td>
+    </tr>
+    <tr>
+      <th>techniques</th>
+      <td>plume</td>
+      <td>mine</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>...</td>
+      <td>encre</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+      <td>plume</td>
+    </tr>
+    <tr>
+      <th>tech_from</th>
+      <td>format</td>
+      <td>title</td>
+      <td>title</td>
+      <td>title</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>...</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+      <td>format</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 57 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">1.Filtre quand Gustave Doré est présent dans le le champs des métadonnées correspondant au titre</span>
+<span class="sd">2.Créer une liste de technique unique en fonction du filtrage précédent</span>
+<span class="sd">3.Parcours cette liste pour créer un dictionnaire qui rassemble les &#39;ark&#39; sous les techniques qui sont unique</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">technique_ark</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">by_title</span> <span class="o">=</span> <span class="n">df_join</span><span class="p">[</span><span class="n">df_join</span><span class="p">[</span><span class="s1">&#39;artist_from&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;title&#39;</span><span class="p">]</span>
+<span class="n">unique_techniques</span> <span class="o">=</span> <span class="n">by_title</span><span class="p">[</span><span class="s1">&#39;techniques&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">technique</span> <span class="ow">in</span> <span class="n">unique_techniques</span><span class="p">:</span>
+    <span class="c1"># Filtrage des ARK pour la technique donnée</span>
+    <span class="n">arks</span> <span class="o">=</span> <span class="n">by_title</span><span class="p">[</span><span class="n">by_title</span><span class="p">[</span><span class="s1">&#39;techniques&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">technique</span><span class="p">][</span><span class="s1">&#39;ark&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="c1"># Ajouter la technique et la liste d&#39;ARK dans le dictionnaire</span>
+    <span class="n">technique_ark</span><span class="p">[</span><span class="n">technique</span><span class="p">]</span> <span class="o">=</span> <span class="n">arks</span>
+<span class="n">technique_ark</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;plume&#39;: [&#39;btv1b10206303r&#39;,
+  &#39;btv1b102063046&#39;,
+  &#39;btv1b103197173&#39;,
+  &#39;btv1b10319721t&#39;,
+  &#39;btv1b103196954&#39;,
+  &#39;btv1b103197245&#39;,
+  &#39;btv1b10319718j&#39;,
+  &#39;btv1b10319723q&#39;],
+ &#39;Peinture&#39;: [&#39;btv1b105397373&#39;, &#39;btv1b105397373&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Créer un dictionnaire qui pour clée un &#39;ark&#39; </span>
+<span class="sd">et pour valeur un tuple (titre, techniques, nombre d&#39;image pour le document)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">ark_title_techniques</span> <span class="o">=</span> <span class="p">{</span><span class="n">ark</span><span class="p">:</span> <span class="p">(</span><span class="n">Document</span><span class="p">(</span><span class="n">ark</span><span class="p">)</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span><span class="n">technique</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">Document</span><span class="p">(</span><span class="n">ark</span><span class="p">)</span><span class="o">.</span><span class="n">images</span><span class="p">))</span> <span class="k">for</span> <span class="n">technique</span><span class="p">,</span> <span class="n">ark_list</span> <span class="ow">in</span> <span class="n">technique_ark</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">ark</span> <span class="ow">in</span> <span class="n">ark_list</span><span class="p">}</span>
+<span class="n">ark_title_techniques</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;btv1b10206303r&#39;: ([&#39;Portrait de femme. Dessin à la plume de Gustave Doré (TR)&#39;],
+  &#39;plume&#39;,
+  1),
+ &#39;btv1b102063046&#39;: ([&#39;Alsacienne. Dessin à la plume de Gustave Doré 1872 (TR)&#39;],
+  &#39;plume&#39;,
+  1),
+ &#39;btv1b103197173&#39;: ([&#39;[La Vie en province] : [estampe] ([État avant la lettre]) / [Gustave Doré]&#39;],
+  &#39;plume&#39;,
+  1),
+ &#39;btv1b10319721t&#39;: ([&#39;[Les Collégiens] : [estampe] ([État avant la lettre]) / [Gustave Doré]&#39;],
+  &#39;plume&#39;,
+  1),
+ &#39;btv1b103196954&#39;: ([&#39;[Grotesques] : [estampe] ([État avant la lettre]) / Gustave Doré&#39;],
+  &#39;plume&#39;,
+  1),
+ &#39;btv1b103197245&#39;: ([&#39;[Grotesques : Promenade dans les Champs-Elysées] : [estampe] ([État avant la lettre]) / [Gustave Doré]&#39;],
+  &#39;plume&#39;,
+  1),
+ &#39;btv1b10319718j&#39;: ([&#39;[Internes et externes] : [estampe] ([État avant la lettre]) / [Gustave Doré]&#39;],
+  &#39;plume&#39;,
+  1),
+ &#39;btv1b10319723q&#39;: ([&#39;[Grotesques] : [estampe] ([État avant la lettre]) / Gustave Doré&#39;],
+  &#39;plume&#39;,
+  1),
+ &#39;btv1b105397373&#39;: ([&#39;[Le Géant au dessus des Cévennes] : [photographie] / [Photographie par Nadar] ; [Peinture par Gustave Doré]&#39;],
+  &#39;Peinture&#39;,
+  1)}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">num_images</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ark_title_techniques</span><span class="p">)</span>  <span class="c1"># Nombre total d&#39;images</span>
+
+<span class="c1"># Calcul du nombre de lignes et de colonnes pour la grille de sous-graphiques</span>
+<span class="n">num_rows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">num_images</span><span class="p">)))</span>
+<span class="n">num_cols</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">num_images</span> <span class="o">/</span> <span class="n">num_rows</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num_rows</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">ark</span><span class="p">,</span> <span class="n">tuples</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ark_title_techniques</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="c1"># (tips) IIIF n&#39;autorise pas le téléchargement répéter d&#39;image de plus de 50%</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="n">ark</span><span class="p">)</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;full/full/0/native.jpg&#39;</span><span class="p">,</span><span class="s1">&#39;full/pct:30/0/native.jpg&#39;</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">img_rgb</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">gray2rgb</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">img</span>
+
+    <span class="c1"># Ajout de l&#39;image au sous-graphique correspondant</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="n">num_cols</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="n">num_cols</span><span class="p">]</span>  <span class="c1"># Sélection du sous-graphique</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rgb</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">tuples</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+
+<span class="c1"># Suppression des sous-graphiques vides (s&#39;il en reste)</span>
+<span class="k">if</span> <span class="n">num_images</span> <span class="o">&lt;</span> <span class="n">num_rows</span> <span class="o">*</span> <span class="n">num_cols</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_images</span><span class="p">,</span> <span class="n">num_rows</span> <span class="o">*</span> <span class="n">num_cols</span><span class="p">):</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># Ajustement automatique des espacements</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/63846a8e38980977b4eb9f0bbc4f74ead76e821dd5840a854d9cad7ac6d8e51d.png" src="../../../_images/63846a8e38980977b4eb9f0bbc4f74ead76e821dd5840a854d9cad7ac6d8e51d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Création d&#39;un dictionnaire vide avec les &#39;form&#39; du protocol IIIF</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;ark&#39;</span><span class="p">:</span> <span class="n">ark_filtered</span><span class="p">,</span>
+    <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="s1">&#39;homme_qui_rit&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;region&#39;</span><span class="p">:</span> <span class="s1">&#39;full&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;pct:50&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rotation&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;quality&#39;</span><span class="p">:</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;extension&#39;</span><span class="p">:</span> <span class="s1">&#39;jpg&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_iiif</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+<span class="n">random_images</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">ark</span><span class="p">:</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;f</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">Document</span><span class="p">(</span><span class="n">ark</span><span class="p">)</span><span class="o">.</span><span class="n">images</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)],</span><span class="nb">len</span><span class="p">(</span><span class="n">Document</span><span class="p">(</span><span class="n">ark</span><span class="p">)</span><span class="o">.</span><span class="n">images</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> 
+                                          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Document</span><span class="p">(</span><span class="n">ark</span><span class="p">)</span><span class="o">.</span><span class="n">images</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">Document</span><span class="p">(</span><span class="n">ark</span><span class="p">)</span><span class="o">.</span><span class="n">images</span><span class="p">)))</span>
+
+<span class="n">df_iiif</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_iiif</span><span class="p">[</span><span class="s1">&#39;ark&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">random_images</span><span class="p">)</span>
+<span class="n">df_iiif</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data4notebook/homme_qui_rit_images_random_sample.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df_iiif</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ark</th>
+      <th>image</th>
+      <th>region</th>
+      <th>size</th>
+      <th>rotation</th>
+      <th>quality</th>
+      <th>extension</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>btv1b106059979</td>
+      <td>f23/f20/f21/f6/f14/f11/f1/f3/f7/f10/f16/f18/f5</td>
+      <td>full</td>
+      <td>pct:50</td>
+      <td>0</td>
+      <td>gray</td>
+      <td>jpg</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>btv1b9015483s</td>
+      <td>f1</td>
+      <td>full</td>
+      <td>pct:50</td>
+      <td>0</td>
+      <td>gray</td>
+      <td>jpg</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/collecting_images.jpg"><img alt="../../../_images/collecting_images.jpg" class="align-center" src="../../../_images/collecting_images.jpg" style="width: 1000px;" /></a>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collecting_images</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;./data4notebook/homme_qui_rit_images_random_sample.csv&#39;</span><span class="p">,</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;./data4notebook/images_from_csv/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                           | 0/13 [00:00&lt;?, ?it/s]
+100%|██████████████████████████████████████████████████████████████████████████████████| 13/13 [00:02&lt;00:00,  4.45it/s]
+
+100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:08&lt;00:00,  8.04s/it]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/notebooks/pipeline"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../markdown.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Markdown Files</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../bibliography.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bibliography</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-entrepots-de-la-bnf">2.1. Les entrepôts de la BnF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-collecte-de-metadonnees-a-travers-oai-py">2.1.1. La collecte de métadonnées à travers <code class="docutils literal notranslate"><span class="pre">oai.py</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-d-un-parser">2.1.2. Création d’un <em>parser</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#telechargement-d-un-set-disponible-dans-l-entrepot">2.1.3. Téléchargement d’un set disponible dans l’entrepôt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collecte-des-images-a-travers-document-py">2.1.4. Collecte des images à travers <code class="docutils literal notranslate"><span class="pre">document.py</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fouille-de-donnee-research-multiprocessing-py">2.2. Fouille de donnée <code class="docutils literal notranslate"><span class="pre">research_multiprocessing.py</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Axel Martin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
