@@ -4,8 +4,8 @@
 
 /* update font variable */
 :root {
-  --font-family-sans-serif: 'Raleway', -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --pst-font-family-base: var(--font-family-sans-serif);
+ /* --font-family-sans-serif: 'Raleway', -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  --pst-font-family-base: var(--font-family-sans-serif);*/
   --pst-background-color: #f5f4e9;
   --font-sans-serif: "Ubuntu", "Source Sans Pro", sans-serif !important;
   --font-monospace: "Fira Code", "Roboto Mono", monospace !important;
