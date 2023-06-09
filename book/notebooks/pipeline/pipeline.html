@@ -414,8 +414,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-entrepots-de-la-bnf">Les entrepôts de la BnF</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-collecte-de-metadonnees-a-travers-oai-py">La collecte de métadonnées à travers <code class="docutils literal notranslate"><span class="pre">oai.py</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-d-un-parser">Création d’un <em>parser</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#telechargement-d-un-set-disponible-dans-l-entrepot">Téléchargement d’un set disponible dans l’entrepôt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-dun-parser">Création d’un <em>parser</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#telechargement-dun-set-disponible-dans-lentrepot">Téléchargement d’un set disponible dans l’entrepôt</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collecte-des-images-a-travers-document-py">Collecte des images à travers <code class="docutils literal notranslate"><span class="pre">document.py</span></code></a></li>
 </ul>
 </li>
@@ -603,8 +603,8 @@ Cela permet de récupérer des ensembles de records disposant de parent commun.<
 </ol>
 </div>
 </section>
-<section id="creation-d-un-parser">
-<h3>Création d’un <em>parser</em><a class="headerlink" href="#creation-d-un-parser" title="Permalink to this heading">#</a></h3>
+<section id="creation-dun-parser">
+<h3>Création d’un <em>parser</em><a class="headerlink" href="#creation-dun-parser" title="Permalink to this heading">#</a></h3>
 <p>L’instance <code class="docutils literal notranslate"><span class="pre">gallica</span></code> dispose seulement de l’implémentation du format <strong>‘oai_dc’</strong> et <strong>‘tel_ap’</strong> avec des <em>parser</em> par défaut. Il existe la possibilité de créer son propre parser notamment pour le format de métadonnées ‘didl’ qui n’est pour lors pas implémenter.<br />
 Le <em>parser</em> extrait seulement les balises et élements enfant de <code class="docutils literal notranslate"><span class="pre">&lt;metadata&gt;</span></code>. Pour implémenter soit même son propre parseur il est nécessaire de créer un dictionnaire python qui comprend trois clée <code class="docutils literal notranslate"><span class="pre">fields</span></code>, <code class="docutils literal notranslate"><span class="pre">namespaces</span></code>, <code class="docutils literal notranslate"><span class="pre">prefix</span></code>, le premier étant le chemin XPath pointant vers la donnée à extraire, le second étant l’ensemble des namespaces nécessaire, ainsi que le prefix obligatoire lors de la requête désignant un des trois type de format de métadonnées disponible dans l’entrepôt.<br />
 <em>Un exemple pour la <a class="reference external" href="http://oai.bnf.fr/oai2//OAIHandler?verb=GetRecord&amp;identifier=oai:bnf.fr:gallica/ark:/12148/bpt6k5499065k&amp;metadataPrefix=didl">requête</a> concernant le document diposant l’ark <a class="reference external" href="https://gallica.bnf.fr/ark:/12148/bpt6k5499065k">bpt6k5499065k</a> sous le format</em> <a class="reference external" href="https://fr.wikipedia.org/wiki/MPEG-21">DIDL</a>:</p>
@@ -807,8 +807,8 @@ TEL_AP (default)</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="telechargement-d-un-set-disponible-dans-l-entrepot">
-<span id="chunksize-research"></span><h3>Téléchargement d’un set disponible dans l’entrepôt<a class="headerlink" href="#telechargement-d-un-set-disponible-dans-l-entrepot" title="Permalink to this heading">#</a></h3>
+<section id="telechargement-dun-set-disponible-dans-lentrepot">
+<span id="chunksize-research"></span><h3>Téléchargement d’un set disponible dans l’entrepôt<a class="headerlink" href="#telechargement-dun-set-disponible-dans-lentrepot" title="Permalink to this heading">#</a></h3>
 <p>Le téléchargement d’un set, c’est-à-dire d’une collection disponible dans l’entrepôt se fait de manière séquentielle. Lors d’une requête, les records nous sont envoyés par lots. La première requête nous retourne également un <strong>resumptionToken</strong> qui nous permet de lancer une deuxième requête à laquelle le <strong>resumptionToken</strong> seras attaché. Cela nous permet requête par requête <em>(page par page)</em> de collecter l’ensemble des records. Il nous indique également le nombre de records présent pour cette collection.</p>
 <div class="literal-block-wrapper docutils container" id="tokenoai">
 <div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Exemple de resumptionToken pour une collection (141542 records)</span><a class="headerlink" href="#tokenoai" title="Permalink to this code">#</a></div>
@@ -2010,8 +2010,8 @@ Reading files: 100%|█████████| 46/46 [00:23&lt;00:00,  1.95CSV
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-entrepots-de-la-bnf">Les entrepôts de la BnF</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-collecte-de-metadonnees-a-travers-oai-py">La collecte de métadonnées à travers <code class="docutils literal notranslate"><span class="pre">oai.py</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-d-un-parser">Création d’un <em>parser</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#telechargement-d-un-set-disponible-dans-l-entrepot">Téléchargement d’un set disponible dans l’entrepôt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-dun-parser">Création d’un <em>parser</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#telechargement-dun-set-disponible-dans-lentrepot">Téléchargement d’un set disponible dans l’entrepôt</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collecte-des-images-a-travers-document-py">Collecte des images à travers <code class="docutils literal notranslate"><span class="pre">document.py</span></code></a></li>
 </ul>
 </li>
