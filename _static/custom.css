@@ -1,158 +1,342 @@
-/* Style changes*/
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+/* Put your custom CSS here */
 
-/* update font variable */
-:root {
-  --font-family-sans-serif: 'Raleway', -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --pst-font-family-base: var(--font-family-sans-serif);
-  --pst-background-color: #f5f4e9;
+/* Give bottom margin to images */
+img {
+  margin-bottom: 1rem;
+
+}
+/* Change license image from having any margin */
+img.license {
+  margin-bottom: 0px;
 }
 
-p {
-  text-align: justify;
-}
+/* Fix sidebar and make appear above cells */
 
-div.math {
-  overflow-x: hidden !important;
-}
-
-/* The Modal (background) */
-#wh-modal {
-  display: none;
-  /* Hidden by default */
-  position: fixed;
-  /* Stay in place */
-  z-index: 9999;
-  /* Sit on top */
-  padding-top: 100px;
-  /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.9);
-  /* Black w/ opacity */
-}
-
-/* Modal Content (Image) */
-#wh-modal-img {
-  margin: auto;
-  display: block;
-  max-width: min(1200px, 100%);
+div.sidebar {
+background: white;
 }
 
 
-/* The Close Button */
-#wh-modal-close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
+/* Change download text font to match regular link font*/
+.xref.download.docutils.literal.notranslate {
+
+  font-family: Lato, sans-serif;
+  font-size: 1rem !important;
+  font-weight: 400;
+
 }
 
-#wh-modal-close:hover,
-#wh-modal-close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
+/* Change style for error cell outputs */
+
+.cell_output .output.traceback {
+  /*  border: 1.5px solid #ef0000;*/
+    background:  #ffd2d233;
 }
 
-.wh-fig-a:hover {
-  cursor: pointer;
+/* Make custom style for error cell outputs */
+
+.cell_output .output.traceback .highlight .nn {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .gt {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .kc {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .s2 {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .mi {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .nb {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .k {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .ow {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .nf {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .bp {
+  color: #000000;
+font-weight: normal }
+
+.cell_output .output.traceback .highlight .o {
+  color: #000000;
+font-weight: bold }
+
+
+.cell_output .output.traceback .highlight .ne {
+  color: red;
+font-weight: bold }
+
+
+#image-border {
+  border: solid .2px #bababa;
 }
 
-.wh-venti-button {
-  background-color: transparent;
-  max-width: min(1200px, 100%);
-  border: none;
+thead {
+    border-bottom: 1px solid black;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+  }
+tr,
+th,
+td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.1em;
+    line-height: normal;
+    white-space: normal;
+    max-width: none;
+    border: 1px solid #dee2e6;
+  }
+th {
+    font-weight: bold;
+  }
+tbody tr:nth-child(odd) {
+    background: #f5f5f5;
+  }
+tbody tr:hover {
+    background: rgba(66, 165, 245, 0.2);
+  }
+
+  /* Make custom Python Review admonition */
+
+.admonition.pythonreview {
+  border-color: #229932
 }
 
-.wh-wrapper {
-  /*width: 500px;*/
+.admonition.pythonreview .admonition-title {
+  background-color: #6cd279
 }
 
-.wh-progress-bar {
-  width: 100%;
-  background-color: #e0e0e0;
-  padding: 3px;
-  border-radius: 3px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+.admonition.pythonreview .admonition-title:before {
+  color: #2abf3d;
+  content: "🐍"
 }
 
-.wh-progress-bar-fill {
-  display: block;
-  height: 22px;
-  background-color: #1BBC9B;
-  border-radius: 3px;
-  text-align: center;
-  color: #ffffff;
-  transition: width 500ms ease-in-out;
+  /* Make custom Pandas Review admonition */
+
+.admonition.pandasreview {
+  border-color: #000000
 }
 
-td>p {
-  margin-bottom: 0;
-  margin-top: 0;
-}
-
-.table td,
-.table th {
-  padding: 0.2rem 0.75rem 0.2rem 0.75rem;
-}
-
-.wh-container {
-  position: relative;
-  text-align: center;
+.admonition.pandasreview .admonition-title {
+  background-color: black;
   color: white;
 }
 
-.wh-div-centered {
-  position: absolute;
-  top: 50%;
-  left: 25%;
-  transform: translate(-17%, -50%);
-  background: rgba(0, 0, 0, .75);
+.admonition.pandasreview .admonition-title:before {
+  color: white;
+  content: "🐼" !important
 }
 
-.wh-hero {
-  color: #FFFFFF !important;
-  padding: 1em;
-  margin: 0;
-  height: 100%;
+
+
+/* Make custom Terminology admonition */
+
+.admonition.terminology {
+  border-color: #ffdf55
 }
 
-/* Not sure why, but pasted images are going display:blocks(??)*/
-
-.pasted-inline>img {
-  display: inline !important;
+.admonition.terminology .admonition-title {
+  background-color: #f4e5a4
 }
 
-/* div.sidebar,
-aside.sidebar {
-  border: none;
-  clear: right;
-  width: 31% !important;
-  margin: 0 -35% 0 0 !important;
-  padding: 0 !important;
-  font-size: 0.9rem;
-  line-height: 1.3;
-  vertical-align: baseline;
-  position: relative;
-  background-color: #FFF;
-} */
-
-.wh-flex-center {
-  display: flex;
-  justify-content: center;
+.admonition.terminology .admonition-title:before {
+  color: #ffdf55;
+  content: "📙"
 }
 
-div.output .text_html {
-  overlfow-x: auto;
+/* Make custom Heads Up admonition */
+
+.admonition.headsup {
+  border-color: #b5bff4
+}
+
+.admonition.headsup .admonition-title {
+  background-color:#b5bff4
+}
+
+.admonition.headsup .admonition-title:before {
+  color: #b5bff4;
+  content: "🗣️"
+}
+
+.admonition.info {
+  background-color:#ffffff;
+  border-color:#eeeeee;
+}
+
+.admonition.info .admonition-title {
+  font-weight: 1 ;
+  background-color:#ffffff;
+}
+
+.admonition.info .admonition-title:before {
+  color: #eeeeee;
+  content: "";
+  font-weight: 1 ;
+}
+
+code {
+  color: #002aff;
+}
+/* Change link font */
+
+a {
+  color: #069cff;
+
+}
+main.bd-content #main-content a, main.bd-content #main-content a:visited {
+    color: #069cff;
+}
+a:visited {
+  color: #069cff;
+
+}
+
+/* Make custom command line style Jupyter tag command line */
+
+div.cell.tag_command_line div.cell, div.cell.tag_command_line div.cell div.cell_input, div.cell.tag_command_line div.cell_input pre, div.cell.tag_command_line .cell_output .output * {
+  background-color: #000000 ;
+  color: #ffffff;
+
+}
+
+div.cell.tag_command_line  div.cell_input {
+    padding-left: 0em;
+    padding-right: 0em;
+    border: 1px #ccc solid;
+    background-color: #f7f7f7;
+    border-left-color: #13d56f !important;
+    border-right-color: black;
+    border-bottom-color: black;
+    border-left-width: medium;
+}
+
+div.cell.tag_command_line .highlight .kn {
+  color: #ffffff;
+  font-weight: normal
+}
+
+div.cell.tag_command_line .highlight .k {
+  color: #ffffff;
+  font-weight: normal
+}
+
+div.cell.tag_command_line .highlight .s2 {
+  color: #ffffff;
+  font-weight: normal
+}
+
+div.cell.tag_command_line .highlight .mi {
+  color: #ffffff;
+  font-weight: normal
+}
+
+div.cell.tag_command_line .highlight .mf {
+  color: #ffffff;
+  font-weight: normal
+}
+
+div.cell.tag_command_line .highlight .o {
+  color: #ffffff;
+  font-weight: normal
+}
+
+div.cell.tag_command_line .highlight .c1 {
+  color: #ffffff;
+  font-weight: bold
+}
+
+div.cell.tag_command_line .ansi-bold {
+  color: red !important;
+}
+
+
+/* Change syntax highlihgting */
+
+/* Make comments a different color */
+
+
+
+.highlight .sd {
+  color: #0598e0 !important;
+  font-style: normal;
+  font-weight: 400
+}
+
+.highlight .kn {
+  color: green;
+  font-weight: bold
+}
+
+div.highlight .-Color[class*=-Red] {
+    color: red !important;
+}
+.ansi-bold {
+  color: red !important;
+}
+
+.highlight .k {
+  color: green;
+  font-weight: bold
+}
+
+.highlight .o {
+  color: #aa22ff
+}
+
+.highlight .nb {
+  color: green
+}
+
+.highlight .nf {
+  color: #00f;
+  font-weight: normal}
+
+.highlight .s2 {
+  color: #ba2121
+}
+.highlight .sa {
+  color: #ba2121
+}
+.highlight .se {
+  color: #ba2121
+}
+.highlight .s1 {
+  color: #ba2121
+}
+
+.highlight .ow {
+  color: green; font-weight: bold
+}
+
+.highlight .nn {
+  color: #000000 }
+
+  .p-Widget {
+    max-height: 24em;
+    overflow-y: auto;
+}
+
+.highlight .mi, .mh, .mf {
+  color: green
+}
 }
