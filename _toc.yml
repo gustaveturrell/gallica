@@ -4,6 +4,6 @@
 format: jb-book
 root: index
 parts:
-  - caption: Name of Part 1
+  - caption: Documentation
     chapters:
     - file: book/notebooks/pipeline/pipeline.ipynb

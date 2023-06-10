@@ -5,10 +5,10 @@
 
 #######################################################################################
 # Book settings
-title: Gallica Images # The title of the book. Will be placed in the left navbar.
+title: Intership CESR 23 # The title of the book. Will be placed in the left navbar.
 author: Axel Martin # The author of the book
 copyright: "2023" # Copyright year to be placed in the footer
-logo: logo.png # A path to the book logo
+logo: './_static/logo-gallica.png' # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 # Auto-exclude files not in the toc
@@ -40,47 +40,33 @@ repository:
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
-html:
-  favicon: "fav.ico"
-  baseurl: https://gustaveturrell.github.io/gallica # The base URL where your book will be hosted.
-  use_repository_button: true
-  use_issues_button: true
-  use_edit_page_button: true
-  use_download_button: true
-  # thebe: true
-  # google_analytics_id: G-XXXXXXX
 
 sphinx:
+  extra_extensions:
+    - sphinxcontrib.mermaid
   config:
+    html_theme: furo
     # html_extra_path: ["CNAME", "robots.txt"]
-    html_theme_options:
-      use_download_button: true
-      repository_url: https://github.com/gustaveturrell/gallica
-      use_issues_button: true
-      use_repository_button: true
-      use_edit_page_button: true
-      launch_buttons:
-        {
-          binderhub_url: "https://mybinder.org",
-          colab_url: "https://colab.research.google.com",
-        }
-    bibtex_reference_style: author_year
+
 
 parse:
   myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
-    - amsmath
-    - colon_fence
-    - deflist
-    - dollarmath
-    - html_admonition
-    - html_image
-    - linkify
-    - replacements
-    - smartquotes
-    - substitution
-
+  - "amsmath"
+  - "colon_fence"
+  - "deflist"
+  - "dollarmath"
+  - "fieldlist"
+  - "html_admonition"
+  - "html_image"
+  - "linkify"
+  - "replacements"
+  - "smartquotes"
+  - "strikethrough"
+  - "substitution"
+  - "tasklist"
 
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
   - book/references.bib
+
