@@ -253,3 +253,23 @@ font-weight: bold }
     fill: #ffdcdc!important;
     opacity: 3.5;
 }
+
+
+.admonition.snoopy {
+  border-color: #000000
+}
+
+.admonition.snoopy .admonition-title {
+  background-color: black;
+  color: white;
+}
+
+.admonition.snoopy .admonition-title:before {
+    background-color:#000000!important;
+    color: white;
+    content: "🐶" !important
+}
+
+p.admonition-title:before {
+    -webkit-mask-image: None;
+}

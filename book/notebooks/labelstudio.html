@@ -1,0 +1,1669 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Pipeline de collecte des données" href="pipeline.html" />
+
+    <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
+        <title>Guide de pratique pour Label Studio - Intership CESR 23</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/vue/fonts.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Intership CESR 23</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo-gallica.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Intership CESR 23</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Pipeline de collecte des données</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Guide de pratique pour Label Studio</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section class="tex2jax_ignore mathjax_ignore" id="guide-de-pratique-pour-label-studio">
+<h1>Guide de pratique pour Label Studio<a class="headerlink" href="#guide-de-pratique-pour-label-studio" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://labelstud.io/">Label Studio</a> est un outil d’annotation Open Source qui permet de façon flexible et collaborative de préparer un jeu de données et de valider des modèles AI. Il est possible d’accéder à Label Studio sur le serveur snoopy de la BnF, ou bien de l’installer localement sur sa machine.</p>
+<section id="confirguration-et-installation">
+<h2>Confirguration et installation<a class="headerlink" href="#confirguration-et-installation" title="Permalink to this heading">#</a></h2>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">PIP</label><div class="tab-content docutils">
+<div class="highlight-{code-block}bash notranslate"><div class="highlight"><pre><span></span>pip install -U label-studio
+label-studio
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">BREW</label><div class="tab-content docutils">
+<div class="highlight-{code-block}bash notranslate"><div class="highlight"><pre><span></span>brew install heartexlabs/tap/label-studio
+label-studio
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">GIT</label><div class="tab-content docutils">
+<div class="highlight-{code-block}bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/heartexlabs/label-studio.git
+cd label-studio
+pip install -e .
+python label_studio/manage.py migrate
+python label_studio/manage.py collectstatic
+python label_studio/manage.py runserver
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--4" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--4">DOCKER</label><div class="tab-content docutils">
+<div class="highlight-{code-block}bash notranslate"><div class="highlight"><pre><span></span>docker run -it -p 8080:8080 -v `pwd`/mydata:/label-studio/data heartexlabs/label-studio:latest
+http://localhost:8080/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_command_line docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Installation avec un environnement Anaconda</span>
+<span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">label</span><span class="o">-</span><span class="n">studio</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">label</span><span class="o">-</span><span class="n">studio</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">psycopg2</span>  <span class="c1"># required for LS 1.7.2 only</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">label</span><span class="o">-</span><span class="n">studio</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_command_line docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="n">label</span><span class="o">-</span><span class="n">studio</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_command_line docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Installtio d&#39;un SDK pour utiliser Label Studio avec Python</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">label</span><span class="o">-</span><span class="n">studio</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">label</span><span class="o">-</span><span class="n">studio</span><span class="o">-</span><span class="n">sdk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="snoopy admonition">
+<p class="admonition-title">snoopy</p>
+<p>Pour se connecter sur Label Studio à partir d’un poste de la BnF, il suffit d’allez sur le serveur snoopy.</p>
+</div>
+</section>
+<section id="creation-dun-projet">
+<h2>Création d’un projet<a class="headerlink" href="#creation-dun-projet" title="Permalink to this heading">#</a></h2>
+<p>Lors de votre première connexion il vous sera demandé de créer un compte nécessitant une adresse email et un mot de passe.
+Une fois arrivé sur l’interface vous avez la possibilité de consulter un projet déjà crée, ou de créer le votre, pour ce faire il vous suffit de cliquer sur <code class="docutils literal notranslate"><span class="pre">create</span></code>.<br />
+Chaque projet dispose d’un nom ainsi que d’une description (optionnelle), vous pouvez ensuite importer des fichiers de divers formats.<br />
+Pour l’importation d’un grand nombre de fichiers il vous faudra passer par le <strong>Cloud Storage</strong>, nous y reviendrons par la suite.</p>
+<p>Il vous seras également demandé de sélectionner un <em>template</em> pour l’interface, deux choix s’offre à vous: sélectionner un <em>template</em> déjà fournit par Label Studio où créer le votre, tout dépend de vos attentes en matière d’annotation. Le choix de <em>template</em> qu’offre Label Studio peut être limité, si vous souhaitez par exemple annoter du texte mais également des images il est sans doute préférable de créer votre propre interface.</p>
+<a class="reference internal image-reference" href="../../_images/create-project.gif"><img alt="../../_images/create-project.gif" class="align-center" src="../../_images/create-project.gif" style="width: 1200px;" /></a>
+<section id="via-linferface">
+<h3>via l’Inferface<a class="headerlink" href="#via-linferface" title="Permalink to this heading">#</a></h3>
+<p>Vous pouvez créer votre interface directement lors de la création de votre projet ou bien modifier et créer celui ci depuis  le bouton <code class="docutils literal notranslate"><span class="pre">settings</span></code> en haut à droite.</p>
+<div class="dropdown admonition important">
+<p class="admonition-title">Important</p>
+<p>Une fois votre <em>template</em> créer, il est déconseillé de modifier celui-ci car l’ensemble de vos données annoter reposerons sur ce <em>template</em> donc soyez prudent et prenez le temps de construire celui-ci en accord avec vos attentes en termes d’annotation.</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/labelling-interface.gif"><img alt="../../_images/labelling-interface.gif" class="align-center" src="../../_images/labelling-interface.gif" style="width: 1200px;" /></a>
+<p>Depuis l’onglet <code class="docutils literal notranslate"><span class="pre">Labeling</span> <span class="pre">Interface</span></code> vous pouvez ajouter un ensemble de label mais également coder votre interface depuis l’onglet <code class="docutils literal notranslate"><span class="pre">code</span></code>.<br />
+Label Studio utilise un language XML.
+Il existe trois différent types de familles de <em>tags</em> pour contrôler et intéragir avec votre interface: <code class="docutils literal notranslate"><span class="pre">Object</span></code> <code class="docutils literal notranslate"><span class="pre">Control</span></code> <code class="docutils literal notranslate"><span class="pre">Visual</span></code>. L’ensemble des tags sont disponible <a class="reference external" href="https://labelstud.io/tags/#Create-a-custom-labeling-configuration">ici</a> Ci-dessous un exemple de code qui permet l’annotation de divers zone graphique et textuelle à travers trois types d’outils, l’ellipse, le polygone et le rectangle.<br />
+Ce qu’il faut retenir c’est que la balise <code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> agit comme une <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> en HTML et qu’elle est l’élément parent de l’ensemble des sous-balises.</p>
+<div class="literal-block-wrapper docutils container" id="codetemplatelabelstudio">
+<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Extrait d’un code XML pour l’interface Label Studio</span><a class="headerlink" href="#codetemplatelabelstudio" title="Permalink to this code">#</a></div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">&lt;View&gt;</span>
+<span class="linenos"> 2</span><span class="nt">&lt;Image</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;image&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$image&quot;</span><span class="nt">/&gt;</span><span class="w">  </span>
+<span class="linenos"> 3</span><span class="nt">&lt;Header</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;zone graphique&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos"> 4</span><span class="nt">&lt;Labels</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="w"> </span><span class="na">toName=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 5</span><span class="nt">&lt;Label</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;estampe&quot;</span><span class="w"> </span><span class="na">background=</span><span class="s">&quot;#ff0000&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos"> 6</span><span class="nt">&lt;Label</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;photographie&quot;</span><span class="w"> </span><span class="na">background=</span><span class="s">&quot;#007bff&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos"> 7</span><span class="nt">&lt;Label</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;dessin&quot;</span><span class="w"> </span><span class="na">background=</span><span class="s">&quot;#fb00ff&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos"> 8</span><span class="nt">&lt;Label</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;décoration&quot;</span><span class="w"> </span><span class="na">background=</span><span class="s">&quot;#8589ff&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos"> 9</span><span class="nt">&lt;Label</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;timbre&quot;</span><span class="w"> </span><span class="na">background=</span><span class="s">&quot;#ff6bd8&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos">10</span><span class="nt">&lt;Label</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;tampon&quot;</span><span class="w"> </span><span class="na">background=</span><span class="s">&quot;#FFA39E&quot;</span><span class="nt">/&gt;&lt;/Labels&gt;</span>
+<span class="linenos">11</span><span class="nt">&lt;Header</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;zone textuelle&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos">12</span><span class="nt">&lt;Labels</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;transcription&quot;</span><span class="w"> </span><span class="na">toName=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">13</span><span class="nt">&lt;Label</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;écriture manuscrite&quot;</span><span class="w"> </span><span class="na">background=</span><span class="s">&quot;#00ff4c&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos">14</span><span class="nt">&lt;Label</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;écriture typographique&quot;</span><span class="w"> </span><span class="na">background=</span><span class="s">&quot;#a8b404&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos">15</span><span class="nt">&lt;/Labels&gt;</span>
+<span class="linenos">16</span><span class="nt">&lt;Rectangle</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bbox&quot;</span><span class="w"> </span><span class="na">toName=</span><span class="s">&quot;image&quot;</span><span class="w"> </span><span class="na">strokeWidth=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos">17</span><span class="nt">&lt;Polygon</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;poly&quot;</span><span class="w"> </span><span class="na">toName=</span><span class="s">&quot;image&quot;</span><span class="w"> </span><span class="na">strokeWidth=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos">18</span><span class="nt">&lt;Ellipse</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ellipse&quot;</span><span class="w"> </span><span class="na">toName=</span><span class="s">&quot;image&quot;</span><span class="nt">/&gt;</span>
+<span class="linenos">19</span><span class="nt">&lt;/View&gt;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="via-le-sdk-label-studio">
+<h3>via le SDK Label Studio<a class="headerlink" href="#via-le-sdk-label-studio" title="Permalink to this heading">#</a></h3>
+<p>Il vous faudra votre <em>TOKEN</em> afin d’utiliser le SDK. Celui-ci est disponible en cliquant sur la <em>tab</em> utilisateur en haut à droite.</p>
+<a class="reference internal image-reference" href="../../_images/tabuser.png"><img alt="../../_images/tabuser.png" class="align-center" src="../../_images/tabuser.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../_images/accesstoken.png"><img alt="../../_images/accesstoken.png" class="align-center" src="../../_images/accesstoken.png" style="width: 600px;" /></a>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">label_studio_sdk.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">label_studio_sdk.project</span> <span class="kn">import</span> <span class="n">Project</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:8080&#39;</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="s1">&#39;36908b5e712c188d28c5b94bcda2f5209cf2ec93&#39;</span>
+<span class="n">path_storage</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">gusta</span><span class="se">\\</span><span class="s1">Desktop</span><span class="se">\\</span><span class="s1">gallicapix_images</span><span class="se">\\</span><span class="s1">images&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">templates</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;View&gt;</span>
+<span class="s2">&lt;Image name=&quot;image&quot; value=&quot;$image&quot;/&gt;  </span>
+<span class="s2">&lt;Header value=&quot;zone graphique&quot;/&gt;</span>
+<span class="s2">&lt;Labels name=&quot;type&quot; toName=&quot;image&quot;&gt;</span>
+<span class="s2">&lt;Label value=&quot;estampe&quot; background=&quot;#ff0000&quot;/&gt;</span>
+<span class="s2">&lt;Label value=&quot;photographie&quot; background=&quot;#007bff&quot;/&gt;</span>
+<span class="s2">&lt;Label value=&quot;dessin&quot; background=&quot;#fb00ff&quot;/&gt;</span>
+<span class="s2">&lt;Label value=&quot;décoration&quot; background=&quot;#8589ff&quot;/&gt;</span>
+<span class="s2">&lt;Label value=&quot;timbre&quot; background=&quot;#ff6bd8&quot;/&gt;</span>
+<span class="s2">&lt;Label value=&quot;tampon&quot; background=&quot;#FFA39E&quot;/&gt;&lt;/Labels&gt;</span>
+<span class="s2">&lt;Header value=&quot;zone textuelle&quot;/&gt;</span>
+<span class="s2">&lt;Labels name=&quot;transcription&quot; toName=&quot;image&quot;&gt;</span>
+<span class="s2">&lt;Label value=&quot;écriture manuscrite&quot; background=&quot;#00ff4c&quot;/&gt;</span>
+<span class="s2">&lt;Label value=&quot;écriture typographique&quot; background=&quot;#a8b404&quot;/&gt;</span>
+<span class="s2">&lt;/Labels&gt;</span>
+<span class="s2">&lt;Rectangle name=&quot;bbox&quot; toName=&quot;image&quot; strokeWidth=&quot;3&quot;/&gt;</span>
+<span class="s2">&lt;Polygon name=&quot;poly&quot; toName=&quot;image&quot; strokeWidth=&quot;3&quot;/&gt;</span>
+<span class="s2">&lt;Ellipse name=&quot;ellipse&quot; toName=&quot;image&quot;/&gt;</span>
+<span class="s2">&lt;/View&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fonction qui vérifie la connexion et qui crée un obj Client</span>
+<span class="k">def</span> <span class="nf">check_connection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
+    <span class="n">ls</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">access_token</span><span class="p">)</span>
+    <span class="n">checking</span><span class="p">,</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">check_connection</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">checking</span> <span class="o">==</span> <span class="s1">&#39;UP&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ls</span> 
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;La connection à échouer. Vérifier le domain où la clée&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fonction qui crée un projet, si celui-ci existe déjà il retourne l&#39;identifiant du projet</span>
+<span class="k">def</span> <span class="nf">get_or_set_project</span><span class="p">(</span><span class="n">client</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+	<span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label_config&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">templates</span>
+
+	<span class="n">projects</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">list_projects</span><span class="p">()</span>
+	<span class="n">list_projects</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">projects</span><span class="p">]</span>
+
+
+	<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">list_projects</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]:</span>
+			<span class="n">url</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_url</span><span class="p">(</span><span class="s1">&#39;projects&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="s2">&quot;[GET]&quot;</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1">|</span><span class="si">{</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="s2">&quot;&quot;</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1">|par </span><span class="si">{</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;created_by&quot;</span><span class="p">][</span><span class="s2">&quot;email&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">5</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="s2">&quot;&quot;</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1">|</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">get_project</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+		<span class="k">else</span><span class="p">:</span> 
+			<span class="n">post_project</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start_project</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+			<span class="n">post_params</span> <span class="o">=</span> <span class="n">post_project</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+			<span class="n">url</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_url</span><span class="p">(</span><span class="s1">&#39;projects&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">post_params</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="s2">&quot;[POST]&quot;</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1">|</span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="s2">&quot;&quot;</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1">|par </span><span class="si">{</span><span class="n">post_params</span><span class="p">[</span><span class="s2">&quot;created_by&quot;</span><span class="p">][</span><span class="s2">&quot;email&quot;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="s2">&quot;&quot;</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1">|</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">post_project</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">check_connection</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">API_KEY</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">get_or_set_project</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;demo_label-studio&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[POST]    |demo_label-studio
+          |par mkdir.cultural.analytics@gmail.com
+          |http://localhost:8080/projects/34
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="importation-local-de-donnee-via-cloud-storage">
+<h2>Importation local de donnée via Cloud Storage<a class="headerlink" href="#importation-local-de-donnee-via-cloud-storage" title="Permalink to this heading">#</a></h2>
+<section id="via-linterface">
+<h3>via l’Interface<a class="headerlink" href="#via-linterface" title="Permalink to this heading">#</a></h3>
+<p>Pour l’importation d’un grand nombre de donnée il est nécessaire de passer par le <em>Cloud Storage</em> de Label Studio qui permet de synchroniser des données présente localement sur votre machine ou à distance par biais d’une base de données.<br />
+Pour utiliser l’interface il vous suffit d’allez dans <code class="docutils literal notranslate"><span class="pre">Settings</span></code> et <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Storage</span></code> et cliquer sur <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Source</span> <span class="pre">Storage</span></code>.<br />
+Il vous faudra également ajouter des variables d’environnement si cela n’est pas déjà fait. Pour indiquer le chemin du dossier que vous souhaitez synchroniser et activer le service de synchronisation.</p>
+<div class="cell tag_command_line docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED</span><span class="o">=</span><span class="n">true</span>
+<span class="n">export</span> <span class="n">LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span> 
+<span class="c1">#Pour windows</span>
+<span class="n">setx</span> <span class="n">LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT</span><span class="o">=</span><span class="n">C</span><span class="p">:</span>\\<span class="n">data</span>\\<span class="n">media</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="snoopy admonition">
+<p class="admonition-title">snoopy</p>
+<p>Sur le serveur snoopy le dossier est synchronisé à l’adresse suivante: <code class="docutils literal notranslate"><span class="pre">LABEL_STUDIO_FILES_DOCUMENT_ROOT=/data/images_gallicapix</span></code></p>
+</div>
+<a class="reference internal image-reference" href="../../_images/cloud-storage.png"><img alt="../../_images/cloud-storage.png" class="align-center" src="../../_images/cloud-storage.png" style="width: 600px;" /></a>
+<p>Vous pouvez ensuite créer un <em>storage</em> en lui attribuant un nom et en précisant le chemin du dossier à synchroniser, celui-ci doit être un enfant de la variable <code class="docutils literal notranslate"><span class="pre">LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT</span></code> <em>(vous pouvez également filtrer les fichiers avec une regex)</em>. Cliquez ensuite sur <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Storage</span></code> et <code class="docutils literal notranslate"><span class="pre">Sync</span> <span class="pre">Storage</span></code> pour importer ou synchroniser les fichiers.</p>
+</section>
+<section id="id1">
+<h3>via le SDK Label Studio<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fonction qui crée un storage ci celui-ci n&#39;existe pas. Il récupère son idendifiant dans le cas contraire.</span>
+<span class="k">def</span> <span class="nf">get_or_set_local_storage</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+	<span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="n">API_KEY</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span>
+	<span class="n">id_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+	<span class="n">params</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;project&#39;</span><span class="p">,</span> <span class="n">id_</span><span class="p">),)</span>	
+	<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">URL</span><span class="si">}</span><span class="s1">/api/storages/localfiles/&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+	<span class="n">list_storages</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+		<span class="n">list_storages</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+	
+	<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">list_storages</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_store_path&#39;</span><span class="p">]:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;[GET]&#39;</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">|&lt;</span><span class="si">{</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&gt;</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;&#39;</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">|crée le </span><span class="si">{</span><span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y %H:%M&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">obj</span>
+	<span class="k">else</span><span class="p">:</span>
+ 		<span class="n">storage</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connect_local_import_storage</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+ 		<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;[POST]&#39;</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">|ajoute le localstorage &lt;</span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_store_path&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
+ 		<span class="k">return</span> <span class="n">storage</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_storage</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">gusta</span><span class="se">\\</span><span class="s1">Desktop</span><span class="se">\\</span><span class="s1">gallicapix_images</span><span class="se">\\</span><span class="s1">images&#39;</span>
+<span class="n">storage</span> <span class="o">=</span> <span class="n">get_or_set_local_storage</span><span class="p">(</span><span class="n">project</span><span class="p">,</span><span class="n">local_store_path</span><span class="o">=</span><span class="n">path_storage</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[POST]    |ajoute le localstorage &lt;C:\Users\gusta\Desktop\gallicapix_images\images&gt;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fonction pour synchroniser le &#39;storage&#39;</span>
+<span class="k">def</span> <span class="nf">sync_local_storage</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">storage</span><span class="p">):</span>
+	<span class="n">id_</span> <span class="o">=</span> <span class="n">storage</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+	<span class="n">type_</span> <span class="o">=</span> <span class="n">storage</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+	<span class="n">files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">image</span> <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">file</span>  <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">storage</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">file</span><span class="p">])</span>
+	<span class="n">last_sync</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;scan précédent le </span><span class="si">{</span><span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">storage</span><span class="p">[</span><span class="s2">&quot;last_sync&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y %H:%M&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">storage</span><span class="p">[</span><span class="s1">&#39;last_sync&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;[SYNC]&#39;</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">storage</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;files&#39;</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">files</span><span class="si">}</span><span class="s2"> fichiers présent dans le </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;scan..&#39;</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">last_sync</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+	<span class="n">sync</span> <span class="o">=</span>  <span class="n">client</span><span class="o">.</span><span class="n">sync_storage</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">id_</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;add&#39;</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">sync</span><span class="p">[</span><span class="s1">&#39;last_sync_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> fichiers</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Peut-être long dépend du nombre de données à synchroniser</span>
+<span class="n">sync_local_storage</span><span class="p">(</span><span class="n">client</span><span class="p">,</span><span class="n">storage</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[SYNC]    |C:\Users\gusta\Desktop\gallicapix_images\images
+files     |13416 fichiers présent dans le localfiles
+scan..    |
+add       |13416 fichiers
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="annotation">
+<h2>Annotation<a class="headerlink" href="#annotation" title="Permalink to this heading">#</a></h2>
+<p>Pour l’interface d’annotation il est possible de créer différent onglets avec différent filtres afin d’organiser l’ensemble de ces données.<br />
+Lors du téléchargement des images avec le module <a class="reference internal" href="pipeline.html#namefordoc"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">iiif_from_csv.collecting_image()</span></code></span></a> il est possible d’attribuer à chaque image un <code class="docutils literal notranslate"><span class="pre">name</span></code> qui permet ainsi de créer des classes d’images en plus des <em>form</em> IIIF présentes dans le nom de fichier.<br />
+Tout cela réunit permet de contrôler de manière très fine le type d’images que l’on souhaite filtrer <em>(il existe également d’autres types de filtres au délà du nom de l’image).</em></p>
+<a class="reference internal image-reference" href="../../_images/create-tab.gif"><img alt="../../_images/create-tab.gif" class="align-center" src="../../_images/create-tab.gif" style="width: 1100px;" /></a>
+<p>Pour commencer l’annotation il suffit de cliquer sur une image et sélectionner un outil d’annotation ainsi qu’un label. Plusieurs filtres sont également disponible en fonction de la méthodologie adoptée. Une fois l’annotation achevée, cliquer sur le bouton <code class="docutils literal notranslate"><span class="pre">submit</span></code> afin de valider celle-ci. Une date d’annotation seras alors attribué à l’image ainsi que son annotateur.</p>
+<a class="reference internal image-reference" href="../../_images/do_annotation.gif"><img alt="../../_images/do_annotation.gif" class="align-center" src="../../_images/do_annotation.gif" style="width: 1100px;" /></a>
+<section id="exportation-des-annotations">
+<h3>Exportation des annotations<a class="headerlink" href="#exportation-des-annotations" title="Permalink to this heading">#</a></h3>
+<p>Il existe plusieurs format d’exportation, le format <code class="docutils literal notranslate"><span class="pre">.json</span></code> est le format par défaut de Label Studio, il incorpore l’ensemble des métadonnées issues de l’application ainsi que les informations de segmentation.
+Les quatres clées essentielles à retenir ici sont:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> qui indique l’identifiant unique et recherchable pour l’image en question à l’intérieur de l’application.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">annotations</span></code> qui regroupe l’ensemble des métadonnées concernant les annotations, la clée <code class="docutils literal notranslate"><span class="pre">result</span></code> contient une liste d’annotations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predictions</span></code> qui regroupe l’ensemble des prédications <em>(quand un modèle est lancé depuis l’application)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> qui indique le chemin de la donnée <em>(ici une image)</em></p></li>
+</ol>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">Exemple de métadonnée associées à une image</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">{</span>
+<span class="hll"><span class="linenos"> 2</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">158833</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos"> 3</span><span class="nt">&quot;annotations&quot;</span><span class="p">:[</span>
+</span><span class="linenos"> 4</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2801</span><span class="p">,</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="nt">&quot;completed_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="hll"><span class="linenos"> 7</span><span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:[],</span>
+</span><span class="linenos"> 8</span><span class="w">    </span><span class="nt">&quot;was_cancelled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="nt">&quot;ground_truth&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="linenos">10</span><span class="w">    </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-05-06T22:34:35.346372Z&quot;</span><span class="p">,</span>
+<span class="linenos">11</span><span class="w">    </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-05-06T22:34:35.346372Z&quot;</span><span class="p">,</span>
+<span class="linenos">12</span><span class="w">    </span><span class="nt">&quot;lead_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="hll"><span class="linenos">13</span><span class="w">    </span><span class="nt">&quot;prediction&quot;</span><span class="p">:{},</span>
+</span><span class="linenos">14</span><span class="w">    </span><span class="nt">&quot;result_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">15</span><span class="w">    </span><span class="nt">&quot;unique_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0f4a00d7-cc55-46f4-8c51-75e57ffc60f7&quot;</span><span class="p">,</span>
+<span class="linenos">16</span><span class="w">    </span><span class="nt">&quot;last_action&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="linenos">17</span><span class="w">    </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">158833</span><span class="p">,</span>
+<span class="linenos">18</span><span class="w">    </span><span class="nt">&quot;project&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="linenos">19</span><span class="w">    </span><span class="nt">&quot;updated_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">20</span><span class="w">    </span><span class="nt">&quot;parent_prediction&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="linenos">21</span><span class="w">    </span><span class="nt">&quot;parent_annotation&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="linenos">22</span><span class="w">    </span><span class="nt">&quot;last_created_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="linenos">23</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">24</span><span class="p">],</span>
+<span class="linenos">25</span><span class="nt">&quot;drafts&quot;</span><span class="p">:[],</span>
+<span class="hll"><span class="linenos">26</span><span class="nt">&quot;predictions&quot;</span><span class="p">:[],</span>
+</span><span class="hll"><span class="linenos">27</span><span class="nt">&quot;data&quot;</span><span class="p">:{</span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/local-files/?d=Users%5Cgusta%5CDesktop%5Cgallicapix_images%5Cimages%5Caffiche%5Cbpt6k6964173h%24f1%24full%24%211212_777%240%24native_affiche.jpg&quot;</span><span class="p">},</span>
+</span><span class="linenos">28</span><span class="nt">&quot;meta&quot;</span><span class="p">:{},</span>
+<span class="linenos">29</span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-05-06T22:18:16.976585Z&quot;</span><span class="p">,</span>
+<span class="linenos">30</span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-05-06T22:34:35.385910Z&quot;</span><span class="p">,</span>
+<span class="linenos">31</span><span class="nt">&quot;inner_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">32</span><span class="nt">&quot;total_annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">33</span><span class="nt">&quot;cancelled_annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">34</span><span class="nt">&quot;total_predictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">35</span><span class="nt">&quot;comment_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">36</span><span class="nt">&quot;unresolved_comment_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">37</span><span class="nt">&quot;last_comment_updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="linenos">38</span><span class="nt">&quot;project&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="linenos">39</span><span class="nt">&quot;updated_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">40</span><span class="nt">&quot;comment_authors&quot;</span><span class="p">:[]</span>
+<span class="linenos">41</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">export_labelstudio</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./data/labelstudio/project-30-at-2023-05-09-16-12-caaecfb1.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">export_labelstudio</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span> <span class="c1">#Nombre d&#39;images présent dans jeu de donnée</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>750
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">],</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;predictions&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(158833,
+ {&#39;image&#39;: &#39;/data/local-files/?d=Users%5Cgusta%5CDesktop%5Cgallicapix_images%5Cimages%5Caffiche%5Cbpt6k6964173h%24f1%24full%24%211212_777%240%24native_affiche.jpg&#39;},
+ [])
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Métadonnée concernant la première annotation de la première image</span>
+<span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;annotations&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;original_width&#39;: 348,
+ &#39;original_height&#39;: 544,
+ &#39;image_rotation&#39;: 0,
+ &#39;value&#39;: {&#39;x&#39;: 16.761363636363637,
+  &#39;y&#39;: 9.25589836660617,
+  &#39;width&#39;: 69.60227272727273,
+  &#39;height&#39;: 89.11070780399274,
+  &#39;rotation&#39;: 0},
+ &#39;id&#39;: &#39;FB7KgtTRmh&#39;,
+ &#39;from_name&#39;: &#39;bbox&#39;,
+ &#39;to_name&#39;: &#39;image&#39;,
+ &#39;type&#39;: &#39;rectangle&#39;,
+ &#39;origin&#39;: &#39;manual&#39;}
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="importation-des-annotations-depuis-une-autre-application">
+<h3>Importation des annotations (depuis une autre application)<a class="headerlink" href="#importation-des-annotations-depuis-une-autre-application" title="Permalink to this heading">#</a></h3>
+<p>Dans le cas éventuel ou plusieurs personnes travailleraient ensemble sur des appplications différentes, il peut-être difficile d’importer et de synchroniser l’ensemble des données.
+Le serveur snoopy de la BnF reste l’application de référence en terme de collaboration, dans le cas contraire ou une personne aimerais importer des annotations sur des données qui se trouvent déjà présente sur l’application Label Studio de snoopy. Il est possible via le SDK d’importer des images.</p>
+<p>Ici un exemple d’une solution de contournement, qui repose et qui fonctionne uniquement parce que l’image est de même dimension et que l’ark et l’instance de l’image sont présent dans les deux noms de fichiers. Si des images sont distribuer sur plusieurs applications il est conseillé d’utiliserle module <a class="reference internal" href="pipeline.html#namefordoc"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">iiif_from_csv.collecting_image()</span></code></span></a> car le nom des fichiers sont formattés de façon précise et fine.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">unquote</span>
+<span class="c1">#Permet de parse un URL si le fichier comprend des caractères qui ont été normaliser par Label Studio</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;image&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;image&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/data/local-files/?d=Users%5Cgusta%5CDesktop%5Cgallicapix_images%5Cimages%5Caffiche%5Cbpt6k6964173h%24f1%24full%24%211212_777%240%24native_affiche.jpg
+/data/local-files/?d=Users\gusta\Desktop\gallicapix_images\images\affiche\bpt6k6964173h$f1$full$!1212_777$0$native_affiche.jpg
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Nettoyage de la chaîne de caractère</span>
+<span class="n">url_norm</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">url_norm</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;bpt6k6964173hf1full!1212_7770native_affiche.jpg&#39;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Regex qui récupère l&#39;ark et l&#39;instance pour l&#39;image en question &#39;f1&#39;, cette information peut nous servir de clée de jointure</span>
+<span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(.*)full&#39;</span><span class="p">,</span><span class="n">url_norm</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;bpt6k6964173hf1&#39;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Un exemple de fonction qui peut être utilisée pour retrouver les images présent sur l&#39;application,</span>
+<span class="sd">en utilisant l&#39;ark et l&#39;instance de l&#39;image. </span>
+<span class="sd">Note: La recherche se fait de façon séquentielle et n&#39;est sans pas la plus optimale</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">add_annotation_from_extern</span><span class="p">(</span><span class="n">project</span><span class="p">,</span><span class="n">external_source</span><span class="p">):</span>
+    <span class="c1">#REGEX</span>
+    <span class="k">def</span> <span class="nf">regexcompiler</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">regex</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(.*)full&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">list_tasks</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">tasks</span> <span class="c1"># requête l&#39;application afin de récupérer l&#39;ensemble des tasks (image/métadonnée)</span>
+    <span class="c1"># Créer une liste avec tuple (ark/image, result)</span>
+    <span class="n">ext_id_annotation</span> <span class="o">=</span> <span class="p">[(</span><span class="n">regexcompiler</span><span class="p">(</span><span class="n">unquote</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;image&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),</span><span class="n">regex_out</span><span class="p">),</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;annotations&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;result&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">external_source</span><span class="p">]</span>
+    <span class="n">adding</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">#Boucle autour des tacks présent dans l&#39;application</span>
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">list_tasks</span><span class="p">:</span>
+        <span class="c1">#Décode le chemin URL de chaque tasks et le reformate</span>
+        <span class="n">decode</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;image&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1">#Récupère l&#39;ark/image</span>
+        <span class="n">ark</span> <span class="o">=</span> <span class="n">regexcompiler</span><span class="p">(</span><span class="n">decode</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;(.*)full&#39;</span><span class="p">)</span>
+        <span class="c1">#Boucle autours des tasks présent dans le dataset</span>
+        <span class="k">for</span> <span class="n">id_</span><span class="p">,</span> <span class="n">result_</span> <span class="ow">in</span> <span class="n">ext_id_annotation</span><span class="p">:</span>
+            <span class="c1">#Vérifie que les tasks ne comporte pas d&#39;annotations et que la jointure entre les deux arks/image est &#39;true&#39;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;annotations&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">ark</span> <span class="o">==</span> <span class="n">id_</span><span class="p">):</span>
+                <span class="c1">#Incrémente le compteur</span>
+                <span class="n">adding</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="c1">#Ajoute les annotations</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;[POST]&#39;</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">|annotation pour l&#39;id: </span><span class="si">{</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> ark: </span><span class="si">{</span><span class="n">ark</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">project</span><span class="o">.</span><span class="n">create_annotation</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">result</span><span class="o">=</span><span class="n">result_</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;resume&#39;</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">adding</span><span class="si">}</span><span class="s2"> annotations ajoutées&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_annotation_from_extern</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[POST]    |annotation pour l&#39;id: 172249 ark: bpt6k6964173hf1
+[POST]    |annotation pour l&#39;id: 172250 ark: bpt6k69646507f1
+[POST]    |annotation pour l&#39;id: 172251 ark: bpt6k69646893f1
+[POST]    |annotation pour l&#39;id: 172252 ark: bpt6k9764501jf1
+[POST]    |annotation pour l&#39;id: 172333 ark: btv1b100501693f1
+[POST]    |annotation pour l&#39;id: 172337 ark: btv1b10050505bf1
+[POST]    |annotation pour l&#39;id: 172339 ark: btv1b10051224xf1
+[POST]    |annotation pour l&#39;id: 172340 ark: btv1b10051250cf1
+[POST]    |annotation pour l&#39;id: 172341 ark: btv1b100512797f1
+[POST]    |annotation pour l&#39;id: 172345 ark: btv1b10052973jf1
+[POST]    |annotation pour l&#39;id: 172346 ark: btv1b100529812f1
+[POST]    |annotation pour l&#39;id: 172347 ark: btv1b10052985vf1
+[POST]    |annotation pour l&#39;id: 172348 ark: btv1b100530130f1
+[POST]    |annotation pour l&#39;id: 172350 ark: btv1b10053438kf1
+[POST]    |annotation pour l&#39;id: 172351 ark: btv1b100534480f1
+[POST]    |annotation pour l&#39;id: 172388 ark: btv1b10101472kf1
+[POST]    |annotation pour l&#39;id: 172390 ark: btv1b10102179xf1
+[POST]    |annotation pour l&#39;id: 172391 ark: btv1b10102244tf1
+[POST]    |annotation pour l&#39;id: 172392 ark: btv1b10102250ff1
+[POST]    |annotation pour l&#39;id: 172393 ark: btv1b10102264nf1
+[POST]    |annotation pour l&#39;id: 172394 ark: btv1b101032786f1
+[POST]    |annotation pour l&#39;id: 172395 ark: btv1b101032801f1
+[POST]    |annotation pour l&#39;id: 172396 ark: btv1b10103304wf1
+[POST]    |annotation pour l&#39;id: 172397 ark: btv1b101033094f1
+[POST]    |annotation pour l&#39;id: 172402 ark: btv1b101046174f1
+[POST]    |annotation pour l&#39;id: 172403 ark: btv1b10104657sf1
+[POST]    |annotation pour l&#39;id: 172404 ark: btv1b10104786zf1
+[POST]    |annotation pour l&#39;id: 172405 ark: btv1b101048044f1
+[POST]    |annotation pour l&#39;id: 172406 ark: btv1b10104832gf1
+[POST]    |annotation pour l&#39;id: 172407 ark: btv1b10104857jf1
+[POST]    |annotation pour l&#39;id: 172408 ark: btv1b10104885wf1
+[POST]    |annotation pour l&#39;id: 172409 ark: btv1b101049445f1
+[POST]    |annotation pour l&#39;id: 172410 ark: btv1b10104967bf1
+[POST]    |annotation pour l&#39;id: 172411 ark: btv1b101050159f1
+[POST]    |annotation pour l&#39;id: 172412 ark: btv1b10105036kf1
+[POST]    |annotation pour l&#39;id: 172413 ark: btv1b101050443f1
+[POST]    |annotation pour l&#39;id: 172474 ark: btv1b101069063f1
+[POST]    |annotation pour l&#39;id: 172475 ark: btv1b10106948nf1
+[POST]    |annotation pour l&#39;id: 172479 ark: btv1b101094406f1
+[POST]    |annotation pour l&#39;id: 172480 ark: btv1b10109441nf1
+[POST]    |annotation pour l&#39;id: 172481 ark: btv1b101094569f1
+[POST]    |annotation pour l&#39;id: 172482 ark: btv1b10109475pf1
+[POST]    |annotation pour l&#39;id: 172483 ark: btv1b101094781f1
+[POST]    |annotation pour l&#39;id: 172484 ark: btv1b10109579vf1
+[POST]    |annotation pour l&#39;id: 172485 ark: btv1b10109587cf1
+[POST]    |annotation pour l&#39;id: 172486 ark: btv1b10109605jf1
+[POST]    |annotation pour l&#39;id: 172487 ark: btv1b101096958f1
+[POST]    |annotation pour l&#39;id: 172488 ark: btv1b101097088f1
+[POST]    |annotation pour l&#39;id: 172489 ark: btv1b10109731cf1
+[POST]    |annotation pour l&#39;id: 172490 ark: btv1b101097711f1
+[POST]    |annotation pour l&#39;id: 172493 ark: btv1b102000688f1
+[POST]    |annotation pour l&#39;id: 172494 ark: btv1b10200075bf1
+[POST]    |annotation pour l&#39;id: 172496 ark: btv1b10209505ff1
+[POST]    |annotation pour l&#39;id: 172497 ark: btv1b10209638df1
+[POST]    |annotation pour l&#39;id: 172502 ark: btv1b10220990zf1
+[POST]    |annotation pour l&#39;id: 172559 ark: btv1b10225104qf1
+[POST]    |annotation pour l&#39;id: 172561 ark: btv1b102251680f1
+[POST]    |annotation pour l&#39;id: 172562 ark: btv1b10225188tf1
+[POST]    |annotation pour l&#39;id: 172563 ark: btv1b10225210qf1
+[POST]    |annotation pour l&#39;id: 172584 ark: btv1b10318684xf1
+[POST]    |annotation pour l&#39;id: 172585 ark: btv1b10318695sf1
+[POST]    |annotation pour l&#39;id: 172586 ark: btv1b10318744nf1
+[POST]    |annotation pour l&#39;id: 172587 ark: btv1b103187972f1
+[POST]    |annotation pour l&#39;id: 172588 ark: btv1b103188318f1
+[POST]    |annotation pour l&#39;id: 172589 ark: btv1b10318846xf1
+[POST]    |annotation pour l&#39;id: 172593 ark: btv1b10319937pf1
+[POST]    |annotation pour l&#39;id: 172594 ark: btv1b10319996qf1
+[POST]    |annotation pour l&#39;id: 172595 ark: btv1b10320013vf1
+[POST]    |annotation pour l&#39;id: 172596 ark: btv1b10320038xf1
+[POST]    |annotation pour l&#39;id: 172597 ark: btv1b103200416f1
+[POST]    |annotation pour l&#39;id: 172598 ark: btv1b103200579f1
+[POST]    |annotation pour l&#39;id: 172599 ark: btv1b10320078kf1
+[POST]    |annotation pour l&#39;id: 172600 ark: btv1b103200863f1
+[POST]    |annotation pour l&#39;id: 172601 ark: btv1b103201065f1
+[POST]    |annotation pour l&#39;id: 172602 ark: btv1b10320121rf1
+[POST]    |annotation pour l&#39;id: 172603 ark: btv1b103201243f1
+[POST]    |annotation pour l&#39;id: 172604 ark: btv1b10320137vf1
+[POST]    |annotation pour l&#39;id: 172605 ark: btv1b10320182pf1
+[POST]    |annotation pour l&#39;id: 172606 ark: btv1b10320193jf1
+[POST]    |annotation pour l&#39;id: 172607 ark: btv1b103201940f1
+[POST]    |annotation pour l&#39;id: 172608 ark: btv1b103202053f1
+[POST]    |annotation pour l&#39;id: 172609 ark: btv1b10320222kf1
+[POST]    |annotation pour l&#39;id: 172610 ark: btv1b10320236sf1
+[POST]    |annotation pour l&#39;id: 172611 ark: btv1b10320247nf1
+[POST]    |annotation pour l&#39;id: 172612 ark: btv1b10320265kf1
+[POST]    |annotation pour l&#39;id: 172613 ark: btv1b10320267gf1
+[POST]    |annotation pour l&#39;id: 172614 ark: btv1b10320324vf1
+[POST]    |annotation pour l&#39;id: 172615 ark: btv1b10320326rf1
+[POST]    |annotation pour l&#39;id: 172616 ark: btv1b103203560f1
+[POST]    |annotation pour l&#39;id: 172617 ark: btv1b10320362mf1
+[POST]    |annotation pour l&#39;id: 172618 ark: btv1b103203867f1
+[POST]    |annotation pour l&#39;id: 172619 ark: btv1b10320392vf1
+[POST]    |annotation pour l&#39;id: 172828 ark: btv1b10467732tf1
+[POST]    |annotation pour l&#39;id: 172829 ark: btv1b10467732tf10
+[POST]    |annotation pour l&#39;id: 172830 ark: btv1b10467732tf11
+[POST]    |annotation pour l&#39;id: 172831 ark: btv1b10467732tf12
+[POST]    |annotation pour l&#39;id: 172836 ark: btv1b10467732tf3
+[POST]    |annotation pour l&#39;id: 172837 ark: btv1b10467732tf4
+[POST]    |annotation pour l&#39;id: 172839 ark: btv1b10467732tf6
+[POST]    |annotation pour l&#39;id: 172840 ark: btv1b10467732tf7
+[POST]    |annotation pour l&#39;id: 172841 ark: btv1b10467732tf8
+[POST]    |annotation pour l&#39;id: 174446 ark: btv1b10518303kf1
+[POST]    |annotation pour l&#39;id: 174447 ark: btv1b10518303kf2
+[POST]    |annotation pour l&#39;id: 174448 ark: btv1b10518936ff1
+[POST]    |annotation pour l&#39;id: 174449 ark: btv1b10518936ff2
+[POST]    |annotation pour l&#39;id: 176846 ark: btv1b105386430f1
+[POST]    |annotation pour l&#39;id: 176847 ark: btv1b10538676kf1
+[POST]    |annotation pour l&#39;id: 176848 ark: btv1b10538807wf1
+[POST]    |annotation pour l&#39;id: 176849 ark: btv1b10538807wf2
+[POST]    |annotation pour l&#39;id: 177601 ark: btv1b105680873f1
+[POST]    |annotation pour l&#39;id: 177602 ark: btv1b105681058f1
+[POST]    |annotation pour l&#39;id: 177603 ark: btv1b10568448df1
+[POST]    |annotation pour l&#39;id: 177708 ark: btv1b10581105gf1
+[POST]    |annotation pour l&#39;id: 177711 ark: btv1b106081655f1
+[POST]    |annotation pour l&#39;id: 177712 ark: btv1b106081655f10
+[POST]    |annotation pour l&#39;id: 177713 ark: btv1b106081655f11
+[POST]    |annotation pour l&#39;id: 177714 ark: btv1b106081655f12
+[POST]    |annotation pour l&#39;id: 177715 ark: btv1b106081655f13
+[POST]    |annotation pour l&#39;id: 177716 ark: btv1b106081655f14
+[POST]    |annotation pour l&#39;id: 177717 ark: btv1b106081655f15
+[POST]    |annotation pour l&#39;id: 177718 ark: btv1b106081655f16
+[POST]    |annotation pour l&#39;id: 177719 ark: btv1b106081655f17
+[POST]    |annotation pour l&#39;id: 177720 ark: btv1b106081655f18
+[POST]    |annotation pour l&#39;id: 177721 ark: btv1b106081655f19
+[POST]    |annotation pour l&#39;id: 177722 ark: btv1b106081655f2
+[POST]    |annotation pour l&#39;id: 177723 ark: btv1b106081655f20
+[POST]    |annotation pour l&#39;id: 177724 ark: btv1b106081655f21
+[POST]    |annotation pour l&#39;id: 177725 ark: btv1b106081655f22
+[POST]    |annotation pour l&#39;id: 177726 ark: btv1b106081655f23
+[POST]    |annotation pour l&#39;id: 177727 ark: btv1b106081655f24
+[POST]    |annotation pour l&#39;id: 177728 ark: btv1b106081655f3
+[POST]    |annotation pour l&#39;id: 177729 ark: btv1b106081655f4
+[POST]    |annotation pour l&#39;id: 177730 ark: btv1b106081655f5
+[POST]    |annotation pour l&#39;id: 177731 ark: btv1b106081655f6
+[POST]    |annotation pour l&#39;id: 177732 ark: btv1b106081655f7
+[POST]    |annotation pour l&#39;id: 177733 ark: btv1b106081655f8
+[POST]    |annotation pour l&#39;id: 177734 ark: btv1b106081655f9
+[POST]    |annotation pour l&#39;id: 177735 ark: btv1b10673375sf1
+[POST]    |annotation pour l&#39;id: 177939 ark: btv1b5209994xf1
+[POST]    |annotation pour l&#39;id: 177940 ark: btv1b5210216sf1
+[POST]    |annotation pour l&#39;id: 177941 ark: btv1b5212174hf1
+[POST]    |annotation pour l&#39;id: 177942 ark: btv1b52503816hf1
+[POST]    |annotation pour l&#39;id: 177943 ark: btv1b52504441bf1
+[POST]    |annotation pour l&#39;id: 177944 ark: btv1b525044509f1
+[POST]    |annotation pour l&#39;id: 177945 ark: btv1b52505241xf1
+[POST]    |annotation pour l&#39;id: 177946 ark: btv1b52505803ff1
+[POST]    |annotation pour l&#39;id: 177949 ark: btv1b52506764bf1
+[POST]    |annotation pour l&#39;id: 177950 ark: btv1b52506764bf2
+[POST]    |annotation pour l&#39;id: 177951 ark: btv1b52506917cf1
+[POST]    |annotation pour l&#39;id: 177952 ark: btv1b52507531bf1
+[POST]    |annotation pour l&#39;id: 177953 ark: btv1b52507531bf10
+[POST]    |annotation pour l&#39;id: 177954 ark: btv1b52507531bf11
+[POST]    |annotation pour l&#39;id: 177955 ark: btv1b52507531bf12
+[POST]    |annotation pour l&#39;id: 177956 ark: btv1b52507531bf13
+[POST]    |annotation pour l&#39;id: 177957 ark: btv1b52507531bf14
+[POST]    |annotation pour l&#39;id: 177958 ark: btv1b52507531bf15
+[POST]    |annotation pour l&#39;id: 177959 ark: btv1b52507531bf16
+[POST]    |annotation pour l&#39;id: 177960 ark: btv1b52507531bf17
+[POST]    |annotation pour l&#39;id: 177961 ark: btv1b52507531bf18
+[POST]    |annotation pour l&#39;id: 177962 ark: btv1b52507531bf2
+[POST]    |annotation pour l&#39;id: 177963 ark: btv1b52507531bf3
+[POST]    |annotation pour l&#39;id: 177964 ark: btv1b52507531bf4
+[POST]    |annotation pour l&#39;id: 177965 ark: btv1b52507531bf5
+[POST]    |annotation pour l&#39;id: 177966 ark: btv1b52507531bf6
+[POST]    |annotation pour l&#39;id: 177967 ark: btv1b52507531bf7
+[POST]    |annotation pour l&#39;id: 177968 ark: btv1b52507531bf8
+[POST]    |annotation pour l&#39;id: 177969 ark: btv1b52507531bf9
+[POST]    |annotation pour l&#39;id: 177972 ark: btv1b52510295cf1
+[POST]    |annotation pour l&#39;id: 177973 ark: btv1b525107975f1
+[POST]    |annotation pour l&#39;id: 177974 ark: btv1b525107975f2
+[POST]    |annotation pour l&#39;id: 177975 ark: btv1b52511887gf1
+[POST]    |annotation pour l&#39;id: 177976 ark: btv1b52511887gf2
+[POST]    |annotation pour l&#39;id: 177977 ark: btv1b525123171f1
+[POST]    |annotation pour l&#39;id: 177982 ark: btv1b525170951f1
+[POST]    |annotation pour l&#39;id: 177983 ark: btv1b525170951f2
+[POST]    |annotation pour l&#39;id: 177984 ark: btv1b52517097xf1
+[POST]    |annotation pour l&#39;id: 177985 ark: btv1b52517097xf2
+[POST]    |annotation pour l&#39;id: 177987 ark: btv1b53000373kf1
+[POST]    |annotation pour l&#39;id: 177988 ark: btv1b53000378tf1
+[POST]    |annotation pour l&#39;id: 177989 ark: btv1b53000441tf1
+[POST]    |annotation pour l&#39;id: 177990 ark: btv1b53000447hf1
+[POST]    |annotation pour l&#39;id: 177991 ark: btv1b53000457xf1
+[POST]    |annotation pour l&#39;id: 177992 ark: btv1b53000558rf1
+[POST]    |annotation pour l&#39;id: 177993 ark: btv1b53000623nf1
+[POST]    |annotation pour l&#39;id: 177994 ark: btv1b53000639rf1
+[POST]    |annotation pour l&#39;id: 177995 ark: btv1b53000659kf1
+[POST]    |annotation pour l&#39;id: 177996 ark: btv1b530006690f1
+[POST]    |annotation pour l&#39;id: 177997 ark: btv1b530006940f1
+[POST]    |annotation pour l&#39;id: 177998 ark: btv1b530006997f1
+[POST]    |annotation pour l&#39;id: 177999 ark: btv1b53000715hf1
+[POST]    |annotation pour l&#39;id: 178000 ark: btv1b53000747nf1
+[POST]    |annotation pour l&#39;id: 178001 ark: btv1b53000752tf1
+[POST]    |annotation pour l&#39;id: 178002 ark: btv1b53002725mf1
+[POST]    |annotation pour l&#39;id: 178003 ark: btv1b53002748sf1
+[POST]    |annotation pour l&#39;id: 178005 ark: btv1b530027819f1
+[POST]    |annotation pour l&#39;id: 178006 ark: btv1b530027925f1
+[POST]    |annotation pour l&#39;id: 178007 ark: btv1b53002810bf1
+[POST]    |annotation pour l&#39;id: 178008 ark: btv1b530028680f1
+[POST]    |annotation pour l&#39;id: 178009 ark: btv1b530029278f1
+[POST]    |annotation pour l&#39;id: 178010 ark: btv1b53002932ff1
+[POST]    |annotation pour l&#39;id: 178011 ark: btv1b53002950cf1
+[POST]    |annotation pour l&#39;id: 178012 ark: btv1b53002998mf1
+[POST]    |annotation pour l&#39;id: 178013 ark: btv1b53003007cf1
+[POST]    |annotation pour l&#39;id: 178014 ark: btv1b53003026rf1
+[POST]    |annotation pour l&#39;id: 178015 ark: btv1b530030293f1
+[POST]    |annotation pour l&#39;id: 178016 ark: btv1b530030382f1
+[POST]    |annotation pour l&#39;id: 178017 ark: btv1b530030632f1
+[POST]    |annotation pour l&#39;id: 178018 ark: btv1b53003082ff1
+[POST]    |annotation pour l&#39;id: 178019 ark: btv1b530030884f1
+[POST]    |annotation pour l&#39;id: 178020 ark: btv1b530031012f1
+[POST]    |annotation pour l&#39;id: 178021 ark: btv1b53003121wf1
+[POST]    |annotation pour l&#39;id: 178022 ark: btv1b530032091f1
+[POST]    |annotation pour l&#39;id: 178023 ark: btv1b53003217jf1
+[POST]    |annotation pour l&#39;id: 178024 ark: btv1b53003220tf1
+[POST]    |annotation pour l&#39;id: 178025 ark: btv1b53003247sf1
+[POST]    |annotation pour l&#39;id: 178026 ark: btv1b53003279xf1
+[POST]    |annotation pour l&#39;id: 178027 ark: btv1b53003287ff1
+[POST]    |annotation pour l&#39;id: 178028 ark: btv1b53003317xf1
+[POST]    |annotation pour l&#39;id: 178029 ark: btv1b53003326wf1
+[POST]    |annotation pour l&#39;id: 178030 ark: btv1b530033312f1
+[POST]    |annotation pour l&#39;id: 178031 ark: btv1b53003375hf1
+[POST]    |annotation pour l&#39;id: 178032 ark: btv1b53003382kf1
+[POST]    |annotation pour l&#39;id: 178033 ark: btv1b530034196f1
+[POST]    |annotation pour l&#39;id: 178034 ark: btv1b53003436pf1
+[POST]    |annotation pour l&#39;id: 178035 ark: btv1b53003450tf1
+[POST]    |annotation pour l&#39;id: 178036 ark: btv1b530034535f1
+[POST]    |annotation pour l&#39;id: 178037 ark: btv1b53003467cf1
+[POST]    |annotation pour l&#39;id: 178038 ark: btv1b530034893f1
+[POST]    |annotation pour l&#39;id: 178039 ark: btv1b53003535mf1
+[POST]    |annotation pour l&#39;id: 178040 ark: btv1b53003562hf1
+[POST]    |annotation pour l&#39;id: 178041 ark: btv1b53003574tf1
+[POST]    |annotation pour l&#39;id: 178042 ark: btv1b53003590vf1
+[POST]    |annotation pour l&#39;id: 178043 ark: btv1b53003602df1
+[POST]    |annotation pour l&#39;id: 178044 ark: btv1b53003623pf1
+[POST]    |annotation pour l&#39;id: 178045 ark: btv1b530036600f1
+[POST]    |annotation pour l&#39;id: 178046 ark: btv1b530037289f1
+[POST]    |annotation pour l&#39;id: 178047 ark: btv1b530037556f1
+[POST]    |annotation pour l&#39;id: 178048 ark: btv1b53003770sf1
+[POST]    |annotation pour l&#39;id: 178049 ark: btv1b53003793zf1
+[POST]    |annotation pour l&#39;id: 178050 ark: btv1b53003815xf1
+[POST]    |annotation pour l&#39;id: 178051 ark: btv1b53003830hf1
+[POST]    |annotation pour l&#39;id: 178052 ark: btv1b53003833vf1
+[POST]    |annotation pour l&#39;id: 178053 ark: btv1b53003898kf1
+[POST]    |annotation pour l&#39;id: 178054 ark: btv1b530039248f1
+[POST]    |annotation pour l&#39;id: 178055 ark: btv1b53003930wf1
+[POST]    |annotation pour l&#39;id: 178056 ark: btv1b53003963gf1
+[POST]    |annotation pour l&#39;id: 178057 ark: btv1b53004014sf1
+[POST]    |annotation pour l&#39;id: 178058 ark: btv1b530040157f1
+[POST]    |annotation pour l&#39;id: 178059 ark: btv1b530040424f1
+[POST]    |annotation pour l&#39;id: 178060 ark: btv1b530040602f1
+[POST]    |annotation pour l&#39;id: 178061 ark: btv1b53004129tf1
+[POST]    |annotation pour l&#39;id: 178062 ark: btv1b530041306f1
+[POST]    |annotation pour l&#39;id: 178063 ark: btv1b53004183mf1
+[POST]    |annotation pour l&#39;id: 178064 ark: btv1b530042222f1
+[POST]    |annotation pour l&#39;id: 178065 ark: btv1b53004228rf1
+[POST]    |annotation pour l&#39;id: 178066 ark: btv1b53004246pf1
+[POST]    |annotation pour l&#39;id: 178067 ark: btv1b53004293df1
+[POST]    |annotation pour l&#39;id: 178068 ark: btv1b53004325sf1
+[POST]    |annotation pour l&#39;id: 178069 ark: btv1b530043373f1
+[POST]    |annotation pour l&#39;id: 178070 ark: btv1b530043390f1
+[POST]    |annotation pour l&#39;id: 178071 ark: btv1b53004357xf1
+[POST]    |annotation pour l&#39;id: 178072 ark: btv1b53004358cf1
+[POST]    |annotation pour l&#39;id: 178073 ark: btv1b53004363jf1
+[POST]    |annotation pour l&#39;id: 178074 ark: btv1b530043875f1
+[POST]    |annotation pour l&#39;id: 178075 ark: btv1b53004393sf1
+[POST]    |annotation pour l&#39;id: 178076 ark: btv1b53004446ff1
+[POST]    |annotation pour l&#39;id: 178077 ark: btv1b53004464cf1
+[POST]    |annotation pour l&#39;id: 178078 ark: btv1b530045209f1
+[POST]    |annotation pour l&#39;id: 178079 ark: btv1b53004552ff1
+[POST]    |annotation pour l&#39;id: 178080 ark: btv1b53004589tf1
+[POST]    |annotation pour l&#39;id: 178081 ark: btv1b53004608ff1
+[POST]    |annotation pour l&#39;id: 178082 ark: btv1b530046142f1
+[POST]    |annotation pour l&#39;id: 178083 ark: btv1b530046199f1
+[POST]    |annotation pour l&#39;id: 178084 ark: btv1b530046716f1
+[POST]    |annotation pour l&#39;id: 178085 ark: btv1b53004796nf1
+[POST]    |annotation pour l&#39;id: 178086 ark: btv1b53004830vf1
+[POST]    |annotation pour l&#39;id: 178087 ark: btv1b530048319f1
+[POST]    |annotation pour l&#39;id: 178088 ark: btv1b53004832rf1
+[POST]    |annotation pour l&#39;id: 178089 ark: btv1b530048370f1
+[POST]    |annotation pour l&#39;id: 178090 ark: btv1b53004839wf1
+[POST]    |annotation pour l&#39;id: 178091 ark: btv1b53004845hf1
+[POST]    |annotation pour l&#39;id: 178092 ark: btv1b53004864wf1
+[POST]    |annotation pour l&#39;id: 178093 ark: btv1b53004928df1
+[POST]    |annotation pour l&#39;id: 178094 ark: btv1b530049324f1
+[POST]    |annotation pour l&#39;id: 178095 ark: btv1b53004961xf1
+[POST]    |annotation pour l&#39;id: 178096 ark: btv1b530049915f1
+[POST]    |annotation pour l&#39;id: 178097 ark: btv1b530050735f1
+[POST]    |annotation pour l&#39;id: 178098 ark: btv1b53005119rf1
+[POST]    |annotation pour l&#39;id: 178099 ark: btv1b53005150cf1
+[POST]    |annotation pour l&#39;id: 178143 ark: btv1b53015708gf1
+[POST]    |annotation pour l&#39;id: 178144 ark: btv1b53015783jf1
+[POST]    |annotation pour l&#39;id: 178145 ark: btv1b53015812kf1
+[POST]    |annotation pour l&#39;id: 178146 ark: btv1b530158220f1
+[POST]    |annotation pour l&#39;id: 178147 ark: btv1b53015898kf1
+[POST]    |annotation pour l&#39;id: 178231 ark: btv1b53019439df1
+[POST]    |annotation pour l&#39;id: 178232 ark: btv1b53019478mf1
+[POST]    |annotation pour l&#39;id: 178233 ark: btv1b530195333f1
+[POST]    |annotation pour l&#39;id: 178234 ark: btv1b53019600wf1
+[POST]    |annotation pour l&#39;id: 178238 ark: btv1b530242162f1
+[POST]    |annotation pour l&#39;id: 178239 ark: btv1b53024231nf1
+[POST]    |annotation pour l&#39;id: 178240 ark: btv1b53024240mf1
+[POST]    |annotation pour l&#39;id: 178600 ark: btv1b530744868f1
+[POST]    |annotation pour l&#39;id: 178601 ark: btv1b530745354f1
+[POST]    |annotation pour l&#39;id: 178602 ark: btv1b53074539xf1
+[POST]    |annotation pour l&#39;id: 178603 ark: btv1b530745532f1
+[POST]    |annotation pour l&#39;id: 178604 ark: btv1b53074556df1
+[POST]    |annotation pour l&#39;id: 178605 ark: btv1b53074581df1
+[POST]    |annotation pour l&#39;id: 178606 ark: btv1b53074590cf1
+[POST]    |annotation pour l&#39;id: 178607 ark: btv1b530745928f1
+[POST]    |annotation pour l&#39;id: 178608 ark: btv1b530746092f1
+[POST]    |annotation pour l&#39;id: 178609 ark: btv1b53074619gf1
+[POST]    |annotation pour l&#39;id: 178611 ark: btv1b53074640pf1
+[POST]    |annotation pour l&#39;id: 178613 ark: btv1b53074701vf1
+[POST]    |annotation pour l&#39;id: 179530 ark: btv1b53100093jf1
+[POST]    |annotation pour l&#39;id: 179618 ark: btv1b53110288ff1
+[POST]    |annotation pour l&#39;id: 179825 ark: btv1b53127521pf1
+[POST]    |annotation pour l&#39;id: 179826 ark: btv1b53127523kf1
+[POST]    |annotation pour l&#39;id: 179827 ark: btv1b531275815f1
+[POST]    |annotation pour l&#39;id: 179828 ark: btv1b53127589rf1
+[POST]    |annotation pour l&#39;id: 179829 ark: btv1b53127593gf1
+[POST]    |annotation pour l&#39;id: 179830 ark: btv1b531276017f1
+[POST]    |annotation pour l&#39;id: 179831 ark: btv1b53127602pf1
+[POST]    |annotation pour l&#39;id: 179832 ark: btv1b53127609tf1
+[POST]    |annotation pour l&#39;id: 179833 ark: btv1b53127611nf1
+[POST]    |annotation pour l&#39;id: 179834 ark: btv1b53127632xf1
+[POST]    |annotation pour l&#39;id: 179835 ark: btv1b531276966f1
+[POST]    |annotation pour l&#39;id: 179836 ark: btv1b53127766bf1
+[POST]    |annotation pour l&#39;id: 179837 ark: btv1b53127846wf1
+[POST]    |annotation pour l&#39;id: 180042 ark: btv1b531455618f1
+[POST]    |annotation pour l&#39;id: 180043 ark: btv1b531455724f1
+[POST]    |annotation pour l&#39;id: 180044 ark: btv1b531455887f1
+[POST]    |annotation pour l&#39;id: 180045 ark: btv1b53145618qf1
+[POST]    |annotation pour l&#39;id: 180046 ark: btv1b53145618qf2
+[POST]    |annotation pour l&#39;id: 180047 ark: btv1b53145666wf1
+[POST]    |annotation pour l&#39;id: 180048 ark: btv1b53145712df1
+[POST]    |annotation pour l&#39;id: 180049 ark: btv1b53145717nf1
+[POST]    |annotation pour l&#39;id: 180051 ark: btv1b53145754zf1
+[POST]    |annotation pour l&#39;id: 180196 ark: btv1b53155421jf1
+[POST]    |annotation pour l&#39;id: 180197 ark: btv1b53155421jf2
+[POST]    |annotation pour l&#39;id: 180721 ark: btv1b53159046gf1
+[POST]    |annotation pour l&#39;id: 180722 ark: btv1b53159049tf1
+[POST]    |annotation pour l&#39;id: 180723 ark: btv1b53159063zf1
+[POST]    |annotation pour l&#39;id: 180724 ark: btv1b53159089gf1
+[POST]    |annotation pour l&#39;id: 180725 ark: btv1b53159204pf1
+[POST]    |annotation pour l&#39;id: 180726 ark: btv1b53159251df1
+[POST]    |annotation pour l&#39;id: 180864 ark: btv1b53167784hf1
+[POST]    |annotation pour l&#39;id: 180866 ark: btv1b53167854nf1
+[POST]    |annotation pour l&#39;id: 180867 ark: btv1b53167866zf1
+[POST]    |annotation pour l&#39;id: 180868 ark: btv1b53167883ff1
+[POST]    |annotation pour l&#39;id: 180869 ark: btv1b53167905df1
+[POST]    |annotation pour l&#39;id: 181031 ark: btv1b53179018rf1
+[POST]    |annotation pour l&#39;id: 181032 ark: btv1b53179041vf1
+[POST]    |annotation pour l&#39;id: 181033 ark: btv1b531790713f1
+[POST]    |annotation pour l&#39;id: 181034 ark: btv1b531790730f1
+[POST]    |annotation pour l&#39;id: 181035 ark: btv1b53179120zf1
+[POST]    |annotation pour l&#39;id: 181036 ark: btv1b53179122vf1
+[POST]    |annotation pour l&#39;id: 181037 ark: btv1b53179167rf1
+[POST]    |annotation pour l&#39;id: 181153 ark: btv1b53185266mf1
+[POST]    |annotation pour l&#39;id: 181154 ark: btv1b53185384xf1
+[POST]    |annotation pour l&#39;id: 181155 ark: btv1b53185388qf1
+[POST]    |annotation pour l&#39;id: 181156 ark: btv1b53185406wf1
+[POST]    |annotation pour l&#39;id: 181170 ark: btv1b53187278mf1
+[POST]    |annotation pour l&#39;id: 181171 ark: btv1b53187289gf1
+[POST]    |annotation pour l&#39;id: 181172 ark: btv1b531873316f1
+[POST]    |annotation pour l&#39;id: 181173 ark: btv1b531873691f1
+[POST]    |annotation pour l&#39;id: 181174 ark: btv1b531873691f2
+[POST]    |annotation pour l&#39;id: 181175 ark: btv1b531874467f1
+[POST]    |annotation pour l&#39;id: 181188 ark: btv1b53188548vf1
+[POST]    |annotation pour l&#39;id: 181195 ark: btv1b531887799f1
+[POST]    |annotation pour l&#39;id: 181244 ark: btv1b53191694df1
+[POST]    |annotation pour l&#39;id: 181250 ark: btv1b531919058f1
+[POST]    |annotation pour l&#39;id: 181251 ark: btv1b53191924nf1
+[POST]    |annotation pour l&#39;id: 181252 ark: btv1b53191938vf1
+[POST]    |annotation pour l&#39;id: 181253 ark: btv1b531919755f1
+[POST]    |annotation pour l&#39;id: 181254 ark: btv1b53191983pf1
+[POST]    |annotation pour l&#39;id: 181255 ark: btv1b531919844f1
+[POST]    |annotation pour l&#39;id: 181256 ark: btv1b53191997wf1
+[POST]    |annotation pour l&#39;id: 181257 ark: btv1b531920090f1
+[POST]    |annotation pour l&#39;id: 181258 ark: btv1b53192037bf1
+[POST]    |annotation pour l&#39;id: 181259 ark: btv1b53192086zf1
+[POST]    |annotation pour l&#39;id: 181260 ark: btv1b53192096cf1
+[POST]    |annotation pour l&#39;id: 181261 ark: btv1b53192096cf2
+[POST]    |annotation pour l&#39;id: 181359 ark: btv1b53198953vf1
+[POST]    |annotation pour l&#39;id: 181360 ark: btv1b53198966mf1
+[POST]    |annotation pour l&#39;id: 181361 ark: btv1b53199030mf1
+[POST]    |annotation pour l&#39;id: 181362 ark: btv1b531990401f1
+[POST]    |annotation pour l&#39;id: 181363 ark: btv1b53199041gf1
+[POST]    |annotation pour l&#39;id: 181364 ark: btv1b53199050ff1
+[POST]    |annotation pour l&#39;id: 181365 ark: btv1b531990814f1
+[POST]    |annotation pour l&#39;id: 181366 ark: btv1b531991105f1
+[POST]    |annotation pour l&#39;id: 181367 ark: btv1b53199115df1
+[POST]    |annotation pour l&#39;id: 181368 ark: btv1b531991179f1
+[POST]    |annotation pour l&#39;id: 181670 ark: btv1b53205500cf1
+[POST]    |annotation pour l&#39;id: 181671 ark: btv1b53205517xf1
+[POST]    |annotation pour l&#39;id: 181672 ark: btv1b532055240f1
+[POST]    |annotation pour l&#39;id: 181673 ark: btv1b532055401f1
+[POST]    |annotation pour l&#39;id: 181674 ark: btv1b532055401f2
+[POST]    |annotation pour l&#39;id: 181675 ark: btv1b532055401f3
+[POST]    |annotation pour l&#39;id: 181676 ark: btv1b53205604jf1
+[POST]    |annotation pour l&#39;id: 181677 ark: btv1b532056050f1
+[POST]    |annotation pour l&#39;id: 181678 ark: btv1b53205607wf1
+[POST]    |annotation pour l&#39;id: 181679 ark: btv1b53205611mf1
+[POST]    |annotation pour l&#39;id: 181680 ark: btv1b53205616vf1
+[POST]    |annotation pour l&#39;id: 181702 ark: btv1b532069382f1
+[POST]    |annotation pour l&#39;id: 181794 ark: btv1b53211068gf1
+[POST]    |annotation pour l&#39;id: 181828 ark: btv1b532126827f1
+[POST]    |annotation pour l&#39;id: 181829 ark: btv1b53212689cf1
+[POST]    |annotation pour l&#39;id: 181830 ark: btv1b53212703rf1
+[POST]    |annotation pour l&#39;id: 181831 ark: btv1b53212725gf1
+[POST]    |annotation pour l&#39;id: 181832 ark: btv1b53212725gf2
+[POST]    |annotation pour l&#39;id: 181833 ark: btv1b532127387f1
+[POST]    |annotation pour l&#39;id: 181834 ark: btv1b532127548f1
+[POST]    |annotation pour l&#39;id: 181835 ark: btv1b532127726f1
+[POST]    |annotation pour l&#39;id: 181836 ark: btv1b532127904f1
+[POST]    |annotation pour l&#39;id: 181837 ark: btv1b532127904f2
+[POST]    |annotation pour l&#39;id: 182342 ark: btv1b532214365f1
+[POST]    |annotation pour l&#39;id: 182343 ark: btv1b53221437mf1
+[POST]    |annotation pour l&#39;id: 182344 ark: btv1b53221469rf1
+[POST]    |annotation pour l&#39;id: 182345 ark: btv1b532214990f1
+[POST]    |annotation pour l&#39;id: 182346 ark: btv1b53221545hf1
+[POST]    |annotation pour l&#39;id: 182347 ark: btv1b532215838f1
+[POST]    |annotation pour l&#39;id: 182348 ark: btv1b53221606pf1
+[POST]    |annotation pour l&#39;id: 182350 ark: btv1b532216235f1
+[POST]    |annotation pour l&#39;id: 182351 ark: btv1b53221640nf1
+[POST]    |annotation pour l&#39;id: 182454 ark: btv1b53226844xf1
+[POST]    |annotation pour l&#39;id: 182482 ark: btv1b53229909xf1
+[POST]    |annotation pour l&#39;id: 182483 ark: btv1b53229918wf1
+[POST]    |annotation pour l&#39;id: 182484 ark: btv1b53229936tf1
+[POST]    |annotation pour l&#39;id: 182485 ark: btv1b53229950zf1
+[POST]    |annotation pour l&#39;id: 182486 ark: btv1b532299573f1
+[POST]    |annotation pour l&#39;id: 182487 ark: btv1b53229963qf1
+[POST]    |annotation pour l&#39;id: 182488 ark: btv1b53229967hf1
+[POST]    |annotation pour l&#39;id: 182538 ark: btv1b532335264f1
+[POST]    |annotation pour l&#39;id: 182571 ark: btv1b532356444f1
+[POST]    |annotation pour l&#39;id: 182572 ark: btv1b53235652nf1
+[POST]    |annotation pour l&#39;id: 182573 ark: btv1b53235652nf2
+[POST]    |annotation pour l&#39;id: 182574 ark: btv1b53235652nf3
+[POST]    |annotation pour l&#39;id: 182575 ark: btv1b53235657wf1
+[POST]    |annotation pour l&#39;id: 182576 ark: btv1b532356874f1
+[POST]    |annotation pour l&#39;id: 182577 ark: btv1b53235737ff1
+[POST]    |annotation pour l&#39;id: 182974 ark: btv1b6909411tf1
+[POST]    |annotation pour l&#39;id: 182975 ark: btv1b69094587f1
+[POST]    |annotation pour l&#39;id: 182976 ark: btv1b6909530hf1
+[POST]    |annotation pour l&#39;id: 182977 ark: btv1b6909537df1
+[POST]    |annotation pour l&#39;id: 182978 ark: btv1b6909625jf1
+[POST]    |annotation pour l&#39;id: 182979 ark: btv1b69096459f1
+[POST]    |annotation pour l&#39;id: 182980 ark: btv1b69096956f1
+[POST]    |annotation pour l&#39;id: 182981 ark: btv1b6909708cf1
+[POST]    |annotation pour l&#39;id: 182982 ark: btv1b6909847tf1
+[POST]    |annotation pour l&#39;id: 183577 ark: btv1b9003085bf1
+[POST]    |annotation pour l&#39;id: 183578 ark: btv1b9003107gf1
+[POST]    |annotation pour l&#39;id: 183579 ark: btv1b9003191df1
+[POST]    |annotation pour l&#39;id: 183580 ark: btv1b9003310nf1
+[POST]    |annotation pour l&#39;id: 183581 ark: btv1b9003313wf1
+[POST]    |annotation pour l&#39;id: 183582 ark: btv1b9003371bf1
+[POST]    |annotation pour l&#39;id: 183583 ark: btv1b9003455kf1
+[POST]    |annotation pour l&#39;id: 183584 ark: btv1b9003500zf1
+[POST]    |annotation pour l&#39;id: 183585 ark: btv1b90035266f1
+[POST]    |annotation pour l&#39;id: 183586 ark: btv1b90035281f1
+[POST]    |annotation pour l&#39;id: 183587 ark: btv1b9003539tf1
+[POST]    |annotation pour l&#39;id: 183588 ark: btv1b90035993f1
+[POST]    |annotation pour l&#39;id: 183589 ark: btv1b9003656pf1
+[POST]    |annotation pour l&#39;id: 183590 ark: btv1b9003760xf1
+[POST]    |annotation pour l&#39;id: 183591 ark: btv1b9003801df1
+[POST]    |annotation pour l&#39;id: 183592 ark: btv1b90038608f1
+[POST]    |annotation pour l&#39;id: 183593 ark: btv1b9003901rf1
+[POST]    |annotation pour l&#39;id: 183594 ark: btv1b90040380f1
+[POST]    |annotation pour l&#39;id: 183595 ark: btv1b9004053pf1
+[POST]    |annotation pour l&#39;id: 183596 ark: btv1b90040810f1
+[POST]    |annotation pour l&#39;id: 183597 ark: btv1b9004104jf1
+[POST]    |annotation pour l&#39;id: 183598 ark: btv1b9004143nf1
+[POST]    |annotation pour l&#39;id: 183599 ark: btv1b90041568f1
+[POST]    |annotation pour l&#39;id: 183600 ark: btv1b90042660f1
+[POST]    |annotation pour l&#39;id: 183601 ark: btv1b9004284xf1
+[POST]    |annotation pour l&#39;id: 183602 ark: btv1b9004337mf1
+[POST]    |annotation pour l&#39;id: 183603 ark: btv1b9004344rf1
+[POST]    |annotation pour l&#39;id: 183604 ark: btv1b9004358sf1
+[POST]    |annotation pour l&#39;id: 183605 ark: btv1b90043685f1
+[POST]    |annotation pour l&#39;id: 183606 ark: btv1b90043848f1
+[POST]    |annotation pour l&#39;id: 183607 ark: btv1b9004404kf1
+[POST]    |annotation pour l&#39;id: 183608 ark: btv1b9004441vf1
+[POST]    |annotation pour l&#39;id: 183609 ark: btv1b9004469xf1
+[POST]    |annotation pour l&#39;id: 183610 ark: btv1b90045431f1
+[POST]    |annotation pour l&#39;id: 183611 ark: btv1b9004605pf1
+[POST]    |annotation pour l&#39;id: 183612 ark: btv1b9004632kf1
+[POST]    |annotation pour l&#39;id: 183613 ark: btv1b9004664jf1
+[POST]    |annotation pour l&#39;id: 183614 ark: btv1b9004682gf1
+[POST]    |annotation pour l&#39;id: 183615 ark: btv1b9004710bf1
+[POST]    |annotation pour l&#39;id: 183616 ark: btv1b9004715df1
+[POST]    |annotation pour l&#39;id: 183617 ark: btv1b90047192f1
+[POST]    |annotation pour l&#39;id: 183618 ark: btv1b90047214f1
+[POST]    |annotation pour l&#39;id: 183619 ark: btv1b90048202f1
+[POST]    |annotation pour l&#39;id: 183620 ark: btv1b9004836xf1
+[POST]    |annotation pour l&#39;id: 183621 ark: btv1b9004849jf1
+[POST]    |annotation pour l&#39;id: 183622 ark: btv1b90048647f1
+[POST]    |annotation pour l&#39;id: 183623 ark: btv1b9004883kf1
+[POST]    |annotation pour l&#39;id: 183624 ark: btv1b9004895sf1
+[POST]    |annotation pour l&#39;id: 183625 ark: btv1b90050159f1
+[POST]    |annotation pour l&#39;id: 183626 ark: btv1b9005032tf1
+[POST]    |annotation pour l&#39;id: 183627 ark: btv1b9005062zf1
+[POST]    |annotation pour l&#39;id: 183628 ark: btv1b9005205mf1
+[POST]    |annotation pour l&#39;id: 183629 ark: btv1b90052365f1
+[POST]    |annotation pour l&#39;id: 183630 ark: btv1b9005267qf1
+[POST]    |annotation pour l&#39;id: 183631 ark: btv1b9005541hf1
+[POST]    |annotation pour l&#39;id: 183632 ark: btv1b9005602rf1
+[POST]    |annotation pour l&#39;id: 183633 ark: btv1b9005695df1
+[POST]    |annotation pour l&#39;id: 183634 ark: btv1b90057201f1
+[POST]    |annotation pour l&#39;id: 183635 ark: btv1b9005848ff1
+[POST]    |annotation pour l&#39;id: 183636 ark: btv1b90058953f1
+[POST]    |annotation pour l&#39;id: 183637 ark: btv1b9005987wf1
+[POST]    |annotation pour l&#39;id: 183638 ark: btv1b90060324f1
+[POST]    |annotation pour l&#39;id: 183639 ark: btv1b90060413f1
+[POST]    |annotation pour l&#39;id: 183640 ark: btv1b90076847f1
+[POST]    |annotation pour l&#39;id: 183641 ark: btv1b9007687gf1
+[POST]    |annotation pour l&#39;id: 183642 ark: btv1b9007692sf1
+[POST]    |annotation pour l&#39;id: 183643 ark: btv1b9007801nf1
+[POST]    |annotation pour l&#39;id: 183644 ark: btv1b9007955jf1
+[POST]    |annotation pour l&#39;id: 183645 ark: btv1b9007956zf1
+[POST]    |annotation pour l&#39;id: 183646 ark: btv1b90079774f1
+[POST]    |annotation pour l&#39;id: 183647 ark: btv1b9008028vf1
+[POST]    |annotation pour l&#39;id: 183648 ark: btv1b9008082nf1
+[POST]    |annotation pour l&#39;id: 183649 ark: btv1b9008115kf1
+[POST]    |annotation pour l&#39;id: 183650 ark: btv1b90081553f1
+[POST]    |annotation pour l&#39;id: 183651 ark: btv1b90082029f1
+[POST]    |annotation pour l&#39;id: 183652 ark: btv1b90082615f1
+[POST]    |annotation pour l&#39;id: 183653 ark: btv1b9008297sf1
+[POST]    |annotation pour l&#39;id: 183654 ark: btv1b9008330zf1
+[POST]    |annotation pour l&#39;id: 183655 ark: btv1b9008340bf1
+[POST]    |annotation pour l&#39;id: 183656 ark: btv1b9008413sf1
+[POST]    |annotation pour l&#39;id: 183657 ark: btv1b9008489xf1
+[POST]    |annotation pour l&#39;id: 183658 ark: btv1b9008507df1
+[POST]    |annotation pour l&#39;id: 183659 ark: btv1b9008517sf1
+[POST]    |annotation pour l&#39;id: 183662 ark: btv1b9008567pf1
+[POST]    |annotation pour l&#39;id: 183664 ark: btv1b9008675kf1
+[POST]    |annotation pour l&#39;id: 183665 ark: btv1b9008715nf1
+[POST]    |annotation pour l&#39;id: 183666 ark: btv1b9008774hf1
+[POST]    |annotation pour l&#39;id: 183667 ark: btv1b90088276f1
+[POST]    |annotation pour l&#39;id: 183668 ark: btv1b90090641f1
+[POST]    |annotation pour l&#39;id: 183670 ark: btv1b9009126pf1
+[POST]    |annotation pour l&#39;id: 183671 ark: btv1b90091399f1
+[POST]    |annotation pour l&#39;id: 183672 ark: btv1b9009164cf1
+[POST]    |annotation pour l&#39;id: 183673 ark: btv1b9009187cf1
+[POST]    |annotation pour l&#39;id: 183674 ark: btv1b90092031f1
+[POST]    |annotation pour l&#39;id: 183675 ark: btv1b90092565f1
+[POST]    |annotation pour l&#39;id: 183676 ark: btv1b90092817f1
+[POST]    |annotation pour l&#39;id: 183679 ark: btv1b90104852f1
+[POST]    |annotation pour l&#39;id: 183680 ark: btv1b9010634ff1
+[POST]    |annotation pour l&#39;id: 183681 ark: btv1b9010648gf1
+[POST]    |annotation pour l&#39;id: 183682 ark: btv1b9010860mf1
+[POST]    |annotation pour l&#39;id: 183683 ark: btv1b90110605f1
+[POST]    |annotation pour l&#39;id: 183684 ark: btv1b9011170wf1
+[POST]    |annotation pour l&#39;id: 183686 ark: btv1b9011334qf1
+[POST]    |annotation pour l&#39;id: 183687 ark: btv1b9011343pf1
+[POST]    |annotation pour l&#39;id: 183688 ark: btv1b90114750f1
+[POST]    |annotation pour l&#39;id: 183689 ark: btv1b9011696vf1
+[POST]    |annotation pour l&#39;id: 183691 ark: btv1b9011808zf1
+[POST]    |annotation pour l&#39;id: 183692 ark: btv1b90118316f1
+[POST]    |annotation pour l&#39;id: 183693 ark: btv1b90119141f1
+[POST]    |annotation pour l&#39;id: 183694 ark: btv1b9011968kf1
+[POST]    |annotation pour l&#39;id: 183695 ark: btv1b90119764f1
+[POST]    |annotation pour l&#39;id: 183696 ark: btv1b9012108vf1
+[POST]    |annotation pour l&#39;id: 183698 ark: btv1b90123719f1
+[POST]    |annotation pour l&#39;id: 183699 ark: btv1b90125109f1
+[POST]    |annotation pour l&#39;id: 183700 ark: btv1b9012552nf1
+[POST]    |annotation pour l&#39;id: 183701 ark: btv1b9012647pf1
+[POST]    |annotation pour l&#39;id: 183702 ark: btv1b9012739gf1
+[POST]    |annotation pour l&#39;id: 183703 ark: btv1b9012753rf1
+[POST]    |annotation pour l&#39;id: 183704 ark: btv1b9012755kf1
+[POST]    |annotation pour l&#39;id: 183705 ark: btv1b9012771pf1
+[POST]    |annotation pour l&#39;id: 183706 ark: btv1b9012873vf1
+[POST]    |annotation pour l&#39;id: 183707 ark: btv1b9012979pf1
+[POST]    |annotation pour l&#39;id: 183708 ark: btv1b9013010wf1
+[POST]    |annotation pour l&#39;id: 183709 ark: btv1b9013049rf1
+[POST]    |annotation pour l&#39;id: 183710 ark: btv1b9013094kf1
+[POST]    |annotation pour l&#39;id: 183711 ark: btv1b9013125pf1
+[POST]    |annotation pour l&#39;id: 183712 ark: btv1b9013134nf1
+[POST]    |annotation pour l&#39;id: 183713 ark: btv1b9013341gf1
+[POST]    |annotation pour l&#39;id: 183715 ark: btv1b9013620bf1
+[POST]    |annotation pour l&#39;id: 183716 ark: btv1b90136292f1
+[POST]    |annotation pour l&#39;id: 183717 ark: btv1b9013660vf1
+[POST]    |annotation pour l&#39;id: 183718 ark: btv1b9013738cf1
+[POST]    |annotation pour l&#39;id: 183719 ark: btv1b9013808kf1
+[POST]    |annotation pour l&#39;id: 183720 ark: btv1b90138112f1
+[POST]    |annotation pour l&#39;id: 183721 ark: btv1b9013833nf1
+[POST]    |annotation pour l&#39;id: 183722 ark: btv1b90138379f1
+[POST]    |annotation pour l&#39;id: 183723 ark: btv1b9013861zf1
+[POST]    |annotation pour l&#39;id: 183724 ark: btv1b9013879nf1
+[POST]    |annotation pour l&#39;id: 183725 ark: btv1b9013881qf1
+[POST]    |annotation pour l&#39;id: 183726 ark: btv1b9013899df1
+[POST]    |annotation pour l&#39;id: 183727 ark: btv1b9013926vf1
+[POST]    |annotation pour l&#39;id: 183728 ark: btv1b9013948ff1
+[POST]    |annotation pour l&#39;id: 183729 ark: btv1b9014030zf1
+[POST]    |annotation pour l&#39;id: 183730 ark: btv1b9014040bf1
+[POST]    |annotation pour l&#39;id: 183731 ark: btv1b9014064rf1
+[POST]    |annotation pour l&#39;id: 183732 ark: btv1b9014076zf1
+[POST]    |annotation pour l&#39;id: 183733 ark: btv1b90140974f1
+[POST]    |annotation pour l&#39;id: 183734 ark: btv1b9014175wf1
+[POST]    |annotation pour l&#39;id: 183735 ark: btv1b9014210wf1
+[POST]    |annotation pour l&#39;id: 183736 ark: btv1b90142119f1
+[POST]    |annotation pour l&#39;id: 183737 ark: btv1b9014251tf1
+[POST]    |annotation pour l&#39;id: 183738 ark: btv1b9014281zf1
+[POST]    |annotation pour l&#39;id: 183739 ark: btv1b9014340cf1
+[POST]    |annotation pour l&#39;id: 183740 ark: btv1b9014341sf1
+[POST]    |annotation pour l&#39;id: 183741 ark: btv1b9014369vf1
+[POST]    |annotation pour l&#39;id: 183742 ark: btv1b9014380wf1
+[POST]    |annotation pour l&#39;id: 183743 ark: btv1b9014409xf1
+[POST]    |annotation pour l&#39;id: 183744 ark: btv1b9014436tf1
+[POST]    |annotation pour l&#39;id: 183745 ark: btv1b90144807f1
+[POST]    |annotation pour l&#39;id: 183747 ark: btv1b90145291f1
+[POST]    |annotation pour l&#39;id: 183748 ark: btv1b9014533xf1
+[POST]    |annotation pour l&#39;id: 183749 ark: btv1b90146249f1
+[POST]    |annotation pour l&#39;id: 183750 ark: btv1b9014706qf1
+[POST]    |annotation pour l&#39;id: 183751 ark: btv1b90147148f1
+[POST]    |annotation pour l&#39;id: 183752 ark: btv1b9014731sf1
+[POST]    |annotation pour l&#39;id: 183754 ark: btv1b90148225f1
+[POST]    |annotation pour l&#39;id: 183755 ark: btv1b9014887hf1
+[POST]    |annotation pour l&#39;id: 183756 ark: btv1b9014889bf1
+[POST]    |annotation pour l&#39;id: 183757 ark: btv1b9014923xf1
+[POST]    |annotation pour l&#39;id: 183758 ark: btv1b9014924bf1
+[POST]    |annotation pour l&#39;id: 183759 ark: btv1b9014936jf1
+[POST]    |annotation pour l&#39;id: 183760 ark: btv1b90149747f1
+[POST]    |annotation pour l&#39;id: 183761 ark: btv1b9014984mf1
+[POST]    |annotation pour l&#39;id: 183762 ark: btv1b9015010hf1
+[POST]    |annotation pour l&#39;id: 183763 ark: btv1b90150464f1
+[POST]    |annotation pour l&#39;id: 183764 ark: btv1b9015092cf1
+[POST]    |annotation pour l&#39;id: 183765 ark: btv1b90151363f1
+[POST]    |annotation pour l&#39;id: 183766 ark: btv1b90151400f1
+[POST]    |annotation pour l&#39;id: 183767 ark: btv1b9015172zf1
+[POST]    |annotation pour l&#39;id: 183768 ark: btv1b9015209jf1
+[POST]    |annotation pour l&#39;id: 183769 ark: btv1b9015225nf1
+[POST]    |annotation pour l&#39;id: 183770 ark: btv1b90152299f1
+[POST]    |annotation pour l&#39;id: 183771 ark: btv1b90152336f1
+[POST]    |annotation pour l&#39;id: 183772 ark: btv1b9015241rf1
+[POST]    |annotation pour l&#39;id: 183773 ark: btv1b9015253zf1
+[POST]    |annotation pour l&#39;id: 183774 ark: btv1b9015254cf1
+[POST]    |annotation pour l&#39;id: 183775 ark: btv1b9015255sf1
+[POST]    |annotation pour l&#39;id: 183776 ark: btv1b9015271wf1
+[POST]    |annotation pour l&#39;id: 183777 ark: btv1b9015289kf1
+[POST]    |annotation pour l&#39;id: 183778 ark: btv1b9015304tf1
+[POST]    |annotation pour l&#39;id: 183779 ark: btv1b9015306nf1
+[POST]    |annotation pour l&#39;id: 183780 ark: btv1b9015320xf1
+[POST]    |annotation pour l&#39;id: 183781 ark: btv1b90153502f1
+[POST]    |annotation pour l&#39;id: 183782 ark: btv1b9015356jf1
+[POST]    |annotation pour l&#39;id: 183783 ark: btv1b9015384vf1
+[POST]    |annotation pour l&#39;id: 183784 ark: btv1b90153910f1
+[POST]    |annotation pour l&#39;id: 183785 ark: btv1b9015430nf1
+[POST]    |annotation pour l&#39;id: 183786 ark: btv1b9015433wf1
+[POST]    |annotation pour l&#39;id: 183787 ark: btv1b9015450df1
+[POST]    |annotation pour l&#39;id: 183788 ark: btv1b90154616f1
+[POST]    |annotation pour l&#39;id: 183789 ark: btv1b9015478gf1
+[POST]    |annotation pour l&#39;id: 183790 ark: btv1b9015559gf1
+[POST]    |annotation pour l&#39;id: 183791 ark: btv1b9015575kf1
+[POST]    |annotation pour l&#39;id: 183792 ark: btv1b90155923f1
+[POST]    |annotation pour l&#39;id: 183793 ark: btv1b9015613tf1
+[POST]    |annotation pour l&#39;id: 183794 ark: btv1b9015716df1
+[POST]    |annotation pour l&#39;id: 183795 ark: btv1b9015721qf1
+[POST]    |annotation pour l&#39;id: 183796 ark: btv1b9015737kf1
+[POST]    |annotation pour l&#39;id: 183797 ark: btv1b90157595f1
+[POST]    |annotation pour l&#39;id: 183798 ark: btv1b90157706f1
+[POST]    |annotation pour l&#39;id: 183799 ark: btv1b90158442f1
+[POST]    |annotation pour l&#39;id: 183800 ark: btv1b9015852mf1
+[POST]    |annotation pour l&#39;id: 183801 ark: btv1b9015868gf1
+[POST]    |annotation pour l&#39;id: 183802 ark: btv1b9015880xf1
+[POST]    |annotation pour l&#39;id: 183803 ark: btv1b90159007f1
+[POST]    |annotation pour l&#39;id: 183804 ark: btv1b9015901nf1
+[POST]    |annotation pour l&#39;id: 183805 ark: btv1b90159022f1
+[POST]    |annotation pour l&#39;id: 183806 ark: btv1b90159059f1
+[POST]    |annotation pour l&#39;id: 183807 ark: btv1b9015945tf1
+[POST]    |annotation pour l&#39;id: 183808 ark: btv1b9015952zf1
+[POST]    |annotation pour l&#39;id: 183809 ark: btv1b90159734f1
+[POST]    |annotation pour l&#39;id: 183810 ark: btv1b90159786f1
+[POST]    |annotation pour l&#39;id: 183811 ark: btv1b9016021mf1
+[POST]    |annotation pour l&#39;id: 183812 ark: btv1b90160844f1
+[POST]    |annotation pour l&#39;id: 183813 ark: btv1b9016095xf1
+[POST]    |annotation pour l&#39;id: 183814 ark: btv1b90161172f1
+[POST]    |annotation pour l&#39;id: 183815 ark: btv1b9016125mf1
+[POST]    |annotation pour l&#39;id: 183816 ark: btv1b9016137tf1
+[POST]    |annotation pour l&#39;id: 183817 ark: btv1b9016161gf1
+[POST]    |annotation pour l&#39;id: 183818 ark: btv1b90161795f1
+[POST]    |annotation pour l&#39;id: 183819 ark: btv1b9016182nf1
+[POST]    |annotation pour l&#39;id: 183820 ark: btv1b9016187qf1
+[POST]    |annotation pour l&#39;id: 183821 ark: btv1b9016191mf1
+[POST]    |annotation pour l&#39;id: 183822 ark: btv1b9016194vf1
+[POST]    |annotation pour l&#39;id: 183823 ark: btv1b9016211xf1
+[POST]    |annotation pour l&#39;id: 183824 ark: btv1b9016224jf1
+[POST]    |annotation pour l&#39;id: 183825 ark: btv1b9016226cf1
+[POST]    |annotation pour l&#39;id: 183826 ark: btv1b90162308f1
+[POST]    |annotation pour l&#39;id: 183827 ark: btv1b90162464f1
+[POST]    |annotation pour l&#39;id: 183828 ark: btv1b90163185f1
+[POST]    |annotation pour l&#39;id: 183829 ark: btv1b9016356vf1
+[POST]    |annotation pour l&#39;id: 183830 ark: btv1b9016373cf1
+[POST]    |annotation pour l&#39;id: 183831 ark: btv1b9016395zf1
+[POST]    |annotation pour l&#39;id: 183832 ark: btv1b9016396cf1
+[POST]    |annotation pour l&#39;id: 183833 ark: btv1b9016407qf1
+[POST]    |annotation pour l&#39;id: 183834 ark: btv1b9016409jf1
+[POST]    |annotation pour l&#39;id: 183835 ark: btv1b90164210f1
+[POST]    |annotation pour l&#39;id: 183836 ark: btv1b9016425nf1
+[POST]    |annotation pour l&#39;id: 183838 ark: btv1b9016475jf1
+[POST]    |annotation pour l&#39;id: 183839 ark: btv1b9016554qf1
+[POST]    |annotation pour l&#39;id: 183840 ark: btv1b9016728xf1
+[POST]    |annotation pour l&#39;id: 183841 ark: btv1b9016777df1
+[POST]    |annotation pour l&#39;id: 183842 ark: btv1b90168058f1
+[POST]    |annotation pour l&#39;id: 183843 ark: btv1b90170490f1
+[POST]    |annotation pour l&#39;id: 183844 ark: btv1b9017157wf1
+[POST]    |annotation pour l&#39;id: 183845 ark: btv1b9017179gf1
+[POST]    |annotation pour l&#39;id: 183847 ark: btv1b9017237gf1
+[POST]    |annotation pour l&#39;id: 183848 ark: btv1b9017265sf1
+[POST]    |annotation pour l&#39;id: 183849 ark: btv1b9017297rf1
+[POST]    |annotation pour l&#39;id: 183850 ark: btv1b9017382nf1
+[POST]    |annotation pour l&#39;id: 183851 ark: btv1b9017447jf1
+[POST]    |annotation pour l&#39;id: 183852 ark: btv1b9017456hf1
+[POST]    |annotation pour l&#39;id: 183853 ark: btv1b90175541f1
+[POST]    |annotation pour l&#39;id: 183854 ark: btv1b90175578f1
+[POST]    |annotation pour l&#39;id: 183855 ark: btv1b9017581xf1
+[POST]    |annotation pour l&#39;id: 183856 ark: btv1b9017640bf1
+[POST]    |annotation pour l&#39;id: 183857 ark: btv1b9017659ff1
+[POST]    |annotation pour l&#39;id: 183858 ark: btv1b90176670f1
+[POST]    |annotation pour l&#39;id: 183859 ark: btv1b9017704tf1
+[POST]    |annotation pour l&#39;id: 183860 ark: btv1b90177146f1
+[POST]    |annotation pour l&#39;id: 183861 ark: btv1b9017744bf1
+[POST]    |annotation pour l&#39;id: 183862 ark: btv1b9017777qf1
+[POST]    |annotation pour l&#39;id: 183864 ark: btv1b9017837jf1
+[POST]    |annotation pour l&#39;id: 183865 ark: btv1b9017844pf1
+[POST]    |annotation pour l&#39;id: 183866 ark: btv1b9017856wf1
+[POST]    |annotation pour l&#39;id: 183867 ark: btv1b9017858qf1
+[POST]    |annotation pour l&#39;id: 183868 ark: btv1b90178616f1
+[POST]    |annotation pour l&#39;id: 183869 ark: btv1b9017869hf1
+[POST]    |annotation pour l&#39;id: 183870 ark: btv1b90178757f1
+[POST]    |annotation pour l&#39;id: 183871 ark: btv1b9017878gf1
+[POST]    |annotation pour l&#39;id: 183872 ark: btv1b90178935f1
+[POST]    |annotation pour l&#39;id: 183873 ark: btv1b9017905xf1
+[POST]    |annotation pour l&#39;id: 183874 ark: btv1b9017937wf1
+[POST]    |annotation pour l&#39;id: 183875 ark: btv1b9018043tf1
+[POST]    |annotation pour l&#39;id: 183876 ark: btv1b90180588f1
+[POST]    |annotation pour l&#39;id: 183877 ark: btv1b9018074cf1
+[POST]    |annotation pour l&#39;id: 183878 ark: btv1b9018156sf1
+[POST]    |annotation pour l&#39;id: 183879 ark: btv1b90181665f1
+[POST]    |annotation pour l&#39;id: 183880 ark: btv1b9018176jf1
+[POST]    |annotation pour l&#39;id: 183881 ark: btv1b90181969f1
+[POST]    |annotation pour l&#39;id: 183882 ark: btv1b9018248kf1
+[POST]    |annotation pour l&#39;id: 183883 ark: btv1b9018326bf1
+[POST]    |annotation pour l&#39;id: 183884 ark: btv1b9018342ff1
+[POST]    |annotation pour l&#39;id: 183885 ark: btv1b90183626f1
+[POST]    |annotation pour l&#39;id: 183886 ark: btv1b90183693f1
+[POST]    |annotation pour l&#39;id: 183887 ark: btv1b90183782f1
+[POST]    |annotation pour l&#39;id: 183888 ark: btv1b9018405hf1
+[POST]    |annotation pour l&#39;id: 183889 ark: btv1b9018442sf1
+[POST]    |annotation pour l&#39;id: 183890 ark: btv1b90184436f1
+resume    |748 annotations ajoutées
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "label-studio"
+        },
+        kernelOptions: {
+            name: "label-studio",
+            path: "./book/notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'label-studio'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="pipeline.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Pipeline de collecte des données</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Guide de pratique pour Label Studio</a><ul>
+<li><a class="reference internal" href="#confirguration-et-installation">Confirguration et installation</a></li>
+<li><a class="reference internal" href="#creation-dun-projet">Création d’un projet</a><ul>
+<li><a class="reference internal" href="#via-linferface">via l’Inferface</a></li>
+<li><a class="reference internal" href="#via-le-sdk-label-studio">via le SDK Label Studio</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importation-local-de-donnee-via-cloud-storage">Importation local de donnée via Cloud Storage</a><ul>
+<li><a class="reference internal" href="#via-linterface">via l’Interface</a></li>
+<li><a class="reference internal" href="#id1">via le SDK Label Studio</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#annotation">Annotation</a><ul>
+<li><a class="reference internal" href="#exportation-des-annotations">Exportation des annotations</a></li>
+<li><a class="reference internal" href="#importation-des-annotations-depuis-une-autre-application">Importation des annotations (depuis une autre application)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    </body>
+</html>

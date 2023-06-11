@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Intership CESR 23" href="../../index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Guide de pratique pour Label Studio" href="labelstudio.html" /><link rel="prev" title="Intership CESR 23" href="../../index.html" />
 
     <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
         <title>Pipeline de collecte des données - Intership CESR 23</title>
@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
@@ -167,6 +168,7 @@
   <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Pipeline de collecte des données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labelstudio.html">Guide de pratique pour Label Studio</a></li>
 </ul>
 
 </div>
@@ -217,7 +219,8 @@ qu’à sa recette finale.</p>
 <p>Ce notebook à pour objectif la démonstration des différentes étapes du pipeline de l’entrepôt <a class="reference external" href="https://www.openarchives.org/">Open Archives Initiative - Protocol for Metadata Harvesting</a> pour la collecte des métadonnées à la récupération des différentes images présent dans Gallica Images.</p>
 <div class="dropdown admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Ce jupyter est automatiquement charger avec les modules et packages compris. Pour lancer le notebook localement, vous devez installer les packages requis.</p>
+<p>Ce jupyter est automatiquement charger avec les modules et packages compris. Pour lancer le notebook localement, vous devez installer les packages requis.
+<a class="reference download internal" download="" href="../../_downloads/7acc9b5b69931a8bf3be50f698352075/pipeline.zip"><span class="xref download myst">Téléchargement</span></a></p>
 </div>
 <section id="les-entrepots-de-la-bnf">
 <h2>Les entrepôts de la BnF<a class="headerlink" href="#les-entrepots-de-la-bnf" title="Permalink to this heading">#</a></h2>
@@ -2347,6 +2350,11 @@ direction TB
 
 state client_timeout{
 
+
+concurrents_manifest--&gt;seconds_manifest :window
+seconds_manifest--&gt;concurrents_manifest :allows
+concurrents_manifest--&gt; get_manifest_timeout : authorize
+
 state get_manifest_timeout{
 [*] --&gt; manifest.json
 manifest.json  --&gt; get_img_timeout : len(img)
@@ -2365,11 +2373,7 @@ manifest.json  --&gt; get_img_timeout : len(img)
 }
         </div><div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Les valeurs présentes dans le .csv override celles-ci</span>
-<span class="sd">&#39;name&#39; correspondant à la date par défaut</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">default_img</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default_img</span>
 </pre></div>
 </div>
 </div>
@@ -2386,6 +2390,31 @@ manifest.json  --&gt; get_img_timeout : len(img)
  &#39;rotation&#39;: &#39;0&#39;,
  &#39;quality&#39;: &#39;native&#39;,
  &#39;extension&#39;: &#39;jpg&#39;}
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leaky_bucket_layer</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;concurrents_manifest&#39;: 50,
+ &#39;seconds_manifest&#39;: 60,
+ &#39;concurrents_img&#39;: 20,
+ &#39;seconds_img&#39;: 60,
+ &#39;chunksize&#39;: 1024,
+ &#39;client_timeout&#39;: 60,
+ &#39;get_manifest_timeout&#39;: 60,
+ &#39;get_img_timeout&#39;: 60}
 </pre></div>
 </div>
 </div>
@@ -3030,7 +3059,7 @@ manifest.json  --&gt; get_img_timeout : len(img)
 </div>
 </details>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell tag_hide-output docutils container" id="namefordoc">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Regex et built_in fonction pour normaliser le titre du document</span>
 <span class="n">name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]+&#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">Document</span><span class="p">(</span><span class="s1">&#39;bpt6k62463369&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span> 
@@ -3155,7 +3184,15 @@ manifest.json  --&gt; get_img_timeout : len(img)
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="labelstudio.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Guide de pratique pour Label Studio</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="../../index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
@@ -3228,6 +3265,7 @@ manifest.json  --&gt; get_img_timeout : len(img)
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/tabs.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
