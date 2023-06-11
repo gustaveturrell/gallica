@@ -7,3 +7,4 @@ parts:
   - caption: Documentation
     chapters:
     - file: book/notebooks/pipeline.ipynb
+    - file: book/notebooks/labelstudio

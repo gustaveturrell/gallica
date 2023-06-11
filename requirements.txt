@@ -4,4 +4,5 @@ matplotlib
 numpy
 ghp-import
 sphinxcontrib-mermaid
+sphinx-inline-tabs
 furo

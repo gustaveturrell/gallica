@@ -44,6 +44,7 @@ repository:
 sphinx:
   extra_extensions:
     - sphinxcontrib.mermaid
+    - sphinx_inline_tabs
   config:
     html_theme: furo
     # html_extra_path: ["CNAME", "robots.txt"]
