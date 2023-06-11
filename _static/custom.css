@@ -83,14 +83,21 @@ div.cell div.cell_input, div.cell details.above-input>summary {
 
 .code-block-caption {
     background-color: #f8f9fb;
+    font-weight: 400;
+    font-style: italic;
 }
+
+.code-block-caption .caption-number {
+    display:None;
+}
+
 
 .sig-inline, p code.literal {
     font-family: 'JetBrains Mono';
     background: none;
     color: #002aff;
     border: None;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 
@@ -109,7 +116,7 @@ div.cell_output table {
 }
 
 
-/* Custom code line*/
+/* Custom Code Lint*/
 
 
 .highlight .s2 {
@@ -219,3 +226,30 @@ font-weight: bold }
 .cell_output .output.traceback .highlight .ne {
   color: red;
 font-weight: bold }
+
+
+
+/* Custom style for mermaid diagram */
+
+.statediagram-cluster rect {
+    stroke: #0b850b !important;
+}
+
+.statediagram-cluster.statediagram-cluster .inner {
+    fill: white!important;
+}
+
+.statediagram-cluster rect {
+    fill: #eeffcc!important;
+}
+
+.node rect {
+    fill: #eeffcc!important;
+    stroke: #007020!important;
+    stroke-width: 1
+}
+
+.edgeLabel .label rect {
+    fill: #ffdcdc!important;
+    opacity: 3.5;
+}

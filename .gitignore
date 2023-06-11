@@ -115,4 +115,4 @@ ENV/
 # IDE settings
 .vscode/
 
-book/notebooks/pipeline/data/
+book/notebooks/data/

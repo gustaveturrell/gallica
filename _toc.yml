@@ -6,4 +6,4 @@ root: index
 parts:
   - caption: Documentation
     chapters:
-    - file: book/notebooks/pipeline/pipeline.ipynb
+    - file: book/notebooks/pipeline.ipynb
