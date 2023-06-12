@@ -2060,16 +2060,19 @@ Name: techniques, dtype: int64
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">1.Filtre le DataFrame selon la localisation (ici le &#39;type&#39; qui donne une indication sur le type de document) de la liste d&#39;autorité &#39;estampe&#39; </span>
-<span class="sd">2.Créer une liste de techniques uniques (en fonction du filtrage précédent donc &#39;plume&#39;,&#39;mine&#39;,&#39;huile&#39;,&#39;encre&#39;)</span>
+<span class="sd">1.Filtre le DataFrame selon la localisation</span>
+<span class="sd">  1.1 L&#39;estampe doit être présent dans le champs &#39;type&#39; et &#39;format&#39;</span>
+<span class="sd">  1.2 Les techniques doivent être présente dans le champ &#39;format&#39;</span>
+<span class="sd">2.Créer une liste de techniques uniques (en fonction du filtrage précédent)</span>
 <span class="sd">3.Parcours cette liste pour créer un dictionnaire qui rassemble les &#39;ark&#39; sous les techniques qui sont uniques</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">technique_ark</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">by_format</span> <span class="o">=</span> <span class="n">df_jointure2</span><span class="p">[</span><span class="n">df_jointure2</span><span class="p">[</span><span class="s1">&#39;estampe_from&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;type&#39;</span><span class="p">]</span>
-<span class="n">unique_techniques</span> <span class="o">=</span> <span class="n">by_format</span><span class="p">[</span><span class="s1">&#39;techniques&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">filtering_1</span> <span class="o">=</span> <span class="n">df_jointure2</span><span class="p">[(</span><span class="n">df_jointure2</span><span class="p">[</span><span class="s1">&#39;estampe_from&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_jointure2</span><span class="p">[</span><span class="s1">&#39;estampe_from&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;format&#39;</span><span class="p">)]</span>
+<span class="n">filtering_2</span> <span class="o">=</span> <span class="n">filtering_1</span><span class="p">[</span><span class="n">filtering_1</span><span class="p">[</span><span class="s1">&#39;techniques_from&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;format&#39;</span><span class="p">]</span>
+<span class="n">unique_techniques</span> <span class="o">=</span> <span class="n">filtering_2</span><span class="p">[</span><span class="s1">&#39;techniques&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">technique</span> <span class="ow">in</span> <span class="n">unique_techniques</span><span class="p">:</span>
     <span class="c1"># Filtrage des ARK pour la technique donnée</span>
-    <span class="n">arks</span> <span class="o">=</span> <span class="n">by_format</span><span class="p">[</span><span class="n">by_format</span><span class="p">[</span><span class="s1">&#39;techniques&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">technique</span><span class="p">][</span><span class="s1">&#39;ark&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">arks</span> <span class="o">=</span> <span class="n">filtering_2</span><span class="p">[</span><span class="n">filtering_2</span><span class="p">[</span><span class="s1">&#39;techniques&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">technique</span><span class="p">][</span><span class="s1">&#39;ark&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
     <span class="c1"># Ajouter la technique et la liste d&#39;ARK dans le dictionnaire</span>
     <span class="n">technique_ark</span><span class="p">[</span><span class="n">technique</span><span class="p">]</span> <span class="o">=</span> <span class="n">arks</span>
 <span class="n">technique_ark</span>
@@ -2082,11 +2085,7 @@ Name: techniques, dtype: int64
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mine&#39;: [&#39;btv1b103200361&#39;,
-  &#39;btv1b10318758v&#39;,
-  &#39;btv1b103188011&#39;,
-  &#39;btv1b10320173q&#39;],
- &#39;plume&#39;: [&#39;btv1b103197173&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;plume&#39;: [&#39;btv1b103197173&#39;,
   &#39;btv1b10319720c&#39;,
   &#39;btv1b103205771&#39;,
   &#39;btv1b10319696k&#39;,
@@ -2127,7 +2126,6 @@ Name: techniques, dtype: int64
   &#39;btv1b10319743j&#39;,
   &#39;btv1b10319748s&#39;,
   &#39;btv1b103205809&#39;],
- &#39;huile&#39;: [&#39;btv1b10320747j&#39;],
  &#39;encre&#39;: [&#39;btv1b10322340k&#39;]}
 </pre></div>
 </div>
@@ -2153,19 +2151,7 @@ Name: techniques, dtype: int64
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;btv1b103200361&#39;: ([&quot;L&#39;intérieur de la mine : [estampe] ([Défet]) / G. Doré ; Trichon&quot;],
-  &#39;mine&#39;,
-  1),
- &#39;btv1b10318758v&#39;: ([&quot;[L&#39;intérieur de la mine] : [estampe] ([Fumé]) / G. Doré ; Trichon&quot;],
-  &#39;mine&#39;,
-  1),
- &#39;btv1b103188011&#39;: ([&#39;[Le premier qui se présenta fut un petit homme de mauvaise mine] : [estampe] ([Fumé]) / G. Doré ; Pannemaker&#39;],
-  &#39;mine&#39;,
-  1),
- &#39;btv1b10320173q&#39;: ([&#39;[Le premier qui se présenta fut un petit homme de mauvaise mine] : [estampe] ([Défet]) / G. Doré ; Pannemaker&#39;],
-  &#39;mine&#39;,
-  1),
- &#39;btv1b103197173&#39;: ([&#39;[La Vie en province] : [estampe] ([État avant la lettre]) / [Gustave Doré]&#39;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;btv1b103197173&#39;: ([&#39;[La Vie en province] : [estampe] ([État avant la lettre]) / [Gustave Doré]&#39;],
   &#39;plume&#39;,
   1),
  &#39;btv1b10319720c&#39;: ([&#39;[Promenades aux Tuileries] : [estampe] ([État avant la lettre]) / G. Doré&#39;],
@@ -2288,10 +2274,6 @@ Name: techniques, dtype: int64
  &#39;btv1b103205809&#39;: ([&#39;[Planche de : Doré, Gustave, &quot;Les travaux d\&#39;Hercule&quot;] : [estampe] ([Tiré à part avec la lettre]) / G. Doré&#39;],
   &#39;plume&#39;,
   1),
- &#39;btv1b10320747j&#39;: ([&quot;[A mesure que nous voyageons, le rire s&#39;estainct et despérit comme l&#39;huile de la lampe.] : [estampe] ([Fumé]) / G. Doré ; Riault&quot;,
-   &#39;Vraie et faulse gayeté&#39;],
-  &#39;huile&#39;,
-  1),
  &#39;btv1b10322340k&#39;: ([&#39;[Frontispice, fumé pour l\&#39;illustration de : Rabelais, François, &quot;Oeuvres&quot;, Tome 1] : [estampe] ([Fumé]) / G. Doré ; Jonnard&#39;],
   &#39;encre&#39;,
   1)}
@@ -2322,7 +2304,7 @@ Name: techniques, dtype: int64
     <span class="c1"># Ajout de l&#39;image au sous-graphique correspondant</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="n">num_cols</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="n">num_cols</span><span class="p">]</span>  <span class="c1"># Sélection du sous-graphique</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rgb</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">tuples</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">tuples</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">ark</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 
@@ -2333,12 +2315,14 @@ Name: techniques, dtype: int64
 
 <span class="c1"># Ajustement automatique des espacements</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Estampes et techniques en lien avec l&#39;expression {Gustave Doré} pour l&#39;année 1832 dans Gallica Images&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9b9c9b71a89950da17f7631d1b27ddd7b71aa2c9772bed091706a6bd442a0a00.png" src="../../_images/9b9c9b71a89950da17f7631d1b27ddd7b71aa2c9772bed091706a6bd442a0a00.png" />
+<img alt="../../_images/005d93dd4657cd6c5a67ddbcc5bd428fb7504746fdb281c1f37f958c94b51b05.png" src="../../_images/005d93dd4657cd6c5a67ddbcc5bd428fb7504746fdb281c1f37f958c94b51b05.png" />
 </div>
 </div>
 <section id="collecte-des-images-via-un-csv">
