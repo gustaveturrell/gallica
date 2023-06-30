@@ -26,10 +26,15 @@ body {
 
 h1 {
   text-align: center;
+  line-height: 1.5;
 }
 
 a{
     color:#069cff;
+}
+
+p{
+    text-align: justify;
 }
 
 /* Make custom sitebar */
@@ -39,11 +44,10 @@ a{
 }
 
 
-
 /* Make custom button to copy */
 
 .highlight button.copybtn {
-    background-color: #eeffcc00;
+    background-color:rgb(0 0 0 / 5%)!important ;
     opacity: 0;
 }
 
@@ -63,7 +67,6 @@ article[role=main] .highlight pre {
 .highlight{
     background: #ffffff00;
 }
-
 
 
 .cell_output .output.text_plain, .cell_output .output.stream {

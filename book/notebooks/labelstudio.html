@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Pipeline de collecte des données" href="pipeline.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Références" href="../memoire/bibliography.html" /><link rel="prev" title="Pipeline de collecte des données" href="pipeline.html" />
 
     <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
         <title>Guide de pratique pour Label Studio - Intership CESR 23</title>
@@ -165,10 +165,18 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Mémoire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../memoire/memoire.html">Mémoire digitale sous l’ère des données massives : les enjeux de l’archive numérique</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Pipeline de collecte des données</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Guide de pratique pour Label Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../memoire/bibliography.html">Références</a></li>
 </ul>
 
 </div>
@@ -258,7 +266,7 @@ http://localhost:8080/
 </div>
 <div class="cell tag_command_line docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Installtio d&#39;un SDK pour utiliser Label Studio avec Python</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Installation d&#39;un SDK pour utiliser Label Studio avec Python</span>
 <span class="n">conda</span> <span class="n">activate</span> <span class="n">label</span><span class="o">-</span><span class="n">studio</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">label</span><span class="o">-</span><span class="n">studio</span><span class="o">-</span><span class="n">sdk</span>
 </pre></div>
@@ -267,28 +275,28 @@ http://localhost:8080/
 </div>
 <div class="snoopy admonition">
 <p class="admonition-title">snoopy</p>
-<p>Pour se connecter sur Label Studio à partir d’un poste de la BnF, il suffit d’allez sur le serveur snoopy.</p>
+<p>Pour se connecter à Label Studio à partir d’un poste de la BnF, il suffit d’aller sur le serveur snoopy. (cf_doc.lotus BnF-ADM-2022-081772)</p>
 </div>
 </section>
 <section id="creation-dun-projet">
 <h2>Création d’un projet<a class="headerlink" href="#creation-dun-projet" title="Permalink to this heading">#</a></h2>
 <p>Lors de votre première connexion il vous sera demandé de créer un compte nécessitant une adresse email et un mot de passe.
-Une fois arrivé sur l’interface vous avez la possibilité de consulter un projet déjà crée, ou de créer le votre, pour ce faire il vous suffit de cliquer sur <code class="docutils literal notranslate"><span class="pre">create</span></code>.<br />
+Une fois arrivé sur l’interface vous avez la possibilité de consulter un projet déjà créé, ou de créer le votre, pour ce faire il vous suffit de cliquer sur <code class="docutils literal notranslate"><span class="pre">create</span></code>.<br />
 Chaque projet dispose d’un nom ainsi que d’une description (optionnelle), vous pouvez ensuite importer des fichiers de divers formats.<br />
 Pour l’importation d’un grand nombre de fichiers il vous faudra passer par le <strong>Cloud Storage</strong>, nous y reviendrons par la suite.</p>
-<p>Il vous seras également demandé de sélectionner un <em>template</em> pour l’interface, deux choix s’offre à vous: sélectionner un <em>template</em> déjà fournit par Label Studio où créer le votre, tout dépend de vos attentes en matière d’annotation. Le choix de <em>template</em> qu’offre Label Studio peut être limité, si vous souhaitez par exemple annoter du texte mais également des images il est sans doute préférable de créer votre propre interface.</p>
+<p>Il vous sera également demandé de sélectionner un <em>template</em> pour l’interface, deux choix s’offre à vous: sélectionner un <em>template</em> déjà fournit par Label Studio où créer le votre, tout dépend de vos attentes en matière d’annotation. Le choix de <em>template</em> qu’offre Label Studio peut être limité; si vous souhaitez par exemple annoter du texte mais également des images il est sans doute préférable de créer votre propre interface.</p>
 <a class="reference internal image-reference" href="../../_images/create-project.gif"><img alt="../../_images/create-project.gif" class="align-center" src="../../_images/create-project.gif" style="width: 1200px;" /></a>
 <section id="via-linferface">
 <h3>via l’Inferface<a class="headerlink" href="#via-linferface" title="Permalink to this heading">#</a></h3>
-<p>Vous pouvez créer votre interface directement lors de la création de votre projet ou bien modifier et créer celui ci depuis  le bouton <code class="docutils literal notranslate"><span class="pre">settings</span></code> en haut à droite.</p>
+<p>Vous pouvez créer votre interface directement lors de la création de votre projet ou bien modifier et créer celui-ci depuis  le bouton <code class="docutils literal notranslate"><span class="pre">settings</span></code> en haut à droite.</p>
 <div class="dropdown admonition important">
 <p class="admonition-title">Important</p>
-<p>Une fois votre <em>template</em> créer, il est déconseillé de modifier celui-ci car l’ensemble de vos données annoter reposerons sur ce <em>template</em> donc soyez prudent et prenez le temps de construire celui-ci en accord avec vos attentes en termes d’annotation.</p>
+<p>Une fois votre <em>template</em> créé, il est déconseillé de modifier celui-ci car l’ensemble de vos données annoter reposerons sur ce <em>template</em> donc soyez prudent et prenez le temps de construire celui-ci en accord avec vos attentes en termes d’annotation.</p>
 </div>
 <a class="reference internal image-reference" href="../../_images/labelling-interface.gif"><img alt="../../_images/labelling-interface.gif" class="align-center" src="../../_images/labelling-interface.gif" style="width: 1200px;" /></a>
-<p>Depuis l’onglet <code class="docutils literal notranslate"><span class="pre">Labeling</span> <span class="pre">Interface</span></code> vous pouvez ajouter un ensemble de label mais également coder votre interface depuis l’onglet <code class="docutils literal notranslate"><span class="pre">code</span></code>.<br />
+<p>Depuis l’onglet <code class="docutils literal notranslate"><span class="pre">Labeling</span> <span class="pre">Interface</span></code> vous pouvez ajouter un ensemble de labels mais également coder votre interface depuis l’onglet <code class="docutils literal notranslate"><span class="pre">code</span></code>.<br />
 Label Studio utilise un language XML.
-Il existe trois différent types de familles de <em>tags</em> pour contrôler et intéragir avec votre interface: <code class="docutils literal notranslate"><span class="pre">Object</span></code> <code class="docutils literal notranslate"><span class="pre">Control</span></code> <code class="docutils literal notranslate"><span class="pre">Visual</span></code>. L’ensemble des tags sont disponible <a class="reference external" href="https://labelstud.io/tags/#Create-a-custom-labeling-configuration">ici</a> Ci-dessous un exemple de code qui permet l’annotation de divers zone graphique et textuelle à travers trois types d’outils, l’ellipse, le polygone et le rectangle.<br />
+Il existe trois différents types de familles de <em>tags</em> pour contrôler et intéragir avec votre interface: <code class="docutils literal notranslate"><span class="pre">Object</span></code> <code class="docutils literal notranslate"><span class="pre">Control</span></code> <code class="docutils literal notranslate"><span class="pre">Visual</span></code>. L’ensemble des tags sont disponible <a class="reference external" href="https://labelstud.io/tags/#Create-a-custom-labeling-configuration">ici</a> Ci-dessous un exemple de code qui permet l’annotation de diverse zones graphiques et textuelle à travers trois types d’outils, l’ellipse, le polygone et le rectangle.<br />
 Ce qu’il faut retenir c’est que la balise <code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> agit comme une <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> en HTML et qu’elle est l’élément parent de l’ensemble des sous-balises.</p>
 <div class="literal-block-wrapper docutils container" id="codetemplatelabelstudio">
 <div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Extrait d’un code XML pour l’interface Label Studio</span><a class="headerlink" href="#codetemplatelabelstudio" title="Permalink to this code">#</a></div>
@@ -316,8 +324,8 @@ Ce qu’il faut retenir c’est que la balise <code class="docutils literal notr
 </div>
 </section>
 <section id="via-le-sdk-label-studio">
-<h3>via le SDK Label Studio<a class="headerlink" href="#via-le-sdk-label-studio" title="Permalink to this heading">#</a></h3>
-<p>Il vous faudra votre <em>TOKEN</em> afin d’utiliser le SDK. Celui-ci est disponible en cliquant sur la <em>tab</em> utilisateur en haut à droite.</p>
+<h3>Via le SDK Label Studio<a class="headerlink" href="#via-le-sdk-label-studio" title="Permalink to this heading">#</a></h3>
+<p>Il vous faudra votre <em>TOKEN</em> afin d’utiliser le SDK. Celui-ci est disponible en cliquant sur la <em>tab</em> utilisateur en haut à droite de l’application Label Studio</p>
 <a class="reference internal image-reference" href="../../_images/tabuser.png"><img alt="../../_images/tabuser.png" class="align-center" src="../../_images/tabuser.png" style="width: 400px;" /></a>
 <a class="reference internal image-reference" href="../../_images/accesstoken.png"><img alt="../../_images/accesstoken.png" class="align-center" src="../../_images/accesstoken.png" style="width: 600px;" /></a>
 <div class="cell docutils container">
@@ -385,8 +393,9 @@ Ce qu’il faut retenir c’est que la balise <code class="docutils literal notr
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fonction qui crée un projet, si celui-ci existe déjà il retourne l&#39;identifiant du projet</span>
 <span class="k">def</span> <span class="nf">get_or_set_project</span><span class="p">(</span><span class="n">client</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 	<span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label_config&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">templates</span>
-
+    <span class="c1">#récupère l&#39;ensemble des projets</span>
 	<span class="n">projects</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">list_projects</span><span class="p">()</span>
+    <span class="c1">#récupère les métadonnées associées aux projets</span>
 	<span class="n">list_projects</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">projects</span><span class="p">]</span>
 
 
@@ -428,11 +437,11 @@ Ce qu’il faut retenir c’est que la balise <code class="docutils literal notr
 </div>
 </section>
 </section>
-<section id="importation-local-de-donnee-via-cloud-storage">
-<h2>Importation local de donnée via Cloud Storage<a class="headerlink" href="#importation-local-de-donnee-via-cloud-storage" title="Permalink to this heading">#</a></h2>
+<section id="importation-locale-de-donnees-via-cloud-storage">
+<h2>Importation locale de données via Cloud Storage<a class="headerlink" href="#importation-locale-de-donnees-via-cloud-storage" title="Permalink to this heading">#</a></h2>
 <section id="via-linterface">
-<h3>via l’Interface<a class="headerlink" href="#via-linterface" title="Permalink to this heading">#</a></h3>
-<p>Pour l’importation d’un grand nombre de donnée il est nécessaire de passer par le <em>Cloud Storage</em> de Label Studio qui permet de synchroniser des données présente localement sur votre machine ou à distance par biais d’une base de données.<br />
+<h3>Via l’Interface<a class="headerlink" href="#via-linterface" title="Permalink to this heading">#</a></h3>
+<p>Pour l’importation d’un grand nombre de donnés il est nécessaire de passer par le <em>Cloud Storage</em> de Label Studio qui permet de synchroniser des données présents localement sur votre machine ou à distance par biais d’une base de données.<br />
 Pour utiliser l’interface il vous suffit d’allez dans <code class="docutils literal notranslate"><span class="pre">Settings</span></code> et <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Storage</span></code> et cliquer sur <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Source</span> <span class="pre">Storage</span></code>.<br />
 Il vous faudra également ajouter des variables d’environnement si cela n’est pas déjà fait. Pour indiquer le chemin du dossier que vous souhaitez synchroniser et activer le service de synchronisation.</p>
 <div class="cell tag_command_line docutils container">
@@ -453,7 +462,7 @@ Il vous faudra également ajouter des variables d’environnement si cela n’es
 <p>Vous pouvez ensuite créer un <em>storage</em> en lui attribuant un nom et en précisant le chemin du dossier à synchroniser, celui-ci doit être un enfant de la variable <code class="docutils literal notranslate"><span class="pre">LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT</span></code> <em>(vous pouvez également filtrer les fichiers avec une regex)</em>. Cliquez ensuite sur <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Storage</span></code> et <code class="docutils literal notranslate"><span class="pre">Sync</span> <span class="pre">Storage</span></code> pour importer ou synchroniser les fichiers.</p>
 </section>
 <section id="id1">
-<h3>via le SDK Label Studio<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Via le SDK Label Studio<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fonction qui crée un storage ci celui-ci n&#39;existe pas. Il récupère son idendifiant dans le cas contraire.</span>
@@ -541,11 +550,12 @@ add       |13416 fichiers
 </section>
 <section id="annotation">
 <h2>Annotation<a class="headerlink" href="#annotation" title="Permalink to this heading">#</a></h2>
-<p>Pour l’interface d’annotation il est possible de créer différent onglets avec différent filtres afin d’organiser l’ensemble de ces données.<br />
-Lors du téléchargement des images avec le module <a class="reference internal" href="pipeline.html#namefordoc"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">iiif_from_csv.collecting_image()</span></code></span></a> il est possible d’attribuer à chaque image un <code class="docutils literal notranslate"><span class="pre">name</span></code> qui permet ainsi de créer des classes d’images en plus des <em>form</em> IIIF présentes dans le nom de fichier.<br />
+<p>Pour l’interface d’annotation il est possible de créer différent onglets avec différentes filtres afin d’organiser l’ensemble de ces données.<br />
+Lors du téléchargement des images avec le module <a class="reference internal" href="pipeline.html#namefordoc"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">iiif_from_csv.collecting_image()</span></code></span></a> il est possible d’attribuer à chaque image un <code class="docutils literal notranslate"><span class="pre">name</span></code> qui permet ainsi de créer des classes d’images en plus des <em>form</em> IIIF présentes dans le nom de fichier par exemple: <code class="docutils literal notranslate"><span class="pre">btv1b10319716n-f1-full-pct#30-0-native-plume</span></code>
 Tout cela réunit permet de contrôler de manière très fine le type d’images que l’on souhaite filtrer <em>(il existe également d’autres types de filtres au délà du nom de l’image).</em></p>
 <a class="reference internal image-reference" href="../../_images/create-tab.gif"><img alt="../../_images/create-tab.gif" class="align-center" src="../../_images/create-tab.gif" style="width: 1100px;" /></a>
-<p>Pour commencer l’annotation il suffit de cliquer sur une image et sélectionner un outil d’annotation ainsi qu’un label. Plusieurs filtres sont également disponible en fonction de la méthodologie adoptée. Une fois l’annotation achevée, cliquer sur le bouton <code class="docutils literal notranslate"><span class="pre">submit</span></code> afin de valider celle-ci. Une date d’annotation seras alors attribué à l’image ainsi que son annotateur.</p>
+<p>Pour commencer l’annotation il suffit de cliquer sur une image et sélectionner un outil d’annotation ainsi qu’un label. Plusieurs filtres sont également disponibles
+en fonction de la méthodologie adoptée. Une fois l’annotation achevée, cliquer sur le bouton <code class="docutils literal notranslate"><span class="pre">submit</span></code> afin de valider celle-ci. Une date d’annotation sera alors attribuée à l’image ainsi que son annotateur.</p>
 <a class="reference internal image-reference" href="../../_images/do_annotation.gif"><img alt="../../_images/do_annotation.gif" class="align-center" src="../../_images/do_annotation.gif" style="width: 1100px;" /></a>
 <section id="exportation-des-annotations">
 <h3>Exportation des annotations<a class="headerlink" href="#exportation-des-annotations" title="Permalink to this heading">#</a></h3>
@@ -557,6 +567,10 @@ Les quatres clées essentielles à retenir ici sont:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">predictions</span></code> qui regroupe l’ensemble des prédications <em>(quand un modèle est lancé depuis l’application)</em></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> qui indique le chemin de la donnée <em>(ici une image)</em></p></li>
 </ol>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>Les images qui ne sont pas annotées ne sont pas comprises lors de l’exportation</p>
+</div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">Exemple de métadonnée associées à une image</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">{</span>
@@ -679,8 +693,8 @@ Les quatres clées essentielles à retenir ici sont:</p>
 <section id="importation-des-annotations-depuis-une-autre-application">
 <h3>Importation des annotations (depuis une autre application)<a class="headerlink" href="#importation-des-annotations-depuis-une-autre-application" title="Permalink to this heading">#</a></h3>
 <p>Dans le cas éventuel ou plusieurs personnes travailleraient ensemble sur des appplications différentes, il peut-être difficile d’importer et de synchroniser l’ensemble des données.
-Le serveur snoopy de la BnF reste l’application de référence en terme de collaboration, dans le cas contraire ou une personne aimerais importer des annotations sur des données qui se trouvent déjà présente sur l’application Label Studio de snoopy. Il est possible via le SDK d’importer des annotations.</p>
-<p>Ici un exemple d’une solution de contournement, qui repose et qui fonctionne uniquement parce que l’image est de même dimension et que l’ark ainsi que l’instance de l’image sont présent dans les deux noms de fichiers. Si des images sont distribuer sur plusieurs applications il est conseillé d’utiliser le module <a class="reference internal" href="pipeline.html#namefordoc"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">iiif_from_csv.collecting_image()</span></code></span></a> car le nom des fichiers sont formattés de façon précise et fine.</p>
+Le serveur snoopy de la BnF reste l’application de référence en terme de collaboration. Dans le cas ou une personne aimerai importer des annotations sur des données qui se trouvent déjà présente sur l’application Label Studio de snoopy, il est possible via le SDK d’importer des annotations.</p>
+<p>Ici un exemple d’une solution de contournement, qui repose et qui fonctionne uniquement parce que l’image est de même dimension et que l’ark ainsi que l’instance de l’image sont présents dans les deux noms de fichiers. Si des images sont distribuées sur plusieurs applications il est conseillé d’utiliser le module <a class="reference internal" href="pipeline.html#namefordoc"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">iiif_from_csv.collecting_image()</span></code></span></a> car le nom des fichiers sont formattés de façon précise et fine.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
@@ -707,7 +721,10 @@ Le serveur snoopy de la BnF reste l’application de référence en terme de col
 </div>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Nettoyage de la chaîne de caractère</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Utilise de le délimitateur `\\` afin de créer une liste à partir de la chaîne de caractère</span>
+<span class="sd">Récupère le dernier élement de la liste et suprimme les caractères `$`</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="n">url_norm</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="n">url_norm</span>
 </pre></div>
@@ -1573,7 +1590,15 @@ resume    |748 annotations ajoutées
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="../memoire/bibliography.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Références</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="pipeline.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
@@ -1619,12 +1644,12 @@ resume    |748 annotations ajoutées
 <li><a class="reference internal" href="#confirguration-et-installation">Confirguration et installation</a></li>
 <li><a class="reference internal" href="#creation-dun-projet">Création d’un projet</a><ul>
 <li><a class="reference internal" href="#via-linferface">via l’Inferface</a></li>
-<li><a class="reference internal" href="#via-le-sdk-label-studio">via le SDK Label Studio</a></li>
+<li><a class="reference internal" href="#via-le-sdk-label-studio">Via le SDK Label Studio</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#importation-local-de-donnee-via-cloud-storage">Importation local de donnée via Cloud Storage</a><ul>
-<li><a class="reference internal" href="#via-linterface">via l’Interface</a></li>
-<li><a class="reference internal" href="#id1">via le SDK Label Studio</a></li>
+<li><a class="reference internal" href="#importation-locale-de-donnees-via-cloud-storage">Importation locale de données via Cloud Storage</a><ul>
+<li><a class="reference internal" href="#via-linterface">Via l’Interface</a></li>
+<li><a class="reference internal" href="#id1">Via le SDK Label Studio</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#annotation">Annotation</a><ul>

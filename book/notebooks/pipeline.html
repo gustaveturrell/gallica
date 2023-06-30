@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Guide de pratique pour Label Studio" href="labelstudio.html" /><link rel="prev" title="Intership CESR 23" href="../../index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Guide de pratique pour Label Studio" href="labelstudio.html" /><link rel="prev" title="Mémoire digitale sous l’ère des données massives : les enjeux de l’archive numérique" href="../memoire/memoire.html" />
 
     <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
         <title>Pipeline de collecte des données - Intership CESR 23</title>
@@ -165,10 +165,18 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Mémoire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../memoire/memoire.html">Mémoire digitale sous l’ère des données massives : les enjeux de l’archive numérique</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Pipeline de collecte des données</a></li>
 <li class="toctree-l1"><a class="reference internal" href="labelstudio.html">Guide de pratique pour Label Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../memoire/bibliography.html">Références</a></li>
 </ul>
 
 </div>
@@ -205,30 +213,30 @@
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="pipeline-de-collecte-des-donnees">
 <h1>Pipeline de collecte des données<a class="headerlink" href="#pipeline-de-collecte-des-donnees" title="Permalink to this heading">#</a></h1>
-<p>Le projet <a class="reference external" href="https://gallica.bnf.fr/accueil/fr/content/accueil-fr?mode=desktop">Gallica Images</a> (2023-2026), qui vise à agréger et à indexer (à
+<p>Le projet <a class="reference external" href="https://gallica.bnf.fr/accueil/fr/content/accueil-fr?mode=desktop">Gallica Images</a> (2023-2026), qui à agréger et à indexer (à
 l’aide de briques IA) les contenus iconographiques de Gallica sous la forme d’une base de
 données publique dotée d’un moteur de recherche. Une des sources d’inspiration de ce
 projet est le démonstrateur <a class="reference external" href="https://gallica.bnf.fr/blog/21062021/gallicapix-un-nouvel-outil-dexploration-iconographique?mode=desktop">GallicaPix</a>.</p>
-<p>Ce notebook s’inscrit dans la phase de sélection du partenaire industriel chargé des
+<p>Ce stage s’inscrit dans la phase de sélection du partenaire industriel chargé des
 développements informatiques et dans celle de la préparation du lancement du projet (été
 2023). Il aura pour objet la conception et le développement d’un banc de test du pipeline de
 traitement d’images qui sera produit par le partenaire industriel lors de l’année 1 du projet,
-consacrée à la réalisation d’un MVP (minimum viable product) portant sur la collectionImages de Gallica.
+consacrée à la réalisation d’un MVP (minimum viable product) portant sur la collection Images de Gallica.
 Ce banc de test servira à l’évaluation des performances du pipeline ainsi
 qu’à sa recette finale.</p>
-<p>Ce notebook à pour objectif la démonstration des différentes étapes du pipeline de l’entrepôt <a class="reference external" href="https://www.openarchives.org/">Open Archives Initiative - Protocol for Metadata Harvesting</a> pour la collecte des métadonnées à la récupération des différentes images présent dans Gallica Images.</p>
+<p>Ce notebook a pour objectif la démonstration des différentes étapes du pipeline de l’entrepôt: de la collecte des métadonnées présent dans l’entrepôt OAINUM à la récupération des différentes images présent dans Gallica Images à travers le protocole IIIF.</p>
 <div class="dropdown admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Ce jupyter est automatiquement charger avec les modules et packages compris. Pour lancer le notebook localement, vous devez installer les packages requis.
+<p>Ce jupyter est automatiquement chargé avec les modules et packages compris. Pour lancer le notebook localement, vous devez installer les packages requis.
 <a class="reference download internal" download="" href="../../_downloads/7acc9b5b69931a8bf3be50f698352075/pipeline.zip"><span class="xref download myst">Téléchargement</span></a></p>
 </div>
 <section id="les-entrepots-de-la-bnf">
 <h2>Les entrepôts de la BnF<a class="headerlink" href="#les-entrepots-de-la-bnf" title="Permalink to this heading">#</a></h2>
-<p>La BnF gère deux types d’entrepôts où sont stockés l’ensemble des métadonnées relatives à ses documents.</p>
-<p>Le premier ensemble de données correspond aux notices des documents numériques dont la consultation est ouverte à tout public. Un sous-ensemble important de ces notices est consultable via Gallica en particulier. Cet entrepôt contient l’ensemble des notices des documents numériques consultables dans Gallica et pour lesquels la BnF possède les fichiers numériques. La granularité de cet entrepôt est le document numérique « unitaire », tel que consulté dans Gallica : un document numérique consultable identifié par un identifiant ark unique, un enregistrement (« record »).</p>
-<p>On appellera cet entrepôt <a class="reference external" href="https://api.bnf.fr/fr/node/170">OAI-NUM</a>. Son interrogation permet d’obtenir les métadonnées d’un document numérique dont l’identifiant ark a par exemple été trouvé dans Gallica. Il est également possible d’obtenir une liste d’identifiants de documents appartenant à un ensemble prédéfini dans l’entrepôt (appelé « set » dans la terminologie OAI).</p>
+<p>La BnF gère deux types d’entrepôts OAI-NUM et OAI-CAT où sont stockés l’ensemble des métadonnées relatives à ses documents.</p>
+<p>Le premier entrepôt OAI-NUM de données correspond aux notices des documents numériques dont la consultation est ouverte à tout public. Un sous-ensemble important de ces notices est consultable via Gallica en particulier. Cet entrepôt contient l’ensemble des notices des documents numériques consultables dans Gallica et pour lesquels la BnF possède les fichiers numériques. La granularité de cet entrepôt est le document numérique « unitaire », tel que consulté dans Gallica : un document numérique consultable identifié par un identifiant ark unique, un enregistrement (« record »).</p>
+<p>Son interrogation permet d’obtenir les métadonnées d’un document numérique dont l’identifiant ark a par exemple été trouvé dans Gallica. Il est également possible d’obtenir une liste d’identifiants de documents appartenant à un ensemble prédéfini dans l’entrepôt (appelé « set » dans la terminologie OAI).</p>
 <div class="literal-block-wrapper docutils container" id="setsxml">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Extrait XML de la requête <a class="reference external" href="http://oai.bnf.fr/oai2//OAIHandler?verb=ListSets">ListSets</a> qui liste l’ensemble des sets présent dans l’entrepôt</span><a class="headerlink" href="#setsxml" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Extrait XML de la requête <a class="reference external" href="http://oai.bnf.fr/oai2//OAIHandler?verb=ListSets">ListSets</a> qui liste l’ensemble des sets présents dans l’entrepôt</span><a class="headerlink" href="#setsxml" title="Permalink to this code">#</a></div>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;set&gt;</span>
 <span class="nt">&lt;setSpec&gt;</span>gallica:typedoc:periodiques<span class="nt">&lt;/setSpec&gt;</span>
 <span class="nt">&lt;setName&gt;</span>Gallica<span class="w"> </span>:<span class="w"> </span>types<span class="w"> </span>de<span class="w"> </span>documents<span class="w"> </span>:<span class="w"> </span>périodiques<span class="w"> </span>imprimés<span class="nt">&lt;/setName&gt;</span>
@@ -244,8 +252,8 @@ qu’à sa recette finale.</p>
 </div>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
-<p>L’arborescence des sets et analogue aux dossiers et sous dossiers, dans l’exemple ci dessus gallica est le le dossier racine et et périodiques le dossier enfant de typedoc qui lui même le dossier enfant de gallica.<br />
-Cela permet de récupérer des ensembles de records disposant de parent commun.</p>
+<p>L’arborescence des sets et analogue aux dossiers et sous-dossiers, dans l’exemple ci-dessus gallica est le le dossier racine et périodiques le dossier enfant de typedoc qui lui-même le dossier enfant de gallica.<br />
+Cela permet de récupérer des ensembles de records disposant d’un parent commun.</p>
 </div>
 <section id="la-collecte-de-metadonnees-a-travers-oai-py">
 <h3>La collecte de métadonnées à travers <code class="docutils literal notranslate"><span class="pre">oai.py</span></code><a class="headerlink" href="#la-collecte-de-metadonnees-a-travers-oai-py" title="Permalink to this heading">#</a></h3>
@@ -268,7 +276,7 @@ Cela permet de récupérer des ensembles de records disposant de parent commun.<
 </div>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Créer une instance `gallica` et récupère l&#39;ensemble des sets présent à l&#39;intérieur de l&#39;entrepôt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Créer une instance `gallica` et récupère l&#39;ensemble des sets présents à l&#39;intérieur de l&#39;entrepôt</span>
 <span class="n">gallica</span> <span class="o">=</span> <span class="n">OAINUM</span><span class="p">(</span><span class="s1">&#39;http://oai.bnf.fr/oai2//OAIHandler&#39;</span><span class="p">)</span>
 <span class="n">setspec</span><span class="p">,</span><span class="n">setname</span> <span class="o">=</span> <span class="n">gallica</span><span class="o">.</span><span class="n">listSets</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">setspec</span><span class="p">),</span><span class="n">setspec</span><span class="p">[</span><span class="mi">250</span><span class="p">],</span> <span class="n">setname</span><span class="p">[</span><span class="mi">250</span><span class="p">]</span>
@@ -287,7 +295,7 @@ Cela permet de récupérer des ensembles de records disposant de parent commun.<
 </div>
 </details>
 </div>
-<p>Il est également possible de récupérer les métadonnées associées à  des documents si on dispose de son <a class="reference external" href="https://www.bnf.fr/fr/lidentifiant-ark-archival-resource-key">ARK</a>.Par défaut le type de format est le format <strong>Dublin Core Simple</strong> <em>oai_dc</em> mais il est également possible de récupérer le format <strong>TEL-Application profile</strong> <em>tel_ap</em>.</p>
+<p>Il est également possible de récupérer les métadonnées associées à  des documents si on dispose de leur <a class="reference external" href="https://www.bnf.fr/fr/lidentifiant-ark-archival-resource-key">ARK</a>.Par défaut le type de format est le format <strong>Dublin Core Simple</strong> <em>oai_dc</em> mais il est également possible de récupérer le format <strong>TEL-Application profile</strong> <em>tel_ap</em>.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gallica</span><span class="o">.</span><span class="n">getRecord</span><span class="p">(</span><span class="s1">&#39;btv1b6937398m&#39;</span><span class="p">)</span>
@@ -360,7 +368,7 @@ Cela permet de récupérer des ensembles de records disposant de parent commun.<
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>La BnF dipose de trois types de format de métadonnées sous l’entrepôt OAINUM:</p>
+<p>La BnF dipose de trois types de format de métadonnées dans l’entrepôt OAINUM:</p>
 <ol class="arabic simple">
 <li><p><strong>Dublin Cores Simple (oai_dc)</strong> : les principes retenus à la BnF dans l’utilisation des éléments du Dublin Core simple sont présentés dans le <a class="reference external" href="https://multimedia-ext.bnf.fr/pdf/guide_dublin_core_bnf_2008.pdf">Guide d’utilisation du Dublin Core à la BnF</a>.</p></li>
 <li><p><strong>TEL-Application profile (tel_ap)</strong> : il s’agit d’un profil d’application du Dublin Core spécifiquement développé dans le cadre du projet européen The European Library. En plus des éléments du Dublin Core simple, le TEL – Application profile utilise quelques éléments du Dublin Code qualifié (ex. dcterms:issued), de MODS (ex. mods:location), et quelques éléments spécifiques à TEL-AP pour préciser le lien aux ressources numérisées lorsque c’est pertinent (tel:seeonline vers la ressource numérisée, et tel:fulltext vers le texte OCRisé).</p></li>
@@ -371,14 +379,14 @@ Cela permet de récupérer des ensembles de records disposant de parent commun.<
 <section id="creation-dun-parser">
 <h3>Création d’un <em>parser</em><a class="headerlink" href="#creation-dun-parser" title="Permalink to this heading">#</a></h3>
 <p>L’instance <code class="docutils literal notranslate"><span class="pre">gallica</span></code> dispose seulement de l’implémentation du format <code class="docutils literal notranslate"><span class="pre">oai_dc</span></code> et <code class="docutils literal notranslate"><span class="pre">tel_ap</span></code> avec des <em>parser</em> par défaut. Il existe la possibilité de créer son propre parser notamment pour le format de métadonnées <code class="docutils literal notranslate"><span class="pre">didl</span></code> qui n’est pour lors pas implémenté.</p>
-<p>Le <em>parser</em> extrait seulement les balises et éléments enfants de <code class="docutils literal notranslate"><span class="pre">&lt;metadata&gt;</span></code>. Pour implémenter soi-même son propre parseur, il est nécessaire de créer un dictionnaire python qui comprend trois clées <code class="docutils literal notranslate"><span class="pre">fields</span></code>, <code class="docutils literal notranslate"><span class="pre">namespaces</span></code>, <code class="docutils literal notranslate"><span class="pre">prefix</span></code>, le premier étant le chemin <a class="reference external" href="https://fr.wikipedia.org/wiki/XPath">XPath</a> de la donnée à extraire, le second étant l’ensemble des <a class="reference external" href="https://en.wikipedia.org/wiki/XML_namespace">namespaces</a> nécessaire, ainsi que le prefix obligatoire lors de la requête désignant un des trois type de format de métadonnées disponible dans l’entrepôt.</p>
+<p>Le <em>parser</em> extrait seulement les balises et éléments enfants de <code class="docutils literal notranslate"><span class="pre">&lt;metadata&gt;</span></code>. Pour implémenter soi-même son propre parseur, il est nécessaire de créer un dictionnaire python qui comprend trois clés <code class="docutils literal notranslate"><span class="pre">fields</span></code>, <code class="docutils literal notranslate"><span class="pre">namespaces</span></code>, <code class="docutils literal notranslate"><span class="pre">prefix</span></code>, le premier étant le chemin <a class="reference external" href="https://fr.wikipedia.org/wiki/XPath">XPath</a> de la donnée à extraire, le second étant l’ensemble des <a class="reference external" href="https://en.wikipedia.org/wiki/XML_namespace">namespaces</a> nécessaire, ainsi que le préfixe obligatoire lors de la requête désignant un des trois type de format de métadonnées disponible dans l’entrepôt.</p>
 <p>Un exemple pour la <a class="reference external" href="http://oai.bnf.fr/oai2//OAIHandler?verb=GetRecord&amp;identifier=oai:bnf.fr:gallica/ark:/12148/bpt6k5499065k&amp;metadataPrefix=didl">requête</a> concernant le document <code class="docutils literal notranslate"><span class="pre">ark</span></code>: <a class="reference external" href="https://gallica.bnf.fr/ark:/12148/bpt6k5499065k">bpt6k5499065k</a> <code class="docutils literal notranslate"><span class="pre">prefix</span></code>: <a class="reference external" href="https://fr.wikipedia.org/wiki/MPEG-21">DIDL</a>:</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 METADATA</label><div class="sd-tab-content docutils">
 <div class="literal-block-wrapper docutils container" id="metadataxml">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Extrait XML des élements enfant de &lt;metadata&gt;</span><a class="headerlink" href="#metadataxml" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Extrait XML des élements enfants de &lt;metadata&gt;</span><a class="headerlink" href="#metadataxml" title="Permalink to this code">#</a></div>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="nt">&lt;metadata&gt;</span>
 </span><span class="linenos"> 2</span><span class="nt">&lt;didl:DIDL</span><span class="w"> </span><span class="na">xmlns:didl=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:02-DIDL-NS&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;urn:mpeg:mpeg21:2002:02-DIDL-NS http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-21_schema_files/did/didl.xsd&quot;</span><span class="nt">&gt;</span>
 <span class="linenos"> 3</span><span class="nt">&lt;didl:Item&gt;</span>
@@ -579,14 +587,14 @@ TEL_AP (default)</label><div class="sd-tab-content docutils">
 </section>
 <section id="collecte-de-sets-present-dans-lentrepot">
 <span id="chunksize-research"></span><h3>Collecte de sets présent dans l’entrepôt<a class="headerlink" href="#collecte-de-sets-present-dans-lentrepot" title="Permalink to this heading">#</a></h3>
-<p>Le téléchargement d’un set, c’est-à-dire d’une collection disponible dans l’entrepôt, se fait de manière séquentielle. Lors d’une requête, les records nous sont envoyés par lots. La première requête nous retourne également un <code class="docutils literal notranslate"><span class="pre">resumptionToken</span></code> qui nous permet de lancer une deuxième requête à laquelle le <code class="docutils literal notranslate"><span class="pre">resumptionToken</span></code> seras attaché. Cela nous permet, requête par requête, <em>(page par page)</em> de collecter l’ensemble des records. Il nous indique également le nombre de records présent pour cette collection.</p>
+<p>Le téléchargement d’un set, c’est-à-dire d’une collection disponible dans l’entrepôt, se fait de manière séquentielle. Lors d’une requête, les records nous sont envoyés par lots. La première requête nous retourne également un <code class="docutils literal notranslate"><span class="pre">resumptionToken</span></code> qui nous permet de lancer une deuxième requête à laquelle le <code class="docutils literal notranslate"><span class="pre">resumptionToken</span></code> sera attaché. Cela nous permet, requête par requête, <em>(page par page)</em> de collecter l’ensemble des records. Il nous indique également le nombre de records présents pour cette collection.</p>
 <div class="literal-block-wrapper docutils container" id="tokenoai">
 <div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Exemple de resumptionToken pour une collection (141542 records)</span><a class="headerlink" href="#tokenoai" title="Permalink to this code">#</a></div>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;resumptionToken</span><span class="w"> </span><span class="na">expirationDate=</span><span class="s">&quot;2023-06-05T11:07:26Z&quot;</span><span class="w"> </span><span class="na">completeListSize=</span><span class="s">&quot;141542&quot;</span><span class="w"> </span><span class="na">cursor=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>93!8!68469958!6018!100!141542!oai_dc<span class="nt">&lt;/resumptionToken&gt;</span>
 </pre></div>
 </div>
 </div>
-<p>Il est également important de noter que lors de l’appel de la fonction <code class="docutils literal notranslate"><span class="pre">pullSets()</span></code> il est possible de préciser la taille maximale d’un fichier<code class="docutils literal notranslate"><span class="pre">.json</span></code> lors de l’écriture des records. Par défaut, celui-ci est fixé à <code class="docutils literal notranslate"><span class="pre">20mb</span></code>, pour des grosses collections. Il est possible d’augmenter la taille maximum, mais il n’est généralement pas recommandé de descendre en dessous. Ce détail à son importance lors de la fouille de donnéeS, nous y reviendrons par la suite.</p>
+<p>Il est également important de noter que lors de l’appel de la fonction <code class="docutils literal notranslate"><span class="pre">pullSets()</span></code> il est possible de préciser la taille maximale d’un fichier<code class="docutils literal notranslate"><span class="pre">.json</span></code> lors de l’écriture des records. Par défaut, celui-ci est fixé à <code class="docutils literal notranslate"><span class="pre">20mb</span></code>, pour des grosses collections. Il est possible d’augmenter la taille maximum, mais il n’est généralement pas recommandé de descendre en dessous.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -660,6 +668,7 @@ Collecting records gallica:corpus:EnPCcorp15: 1580records [00:04, 334.93records/
 </section>
 <section id="collecte-des-images-a-travers-document-py">
 <h3>Collecte des images à travers <code class="docutils literal notranslate"><span class="pre">document.py</span></code><a class="headerlink" href="#collecte-des-images-a-travers-document-py" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">document.py</span></code> est une classe qui permet de récupérer les métadonnées d’un document, et de télécharger les images associées sous les <em>form</em> IIIF.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nest_asyncio</span>
@@ -776,7 +785,8 @@ Collecting records gallica:corpus:EnPCcorp15: 1580records [00:04, 334.93records/
 <img alt="../../_images/f9e4fd08eaaabcd86ab714a629c61643cd889655765c1566f56eb1839eaee5f7.png" src="../../_images/f9e4fd08eaaabcd86ab714a629c61643cd889655765c1566f56eb1839eaee5f7.png" />
 </div>
 </div>
-<p>Il est possible de télécharger les images correspondant au document de façon asynchrone. Des limitations subviennent pendant l’utilisation de l’API <a class="reference external" href="https://iiif.io/">IIIF</a> de la BnF <em>(hors serveur interne à la BnF)</em>. Un algorithme de <a class="reference external" href="https://fr.wikipedia.org/wiki/Seau_perc%C3%A9">seau percé</a> est mis en place afin d’éviter les erreurs dues aux limitations mises en place par l’API.</p>
+<p>Il est possible de télécharger les images correspondant au document de façon asynchrone. Des limitations surviennent pendant l’utilisation de l’API <a class="reference external" href="https://iiif.io/">IIIF</a> de la BnF <em>(hors serveur interne à la BnF)</em>. Un algorithme de <a class="reference external" href="https://fr.wikipedia.org/wiki/Seau_perc%C3%A9">seau percé</a> est mis en place afin d’éviter les erreurs dues aux limitations mises en place par l’API.
+Le seau percé est utilisé pour mettre en œuvre la régulation du trafic et la mise en forme du trafic dans les réseaux de données Ethernet et cellulaires. Il peut également être utilisé pour contrôler les connexions Internet à bande passante mesurée afin d’empêcher les utilisateurs de dépasser la bande passante allouée pendant une période spécifiée, évitant ainsi des frais supplémentairesou limitations mises en place par l’API</p>
 <div class="mermaid">
             stateDiagram-v2
 direction TB
@@ -825,7 +835,7 @@ manifest.json  --&gt; get_img_timeout : len(img)
 </div>
 <div class="dropdown admonition attention">
 <p class="admonition-title">Attention</p>
-<p>Ces paramètres n’engendrent pas d’erreur due aux limitations de l’API. Il est possible de réécrire ce dictionnaire une fois la classe instancier, mais il est déconseillé de le faire si le code n’est pas lancé sur le serveur interne de la BnF</p>
+<p>Ces paramètres n’engendrent pas d’erreur due aux limitations de l’API. Il est possible de réécrire ce dictionnaire une fois la classe instanciée, mais il est déconseillé de le faire si le code n’est pas lancé sur le serveur interne de la BnF</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -845,10 +855,10 @@ manifest.json  --&gt; get_img_timeout : len(img)
 </div>
 </div>
 </div>
-<p id="docparams-dft">Chaque image est téléchargée selon les paramètres par défaut de la classe disponible dans <code class="docutils literal notranslate"><span class="pre">.params_dft</span></code>. Il est possible de réécrire ces paramètres selon les standards mis en place à travers le protocol <a class="reference external" href="https://en.wikipedia.org/wiki/International_Image_Interoperability_Framework">IIIF</a>. La document de l’API est disponible <a class="reference external" href="https://iiif.io/api/image/3.0/">ici</a> elle fournit l’ensemble des <em>form</em> disponible et associées à chaque clée du dictionnaire <code class="docutils literal notranslate"><span class="pre">.params_dft</span></code>.<br />
-L’utilisateur peut également passer une liste d’images à télécharger à travers la clée <code class="docutils literal notranslate"><span class="pre">.params_df['image']</span></code>. Si une liste est présente l’ensemble des autres paramètres s’appliqueront aux images à moins de passer également une autre liste de même taille (où les indices des éléments deviendrons les paramètres à associer)
-Une fois l’image téléchargée, le nom de l’image contiendras l’ark et l’ensemble des paramètres associés à celle-ci exemple:<code class="docutils literal notranslate"><span class="pre">bpt6k62463369-f1-full-pct#30-0-native-lerire_journalhumoristique.jpg</span></code>.</p>
-<p>La clée<code class="docutils literal notranslate"><span class="pre">.params_dft['name']</span></code> indique la possibilité d’ajouter un attribut dans le nom du fichier afin de créer une classe d’images <em>(par défaut, il correspond à la date de téléchargement)</em></p>
+<p id="docparams-dft">Chaque image est téléchargée selon les paramètres par défaut de la classe disponible dans <code class="docutils literal notranslate"><span class="pre">.params_dft</span></code>. Il est possible de réécrire ces paramètres selon les standards mis en place à travers le protocole <a class="reference external" href="https://en.wikipedia.org/wiki/International_Image_Interoperability_Framework">IIIF</a>. La document de l’API est disponible <a class="reference external" href="https://iiif.io/api/image/3.0/">ici</a> elle fournit l’ensemble des <em>form</em> disponible et associées à chaque clée du dictionnaire <code class="docutils literal notranslate"><span class="pre">.params_dft</span></code>.<br />
+L’utilisateur peut également passer une liste d’images à télécharger à travers la cléf <code class="docutils literal notranslate"><span class="pre">.params_df['image']</span></code>. Si une liste est présente l’ensemble des autres paramètres s’appliqueront aux images à moins de passer également une autre liste de même taille (où les indices des éléments deviendrons les paramètres à associer)
+Une fois l’image téléchargée, le nom de l’image contiendra l’ark et l’ensemble des paramètres associés à celle-ci par exemple:<code class="docutils literal notranslate"><span class="pre">bpt6k62463369-f1-full-pct#30-0-native-lerire_journalhumoristique.jpg</span></code>.</p>
+<p>La clé<code class="docutils literal notranslate"><span class="pre">.params_dft['name']</span></code> indique la possibilité d’ajouter un attribut dans le nom du fichier afin de créer une classe d’images <em>(par défaut, il correspond à la date de téléchargement)</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Si liste il y a, elles doivent être de même tailles</span>
@@ -990,13 +1000,13 @@ Une fois l’image téléchargée, le nom de l’image contiendras l’ark et l�
 <p class="admonition-title">Note</p>
 <p>Pour des raisons pratiques un ensemble de collection est disponible au téléchargement via ce lien <a class="reference external" href="https://drive.google.com/drive/folders/1PIurNg4_3YLPwNNN378EEyWRASdg324n?usp=drive_link">Google Drive</a>. Il contient un ensemble de fichiers <code class="docutils literal notranslate"><span class="pre">.json</span></code> appartenant à différentes collections <em>(set)</em></p>
 </div>
-<p>Le module <code class="docutils literal notranslate"><span class="pre">research_multiprocessing()</span></code> repose sur la recherche de chaînes de caractères à l’intérieur des métadonnées. Pour ce faire il suffit de créer un dictionnaire dont la clée indique le <code class="docutils literal notranslate"><span class="pre">group</span></code> associé aux <code class="docutils literal notranslate"><span class="pre">match</span></code> c’est à dire aux chaînes de caractères (sous forme de <a class="reference external" href="https://docs.python.org/fr/3/howto/regex.html">regex</a>). Cela nous permet de créer des listes d’autoritée pour un ensemble d’expressions. Si une expression est trouvée, le module retourne <code class="docutils literal notranslate"><span class="pre">(ark,group,match,from)</span></code> le <code class="docutils literal notranslate"><span class="pre">from</span></code> indique la localisation du match (une des <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> renvoyée par le <em>parser</em>)</p>
-<p>Lors du lancement de <code class="docutils literal notranslate"><span class="pre">mapping2csv()</span></code> le module liste l’ensemble des fichiers <code class="docutils literal notranslate"><span class="pre">.json</span></code> présent dans le dossier. L’argument <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> indique le nombre de partitions que l’on veut distribuer (une partition par <em>process</em>). Le nombre de <em>process</em> dépend du nombre <em>Core</em> présent sur la machine.<br />
+<p>Le module <code class="docutils literal notranslate"><span class="pre">research_multiprocessing()</span></code> permet la fouille en parallèle de plusieurs fichiers .json récupérer via <code class="docutils literal notranslate"><span class="pre">oai.py</span></code> par la recherche de chaînes de caractères à l’intérieur des métadonnées. Pour ce faire il suffit de créer un dictionnaire dont la cle indique le <code class="docutils literal notranslate"><span class="pre">group</span></code> associé aux <code class="docutils literal notranslate"><span class="pre">match</span></code> c’est à dire aux chaînes de caractères (sous forme de <a class="reference external" href="https://docs.python.org/fr/3/howto/regex.html">regex</a>). Cela nous permet de créer des listes d’autoritée pour un ensemble d’expressions. Si une expression est trouvée, le module retourne <code class="docutils literal notranslate"><span class="pre">(ark,group,match,from)</span></code> le <code class="docutils literal notranslate"><span class="pre">from</span></code> indique la localisation du match (une des <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> renvoyée par le <em>parser</em>)</p>
+<p>Lors du lancement de <code class="docutils literal notranslate"><span class="pre">mapping2csv()</span></code> le module liste l’ensemble des fichiers <code class="docutils literal notranslate"><span class="pre">.json</span></code> présent dans le dossier. L’argument <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> indique le nombre de partitions que l’on veut distribuer (une partition par <em>process</em>). Le nombre de <em>process</em> dépend du nombre de <em>cores</em> présents sur la machine.<br />
 La création d’un process exige un certain temps, il est donc essentiel d’avoir des fichiers <code class="docutils literal notranslate"><span class="pre">.json</span></code>
-<a class="reference internal" href="#chunksize-research"><span class="std std-ref">ni trop gros, ni trop petit</span></a> en terme de taille. Mais également un <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> qui prend en considération le nombre de <em>Core</em>.</p>
+<a class="reference internal" href="#chunksize-research"><span class="std std-ref">ni trop gros, ni trop petit</span></a> en terme de taille. Mais également un <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> qui prend en considération le nombre de <em>cores</em>.</p>
 <div class="dropdown admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Avant la création de chaque partition <em>(dont leurs tailles dépend de chunksize et du nombre total de fichiers)</em>. Les fichiers sont mélangés, cela permet de rééquilibrer la distribution des fichiers par <em>process</em>, car certains fichiers peuvent contenir plus de records <em>(même si une taille maximum par fichier est de 20mb, un fichier peu très bien faire une taille de 3mb)</em><br />
+<p>Avant la création de chaque partition <em>(dont les tailles dépend de chunksize et du nombre total de fichiers)</em>. Les fichiers sont mélangés, cela permet de rééquilibrer la distribution des fichiers par <em>process</em>, car certains fichiers peuvent contenir plus de records <em>(même si une taille maximum par fichier est de 20mb, un fichier peu très bien faire une taille de 3mb)</em><br />
 Il faut également se limiter à un dictionnaire résonnable ainsi qu’être prudent lors de la recherche d’expressions, par exemple rechercher le mot “il” ou “elle” peut générer un fichier CSV avec une taille de plusieurs giga octets.</p>
 </div>
 <div class="mermaid">
@@ -1068,7 +1078,7 @@ direction LR
 </div>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
-<p>La compilation des expréssions régulère se fait en <code class="docutils literal notranslate"><span class="pre">re.IGNORECASE</span></code>, c’est à dire qu’elle ne sont pas sensible aux majuscules et minuscule</p>
+<p>La compilation des expressions régulière se fait en <code class="docutils literal notranslate"><span class="pre">re.IGNORECASE</span></code>, c’est à dire qu’elles ne sont pas sensibles aux majuscules et minuscules</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2345,7 +2355,7 @@ Name: techniques, dtype: int64
 </div>
 <section id="collecte-des-images-via-un-csv">
 <h3>Collecte des images via un <code class="docutils literal notranslate"><span class="pre">.csv</span></code><a class="headerlink" href="#collecte-des-images-via-un-csv" title="Permalink to this heading">#</a></h3>
-<p>Il est possible de télécharger l’ensemble des images via un <code class="docutils literal notranslate"><span class="pre">.csv</span></code> exporté avec Pandas. Le module <code class="docutils literal notranslate"><span class="pre">iiif_from_csv()</span></code> dispose également d’un dictionnaire qui attribut des <em>form</em> IIIF par défaut à l’instart de <a class="reference internal" href="#docparams-dft"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">fetch_image()</span></code></span></a> présent dans la classe <code class="docutils literal notranslate"><span class="pre">Document</span></code> mais également un dictionnaire pour le <code class="docutils literal notranslate"><span class="pre">leaky_bucket</span></code></p>
+<p>Il est possible de télécharger l’ensemble des images via un <code class="docutils literal notranslate"><span class="pre">.csv</span></code> exporté avec Pandas. Le module <code class="docutils literal notranslate"><span class="pre">iiif_from_csv()</span></code> dispose également d’un dictionnaire qui attribut des <em>form</em> IIIF par défaut à l’instart de <a class="reference internal" href="#docparams-dft"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">fetch_image()</span></code></span></a> présent dans la classe <code class="docutils literal notranslate"><span class="pre">Document</span></code> mais également un dictionnaire pour le <code class="docutils literal notranslate"><span class="pre">leaky_bucket</span></code>. La différence avec <code class="docutils literal notranslate"><span class="pre">fetch_images()</span></code> et que ce dernier est rattaché à l’ark qui a été instancié via la classe <code class="docutils literal notranslate"><span class="pre">Document</span></code> contrairement a <code class="docutils literal notranslate"><span class="pre">iiif_from_csv()</span></code> qui permet la collecte d’images appartenant a plusieurs documents.</p>
 <div class="mermaid">
             stateDiagram-v2
 direction TB
@@ -3140,14 +3150,14 @@ manifest.json  --&gt; get_img_timeout : len(img)
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../../index.html">
+          <a class="prev-page" href="../memoire/memoire.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Home</div>
+                <div class="title">Mémoire digitale sous l’ère des données massives : les enjeux de l’archive numérique</div>
                 
               </div>
             </a>
