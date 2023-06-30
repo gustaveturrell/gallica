@@ -4,7 +4,13 @@
 format: jb-book
 root: index
 parts:
+  - caption: Mémoire
+    chapters:
+    - file: book/memoire/memoire.md
   - caption: Documentation
     chapters:
     - file: book/notebooks/pipeline.ipynb
     - file: book/notebooks/labelstudio
+  - caption: Appendices
+    chapters:
+      - file: book/memoire/bibliography.md

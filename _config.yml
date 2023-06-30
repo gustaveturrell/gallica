@@ -43,10 +43,12 @@ repository:
 
 sphinx:
   extra_extensions:
+    - sphinx_design
     - sphinxcontrib.mermaid
     - sphinx_inline_tabs
   config:
     html_theme: furo
+    bibtex_reference_style: author_year
     # html_extra_path: ["CNAME", "robots.txt"]
 
 
@@ -56,18 +58,15 @@ parse:
   - "colon_fence"
   - "deflist"
   - "dollarmath"
-  - "fieldlist"
   - "html_admonition"
   - "html_image"
   - "linkify"
   - "replacements"
   - "smartquotes"
-  - "strikethrough"
   - "substitution"
-  - "tasklist"
 
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - book/references.bib
+  - book/memoire/references.bib
 
