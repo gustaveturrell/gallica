@@ -1,4 +1,4 @@
-# Mémoire digitale sous l'ère des données massives : les enjeux de l'archive numérique
+# Mémoire digitale: les enjeux de l'archive numérique et du Big Data
 
 Le mot archive souffre d'un imaginaire collectif qui voudrait que celle-ci soit la panacée des librairies, conservateur ou bureaucrate. On imagine des piles de documents entreposés dans des boîtes en carton, sur les étagères d’un corridor poussiéreux, noyés sous des systèmes organisationnels. Inaccessible, rigide et opaque à l’étranger qui ne possède pas les logiques qu’elle habite. 
 
@@ -21,14 +21,14 @@ La mémoire est donc ce qui vient donner sens, organiser et architecturer un con
 
 > *«Cette expérience du mot qu'on sait et dont on est sevré, est l'expérience où l'oubli de l'humanité qui est en nous agresse. Où le caractère fortuit de nos pensées, où la nature fragile de notre identité, où la matière involontaire de notre mémoire et son étoffe exclusivement linguistique se touchent avec les doigts. C'est l'expérience où nos limites et notre mort se confondent pour la première fois. C'est la détresse propre au langage humain. C'est la détresse devant ce qui est acquis. Le nom sur le bout de la langue nous rappelle que le langage n'est pas en nous un acte réflexe. Que nous ne sommes pas des bêtes qui parlent comme elles voient»* {cite:p}`quignard_1993`
 
-Quand est-il de cette expérience de l'oubli pour l'individu du XXI<sup>ème</sup>siècle, capable d'étendre ces moyens mnémoniques par le biais de prothèses numériques ? Quand est-il de la mémoire à l'heure des données massives ?
+Quand est-il de cette expérience de l'oubli pour l'individu du XXI{sup}`ème`siècle, capable d'étendre ces moyens mnémoniques par le biais de prothèses numériques ? Quand est-il de la mémoire à l'heure des données massives ?
 
 Quand on additionne l'ensemble de ces prothèses riches en bits d'informations, on obtient l'édifice le plus important jamais construit par l'homme, en termes de rétention, mais aussi de défaillance. Cette nouvelle architecture, que l'on nomme communément le Big Data, est une prothèse divine à porter de *clic*. Mais comment se fait cette élection d'information ? Comment s'organise-t-elle? Comment l'interroger ? Et quelles sont ses failles ?
 
 
 ### L'archive, une question de pouvoir
 
-Parler de mémoire, c'est faire le parallèle avec l'archive. L'archive comme la mémoire c'est l'élection, le prélèvement, et le rappel de cette information dans le présent {cite:p}`quignard_1993`. Pour Arlette Farge {cite:p}`farge_1989` « le travail en archive oblige forcément à des opérations de tri de séparation des documents [...] les mots sont porteurs de présent, éléments de reconnaissance et de distinction du temps d’où ils sont issus ». Parler d'archive, c'est également faire le lien avec la technique. Toutes les révolutions techniques, comme la presse de Gutenberg puis la presse rotative, le cinéma des Frères Lumières, le disque vinyle, la photographie sur pellicule et, aujourd'hui, nos entrepôts de données. On eut pour conséquences, au-delà de la diffusion de l'information et de son stockage, sa production organisée et répétée dans une quantité toujours plus grande. Au début du XX<sup>ème</sup>siècle, l'archiviste Hilary Jenkinson soulevait déjà ce problème :
+Parler de mémoire, c'est faire le parallèle avec l'archive. L'archive comme la mémoire c'est l'élection, le prélèvement, et le rappel de cette information dans le présent {cite:p}`quignard_1993`. Pour Arlette Farge {cite:p}`farge_1989` « le travail en archive oblige forcément à des opérations de tri de séparation des documents [...] les mots sont porteurs de présent, éléments de reconnaissance et de distinction du temps d’où ils sont issus ». Parler d'archive, c'est également faire le lien avec la technique. Toutes les révolutions techniques, comme la presse de Gutenberg puis la presse rotative, le cinéma des Frères Lumières, le disque vinyle, la photographie sur pellicule et, aujourd'hui, nos entrepôts de données. On eut pour conséquences, au-delà de la diffusion de l'information et de son stockage, sa production organisée et répétée dans une quantité toujours plus grande. Au début du XX{sup}`ème`siècle, l'archiviste Hilary Jenkinson soulevait déjà ce problème :
 
 > «*Là existe un réel danger que l'historien du futur, sans parler de l'archiviste, soit enterré sous la masse de ses autorités manuscrites [sic] ; ou alternativement que pour faire face aux accumulations des mesures puissent être prises qu'aucun archiviste ne pourrait approuver*» {cite:p}`jenkinson_1937`
 
@@ -83,7 +83,7 @@ Douglas Engelbart a eu l'intelligence de comprendre que ce nouveau média, qu'é
 
 ```{figure} assets/niveaux-langages.png
 :align: center
-:width: 500px
+:width: 400px
 Les niveaux de languages informatique
 ```
 
@@ -123,7 +123,7 @@ La discrétisation c'est donc le passage de valeurs continues à un ensemble de 
 
 Maintenant prenons un autre exemple, mais cette fois-ci avec le média qu'est la photographie. Imaginons que l'on prenne une photographie argentique et avec une loupe grossissante on zoom, et que l'on zoom encore et encore. Petit à petit les détails de la photo finiraient par disparaître pour ne laisser apparaitre que des séquences ininterrompues de dégradés ou d'aplat de couleur. C'est le monde analogique, un monde infini, un monde fait d'atomes. Faisons la même expérience avec la même photographie, mais cette fois-ci à travers un écran d'ordinateur. Nous finirons par apercevoir un pixel représentant une couleur. C'est le monde discret, un monde fini, un monde fait de 0 et de 1. Car pour représenter une image sur un écran d'ordinateur, il faut bien réduire l'image à nombre de pixels finis. Lors de la digitalisation, on procède à un échantillonnage afin d'attribuer à l'image un nombre de valeurs finis, et ainsi, la voir sur un écran fait de pixels.
 
-Hormis, l'aspect technique, la digitalisation nous montre deux constats. Le premier constat, si on parle aujourd'hui de raison computationnelle comme l'évoque Bruno Bachimot {cite:p}bachimont_2004, c'est parce que l'informatique repose sur des ensembles discrets. Le père de l'informatique, Alan Turing, parle de « machine à états discrets ». C'est cet aspect discret, quantifiable, qui fait de l'ordinateur une machine dont l'essence même est le calcul. Cela nous ramène au deuxième constat, avec le média qu'est l'informatique toutes les informations qui y transites sont reproductibles à l'identique, car quantifiables.
+Hormis, l'aspect technique, la digitalisation nous montre deux constats. Le premier constat, si on parle aujourd'hui de raison computationnelle comme l'évoque Bruno Bachimot {cite:p}`bachimont_2004`, c'est parce que l'informatique repose sur des ensembles discrets. Le père de l'informatique, Alan Turing, parle de « machine à états discrets ». C'est cet aspect discret, quantifiable, qui fait de l'ordinateur une machine dont l'essence même est le calcul. Cela nous ramène au deuxième constat, avec le média qu'est l'informatique toutes les informations qui y transites sont reproductibles à l'identique, car quantifiables.
 
 
 Ces niveaux d'abstraction ne sont pas sans conséquence, car même en maitrisant l'ensemble des différents niveaux de langage. L'informatique se montre à nous seulement dans sa forme la plus riche sémiotiquement, nous ne lisons pas vraiment l'information qui y transite, seulement les signes qu'il nous projette. Ce qui fait de nous plus ou moins, des analphabètes. 
@@ -141,7 +141,7 @@ Pour résumer, l'indice désigne, l'icône ressemble, le symbole évoque. L'info
 
 Le médium informatique est donc un méta-médium, *méta* dans le sens où il englobe tous les autres médiums. Les protocoles liés aux autres médiums sont réinvoqués sous des logiques de digitalisation, des logiques d’échantillonnage. Alors que le vrai protocole est caché à l'individu derrière son écran - l'informatique est une boîte-noire.
 
-Cela nous invite à reconsidérer ce que nous voyons, ce que nous archivons, ce que nous nous remémorons. Lorsque je regarde une peinture du XVIIIème siècle à travers mon écran, lorsque j'écoute un concert de Jimi Hendrix sur YouTube, lorsque que j'écris mon mémoire de fin d'étude par le biais d'un clavier… Toutes ces actions qui sont pour moi des opérations herméneutiques riches de signes, ne sont en réalité que l'écriture de 0 et 1. On fait souvent la critique que nous vivons dans une société d'images, où le texte tend doucement à disparaître et que les jeunes générations n'écrivent plus. La réalité est toute autre, l'écriture n'a jamais été aussi présente, une écriture faite de 0 et 1.
+Cela nous invite à reconsidérer ce que nous voyons, ce que nous archivons, ce que nous nous remémorons. Lorsque je regarde une peinture du XVIII{sup}`ème` siècle à travers mon écran, lorsque j'écoute un concert de Jimi Hendrix sur YouTube, lorsque que j'écris mon mémoire de fin d'étude par le biais d'un clavier… Toutes ces actions qui sont pour moi des opérations herméneutiques riches de signes, ne sont en réalité que l'écriture de 0 et 1. On fait souvent la critique que nous vivons dans une société d'images, où le texte tend doucement à disparaître et que les jeunes générations n'écrivent plus. La réalité est toute autre, l'écriture n'a jamais été aussi présente, une écriture faite de 0 et 1.
 
 À l'ère du Big Data, à l'ère du tout numérique, à l'ère des 0 et 1, il est essentiel de réapprendre à lire et à écrire si on veut se saisir des enjeux en cours en termes d'archives. C’est ce que nous invite à faire Vilèm Flusser:
 
@@ -274,7 +274,7 @@ Paul Baran distingue trois types de réseaux :
 - Le réseau distribué où tous les nœuds sont des nœuds principaux par lesquels transite l'information, c'est l'Internet d'aujourd'hui. Il y a une très forte redondance de l'information car ce réseau repose sur la réécriture de l'information, la destruction d'un nœud n'engendre pas de grosse perte d'accès et d'échange à l'information.
 
 
-Internet repose sur cette notion de réseaux distribués. Chaque information qui transite d'un émetteur à un récepteur est divisée en bloc, ce qu'on nomme des « paquets». Ces paquets sont anonymisés sur l'information qu'ils transportent, qu'il s'agisse d'une image, d'une vidéo, d'un texte. Les seules métadonnées dont disposent ces paquets sont des informations sur l'émetteur, le récepteur ainsi que les différentes procédures pour reconstituer l'ensemble des paquets. Chaque paquet est ensuite distribué sur le réseau, empruntant un itinéraire différent. Lorsqu’un paquet transite par un nœud, celui-ci est interrompu, les métadonnées du paquet sont actualisées avec le temps et l'itinéraire parcouru. C’est là qu’opère le *packet-switching*, il procède à une micro-décision afin de décider du meilleur itinéraire à parcourir en fonction de la charge du réseau. Ces micros-décisions sont au cœur du protocole *TCP/IP*. 
+Internet repose sur cette notion de réseaux distribués. Chaque information qui transite d'un émetteur à un récepteur est divisée en bloc, ce qu'on nomme des «paquets». Ces paquets sont anonymisés sur l'information qu'ils transportent, qu'il s'agisse d'une image, d'une vidéo, d'un texte[^1]. Les seules métadonnées dont disposent ces paquets sont des informations sur l'émetteur, le récepteur ainsi que les différentes procédures pour reconstituer l'ensemble des paquets. Chaque paquet est ensuite distribué sur le réseau, empruntant un itinéraire différent. Lorsqu’un paquet transite par un nœud, celui-ci est interrompu, les métadonnées du paquet sont actualisées avec le temps et l'itinéraire parcouru. C’est là qu’opère le *packet-switching*, il procède à une micro-décision afin de décider du meilleur itinéraire à parcourir en fonction de la charge du réseau. Ces micros-décisions sont au cœur du protocole *TCP/IP*. 
 
 > «*La temporalité des micros -décisions est l'interruption qui se produit au niveau des nœuds à chaque transmissions pour décider de leur direction et de leur priorité. Sans ces décisions, aucune transmissions possible. Le fait que la transmissions soit interrompue en permanence signifie non seulement qu'elle ne peut pas avoir lieu en temps réel, comme on le suppose généralement, mais qu'elle ne relie jamais les êtres humains sans intermédiaire et qu'elle ne permet aucun accès direct au monde [..] La métaphore du flux cache le fait que, d'un point de vue technique, c'est tout le contraire qui se produit. Un réseau n'est pas constitué de flux, le fait que cette métaphore suggère qu'il y aurait un réseau dans un flux est la preuve que, aussi bien dans ce cas que dans la vision d'Internet, la question de transmission et ses détails techniques a été ignorée.*» {cite:p}`sprenger_2017`
 
@@ -286,6 +286,25 @@ Avec l'archive classique, la recherche à l'information était différente. Mêm
 > «*Le clic est le geste effectué grâce à la mémoire par habitude, la succession de clics est un saut d'un espace à un autre, dans ces sauts, toutes dimensions temporelle est niée. Tel est le risque, oublier le temp, celui qui passe mais surtout celui nous forme, nous nourrit, un temps qui ne peut-être pensé selon une stricte chronologie des moments qui le composent.*» {cite:p}`truchot_2019`
 
 Avec l'archive numérique on filtre et sélectionne pour nous, parce que la quantité d'informations est beaucoup trop importante. Mais derrière ces opérations herméneutiques se cachent logiques politiques, économiques et matérielles. Il faut donc renouer avec de nouveaux concepts et penser à une esthétique de l'information numérique, ouvrir cette boîte noire à l'utilisateur, lui montrer les mécanismes qui se cache derrière cette immédiateté de l'information, lui offrir la possibilité de parcourir d'autres chemins, de bifurquer. Car c'est dans cette bifurcation que se cache ce que Jean-Pierre Truchot appelle « l’instant fécond », le fait de chercher une chose précise mais d'en découvrir une autre par accident et sagacité, c'est ce qui fait de toute recherche le théâtre de surprise, de plaisir et qui permet de construire sa réflexion. Walpole nomme ça la sérendipité.
+
+
+
+
+Parler d'archive numérique et d'archive classique, c'est sous-entendre les mêmes dynamiques, de contrôle et de pouvoir, autour de la notion d'information.
+De pouvoir, car produire l'archive, c'est construire un récit, créer du sens, du savoir, à partir d'une information - la source primaire.
+De contrôle, car la production d'information est toujours le théâtre de délocalisation et relocalisation, à des fins de diffusion ou de captation.
+L'avènement du numérique a émancipé l'information de sa source primaire, cela a eu pour conséquence la production toujours plus grande d'information, mais a également eu des conséquences sur la manière dont nous structurons l'information. Comment créer du sens quand d'un point de vue binaire, une image ou du texte sont la même chose ? Ces questions sont aujourd'hui toujours ouvertes, même si de grandes initiatives sont en marche depuis plusieurs années, comme le Web Sémantique, les standards de métadonnées ou bien encore les réseaux de neurones profonds.
+Cette émancipation s'accompagne également d'une nouvelle écologie de la mémoire. Car avec le numérique, la notion d'incertitude est omniprésente, une incertitude spatiale et temporelle. Contrairement à l'imaginaire d'un monde numérique plus transparent, l'informatique est avant tout une boîte-noire dont les modes d'accès et de fermeture à l'archive sont difficilement compréhensibles.
+
+
+
+
+
+
+ 
+
+
+
 
 
 

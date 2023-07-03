@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Références" href="../memoire/bibliography.html" /><link rel="prev" title="Pipeline de collecte des données" href="pipeline.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Références" href="../markdown/bibliography.html" /><link rel="prev" title="Pipeline de collecte des données" href="pipeline.html" />
 
     <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
         <title>Guide de pratique pour Label Studio - Intership CESR 23</title>
@@ -24,7 +24,7 @@
 
 <style>
   body {
-    --color-code-background: #eeffcc;
+    --color-code-background: #f8f8f8;
   --color-code-foreground: black;
   
   }
@@ -165,9 +165,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Mémoire</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Rapport et mémoire</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../memoire/memoire.html">Mémoire digitale sous l’ère des données massives : les enjeux de l’archive numérique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/documentation.html">Les enjeux dans le développement d’un jeux de donnée autour des fonds numérisés de la Bibliothèque Nationale de France</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/memoire.html">Mémoire digitale: les enjeux de l’archive numérique et du Big Data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
@@ -176,7 +177,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../memoire/bibliography.html">Références</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/bibliography.html">Références</a></li>
 </ul>
 
 </div>
@@ -214,33 +215,40 @@
           <section class="tex2jax_ignore mathjax_ignore" id="guide-de-pratique-pour-label-studio">
 <h1>Guide de pratique pour Label Studio<a class="headerlink" href="#guide-de-pratique-pour-label-studio" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://labelstud.io/">Label Studio</a> est un outil d’annotation Open Source qui permet de façon flexible et collaborative de préparer un jeu de données et de valider des modèles AI. Il est possible d’accéder à Label Studio sur le serveur snoopy de la BnF, ou bien de l’installer localement sur sa machine.</p>
-<section id="confirguration-et-installation">
-<h2>Confirguration et installation<a class="headerlink" href="#confirguration-et-installation" title="Permalink to this heading">#</a></h2>
-<div class="tab-set docutils">
-<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">PIP</label><div class="tab-content docutils">
-<div class="highlight-{code-block}powershell notranslate"><div class="highlight"><pre><span></span>pip install -U label-studio
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+PIP</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>label-studio
 label-studio
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">BREW</label><div class="tab-content docutils">
-<div class="highlight-{code-block}powershell notranslate"><div class="highlight"><pre><span></span>brew install heartexlabs/tap/label-studio
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+BREW</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>heartexlabs/tap/label-studio
 label-studio
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">GIT</label><div class="tab-content docutils">
-<div class="highlight-{code-block}powershell notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/heartexlabs/label-studio.git
-cd label-studio
-pip install -e .
-python label_studio/manage.py migrate
-python label_studio/manage.py collectstatic
-python label_studio/manage.py runserver
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+GIT</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/heartexlabs/label-studio.git
+<span class="nb">cd</span><span class="w"> </span>label-studio
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+python<span class="w"> </span>label_studio/manage.py<span class="w"> </span>migrate
+python<span class="w"> </span>label_studio/manage.py<span class="w"> </span>collectstatic
+python<span class="w"> </span>label_studio/manage.py<span class="w"> </span>runserver
 </pre></div>
 </div>
 </div>
-<input class="tab-input" id="tab-set--0-input--4" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--4">DOCKER</label><div class="tab-content docutils">
-<div class="highlight-{code-block}powershell notranslate"><div class="highlight"><pre><span></span>docker run -it -p 8080:8080 -v `pwd`/mydata:/label-studio/data heartexlabs/label-studio:latest
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+GIT</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="sb">```</span>bash
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/mydata:/label-studio/data<span class="w"> </span>heartexlabs/label-studio:latest
 http://localhost:8080/
 </pre></div>
 </div>
@@ -277,17 +285,16 @@ http://localhost:8080/
 <p class="admonition-title">snoopy</p>
 <p>Pour se connecter à Label Studio à partir d’un poste de la BnF, il suffit d’aller sur le serveur snoopy. (cf_doc.lotus BnF-ADM-2022-081772)</p>
 </div>
-</section>
-<section id="creation-dun-projet">
-<h2>Création d’un projet<a class="headerlink" href="#creation-dun-projet" title="Permalink to this heading">#</a></h2>
+<section id="creation-d-un-projet">
+<h2>Création d’un projet<a class="headerlink" href="#creation-d-un-projet" title="Permalink to this heading">#</a></h2>
 <p>Lors de votre première connexion il vous sera demandé de créer un compte nécessitant une adresse email et un mot de passe.
 Une fois arrivé sur l’interface vous avez la possibilité de consulter un projet déjà créé, ou de créer le votre, pour ce faire il vous suffit de cliquer sur <code class="docutils literal notranslate"><span class="pre">create</span></code>.<br />
 Chaque projet dispose d’un nom ainsi que d’une description (optionnelle), vous pouvez ensuite importer des fichiers de divers formats.<br />
 Pour l’importation d’un grand nombre de fichiers il vous faudra passer par le <strong>Cloud Storage</strong>, nous y reviendrons par la suite.</p>
 <p>Il vous sera également demandé de sélectionner un <em>template</em> pour l’interface, deux choix s’offre à vous: sélectionner un <em>template</em> déjà fournit par Label Studio où créer le votre, tout dépend de vos attentes en matière d’annotation. Le choix de <em>template</em> qu’offre Label Studio peut être limité; si vous souhaitez par exemple annoter du texte mais également des images il est sans doute préférable de créer votre propre interface.</p>
 <a class="reference internal image-reference" href="../../_images/create-project.gif"><img alt="../../_images/create-project.gif" class="align-center" src="../../_images/create-project.gif" style="width: 1200px;" /></a>
-<section id="via-linferface">
-<h3>via l’Inferface<a class="headerlink" href="#via-linferface" title="Permalink to this heading">#</a></h3>
+<section id="via-l-inferface">
+<h3>via l’Inferface<a class="headerlink" href="#via-l-inferface" title="Permalink to this heading">#</a></h3>
 <p>Vous pouvez créer votre interface directement lors de la création de votre projet ou bien modifier et créer celui-ci depuis  le bouton <code class="docutils literal notranslate"><span class="pre">settings</span></code> en haut à droite.</p>
 <div class="dropdown admonition important">
 <p class="admonition-title">Important</p>
@@ -439,8 +446,8 @@ Ce qu’il faut retenir c’est que la balise <code class="docutils literal notr
 </section>
 <section id="importation-locale-de-donnees-via-cloud-storage">
 <h2>Importation locale de données via Cloud Storage<a class="headerlink" href="#importation-locale-de-donnees-via-cloud-storage" title="Permalink to this heading">#</a></h2>
-<section id="via-linterface">
-<h3>Via l’Interface<a class="headerlink" href="#via-linterface" title="Permalink to this heading">#</a></h3>
+<section id="via-l-interface">
+<h3>Via l’Interface<a class="headerlink" href="#via-l-interface" title="Permalink to this heading">#</a></h3>
 <p>Pour l’importation d’un grand nombre de donnés il est nécessaire de passer par le <em>Cloud Storage</em> de Label Studio qui permet de synchroniser des données présents localement sur votre machine ou à distance par biais d’une base de données.<br />
 Pour utiliser l’interface il vous suffit d’allez dans <code class="docutils literal notranslate"><span class="pre">Settings</span></code> et <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Storage</span></code> et cliquer sur <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Source</span> <span class="pre">Storage</span></code>.<br />
 Il vous faudra également ajouter des variables d’environnement si cela n’est pas déjà fait. Pour indiquer le chemin du dossier que vous souhaitez synchroniser et activer le service de synchronisation.</p>
@@ -1590,7 +1597,7 @@ resume    |748 annotations ajoutées
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../memoire/bibliography.html">
+          <a class="next-page" href="../markdown/bibliography.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
@@ -1641,14 +1648,13 @@ resume    |748 annotations ajoutées
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Guide de pratique pour Label Studio</a><ul>
-<li><a class="reference internal" href="#confirguration-et-installation">Confirguration et installation</a></li>
-<li><a class="reference internal" href="#creation-dun-projet">Création d’un projet</a><ul>
-<li><a class="reference internal" href="#via-linferface">via l’Inferface</a></li>
+<li><a class="reference internal" href="#creation-d-un-projet">Création d’un projet</a><ul>
+<li><a class="reference internal" href="#via-l-inferface">via l’Inferface</a></li>
 <li><a class="reference internal" href="#via-le-sdk-label-studio">Via le SDK Label Studio</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#importation-locale-de-donnees-via-cloud-storage">Importation locale de données via Cloud Storage</a><ul>
-<li><a class="reference internal" href="#via-linterface">Via l’Interface</a></li>
+<li><a class="reference internal" href="#via-l-interface">Via l’Interface</a></li>
 <li><a class="reference internal" href="#id1">Via le SDK Label Studio</a></li>
 </ul>
 </li>

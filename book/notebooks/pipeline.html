@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Guide de pratique pour Label Studio" href="labelstudio.html" /><link rel="prev" title="Mémoire digitale sous l’ère des données massives : les enjeux de l’archive numérique" href="../memoire/memoire.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Guide de pratique pour Label Studio" href="labelstudio.html" /><link rel="prev" title="Mémoire digitale: les enjeux de l’archive numérique et du Big Data" href="../markdown/memoire.html" />
 
     <!-- Generated with Sphinx 5.0.2 and Furo 2023.03.27 -->
         <title>Pipeline de collecte des données - Intership CESR 23</title>
@@ -24,7 +24,7 @@
 
 <style>
   body {
-    --color-code-background: #eeffcc;
+    --color-code-background: #f8f8f8;
   --color-code-foreground: black;
   
   }
@@ -165,9 +165,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Mémoire</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Rapport et mémoire</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../memoire/memoire.html">Mémoire digitale sous l’ère des données massives : les enjeux de l’archive numérique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/documentation.html">Les enjeux dans le développement d’un jeux de donnée autour des fonds numérisés de la Bibliothèque Nationale de France</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/memoire.html">Mémoire digitale: les enjeux de l’archive numérique et du Big Data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
@@ -176,7 +177,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../memoire/bibliography.html">Références</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/bibliography.html">Références</a></li>
 </ul>
 
 </div>
@@ -376,8 +377,8 @@ Cela permet de récupérer des ensembles de records disposant d’un parent comm
 </ol>
 </div>
 </section>
-<section id="creation-dun-parser">
-<h3>Création d’un <em>parser</em><a class="headerlink" href="#creation-dun-parser" title="Permalink to this heading">#</a></h3>
+<section id="creation-d-un-parser">
+<h3>Création d’un <em>parser</em><a class="headerlink" href="#creation-d-un-parser" title="Permalink to this heading">#</a></h3>
 <p>L’instance <code class="docutils literal notranslate"><span class="pre">gallica</span></code> dispose seulement de l’implémentation du format <code class="docutils literal notranslate"><span class="pre">oai_dc</span></code> et <code class="docutils literal notranslate"><span class="pre">tel_ap</span></code> avec des <em>parser</em> par défaut. Il existe la possibilité de créer son propre parser notamment pour le format de métadonnées <code class="docutils literal notranslate"><span class="pre">didl</span></code> qui n’est pour lors pas implémenté.</p>
 <p>Le <em>parser</em> extrait seulement les balises et éléments enfants de <code class="docutils literal notranslate"><span class="pre">&lt;metadata&gt;</span></code>. Pour implémenter soi-même son propre parseur, il est nécessaire de créer un dictionnaire python qui comprend trois clés <code class="docutils literal notranslate"><span class="pre">fields</span></code>, <code class="docutils literal notranslate"><span class="pre">namespaces</span></code>, <code class="docutils literal notranslate"><span class="pre">prefix</span></code>, le premier étant le chemin <a class="reference external" href="https://fr.wikipedia.org/wiki/XPath">XPath</a> de la donnée à extraire, le second étant l’ensemble des <a class="reference external" href="https://en.wikipedia.org/wiki/XML_namespace">namespaces</a> nécessaire, ainsi que le préfixe obligatoire lors de la requête désignant un des trois type de format de métadonnées disponible dans l’entrepôt.</p>
 <p>Un exemple pour la <a class="reference external" href="http://oai.bnf.fr/oai2//OAIHandler?verb=GetRecord&amp;identifier=oai:bnf.fr:gallica/ark:/12148/bpt6k5499065k&amp;metadataPrefix=didl">requête</a> concernant le document <code class="docutils literal notranslate"><span class="pre">ark</span></code>: <a class="reference external" href="https://gallica.bnf.fr/ark:/12148/bpt6k5499065k">bpt6k5499065k</a> <code class="docutils literal notranslate"><span class="pre">prefix</span></code>: <a class="reference external" href="https://fr.wikipedia.org/wiki/MPEG-21">DIDL</a>:</p>
@@ -585,8 +586,8 @@ TEL_AP (default)</label><div class="sd-tab-content docutils">
 </details>
 </div>
 </section>
-<section id="collecte-de-sets-present-dans-lentrepot">
-<span id="chunksize-research"></span><h3>Collecte de sets présent dans l’entrepôt<a class="headerlink" href="#collecte-de-sets-present-dans-lentrepot" title="Permalink to this heading">#</a></h3>
+<section id="collecte-de-sets-present-dans-l-entrepot">
+<span id="chunksize-research"></span><h3>Collecte de sets présent dans l’entrepôt<a class="headerlink" href="#collecte-de-sets-present-dans-l-entrepot" title="Permalink to this heading">#</a></h3>
 <p>Le téléchargement d’un set, c’est-à-dire d’une collection disponible dans l’entrepôt, se fait de manière séquentielle. Lors d’une requête, les records nous sont envoyés par lots. La première requête nous retourne également un <code class="docutils literal notranslate"><span class="pre">resumptionToken</span></code> qui nous permet de lancer une deuxième requête à laquelle le <code class="docutils literal notranslate"><span class="pre">resumptionToken</span></code> sera attaché. Cela nous permet, requête par requête, <em>(page par page)</em> de collecter l’ensemble des records. Il nous indique également le nombre de records présents pour cette collection.</p>
 <div class="literal-block-wrapper docutils container" id="tokenoai">
 <div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Exemple de resumptionToken pour une collection (141542 records)</span><a class="headerlink" href="#tokenoai" title="Permalink to this code">#</a></div>
@@ -3126,16 +3127,16 @@ manifest.json  --&gt; get_img_timeout : len(img)
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "label-studio"
         },
         kernelOptions: {
-            name: "python3",
+            name: "label-studio",
             path: "./book/notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'label-studio'</script>
         </article>
       </div>
       <footer>
@@ -3150,14 +3151,14 @@ manifest.json  --&gt; get_img_timeout : len(img)
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../memoire/memoire.html">
+          <a class="prev-page" href="../markdown/memoire.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Mémoire digitale sous l’ère des données massives : les enjeux de l’archive numérique</div>
+                <div class="title">Mémoire digitale: les enjeux de l’archive numérique et du Big Data</div>
                 
               </div>
             </a>
@@ -3194,8 +3195,8 @@ manifest.json  --&gt; get_img_timeout : len(img)
 <li><a class="reference internal" href="#">Pipeline de collecte des données</a><ul>
 <li><a class="reference internal" href="#les-entrepots-de-la-bnf">Les entrepôts de la BnF</a><ul>
 <li><a class="reference internal" href="#la-collecte-de-metadonnees-a-travers-oai-py">La collecte de métadonnées à travers <code class="docutils literal notranslate"><span class="pre">oai.py</span></code></a></li>
-<li><a class="reference internal" href="#creation-dun-parser">Création d’un <em>parser</em></a></li>
-<li><a class="reference internal" href="#collecte-de-sets-present-dans-lentrepot">Collecte de sets présent dans l’entrepôt</a></li>
+<li><a class="reference internal" href="#creation-d-un-parser">Création d’un <em>parser</em></a></li>
+<li><a class="reference internal" href="#collecte-de-sets-present-dans-l-entrepot">Collecte de sets présent dans l’entrepôt</a></li>
 <li><a class="reference internal" href="#collecte-des-images-a-travers-document-py">Collecte des images à travers <code class="docutils literal notranslate"><span class="pre">document.py</span></code></a></li>
 </ul>
 </li>
