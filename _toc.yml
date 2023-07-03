@@ -4,13 +4,14 @@
 format: jb-book
 root: index
 parts:
-  - caption: Mémoire
+  - caption: Rapport et mémoire
     chapters:
-    - file: book/memoire/memoire.md
+    - file: book/markdown/documentation.md
+    - file: book/markdown/memoire.md
   - caption: Documentation
     chapters:
     - file: book/notebooks/pipeline.ipynb
     - file: book/notebooks/labelstudio
   - caption: Appendices
     chapters:
-      - file: book/memoire/bibliography.md
+      - file: book/markdown/bibliography.md

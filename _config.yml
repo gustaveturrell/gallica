@@ -46,27 +46,34 @@ sphinx:
     - sphinx_design
     - sphinxcontrib.mermaid
     - sphinx_inline_tabs
+    - sphinxcontrib.bibtex
+    - sphinx.ext.imgconverter
+
   config:
+    pygments_style: 'emacs'
     html_theme: furo
-    bibtex_reference_style: author_year
+    bibtex_reference_style: author_year # config:cd 
     # html_extra_path: ["CNAME", "robots.txt"]
 
 
-parse:
-  myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
-  - "amsmath"
-  - "colon_fence"
-  - "deflist"
-  - "dollarmath"
-  - "html_admonition"
-  - "html_image"
-  - "linkify"
-  - "replacements"
-  - "smartquotes"
-  - "substitution"
-
+myst_enable_extensions: 
+  - amsmath
+  - colon_fence
+  - deflist
+  - dollarmath
+  - html_image
+  - linkify
+  - replacements
+  - smartquotes
+  - substitution
+  - attrs_block
+  - attrs_inline
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - book/memoire/references.bib
+  - book/markdown/references.bib
+
+latex:
+  use_jupyterbook_latex: false
+  latex_engine: pdflatex
 

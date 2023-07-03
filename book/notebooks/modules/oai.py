@@ -5,7 +5,7 @@ from tqdm import tqdm
 from functools import partial
 from queue import Queue, Empty
 from oaipmh.client import Client
-from modules.tools import dumpsFile, logging_files
+# from modules.tools import dumpsFile, logging_files
 from concurrent.futures.thread import ThreadPoolExecutor
 from oaipmh.metadata import MetadataRegistry, MetadataReader
 from oaipmh.common import Header, Metadata
@@ -224,3 +224,4 @@ class OAINUM:
 			with dumpssets:dumpssets.append(*filtered_records)
 				
 
+print(OAINUM('http://oai.bnf.fr/oai2//OAIHandler').getRecord('btv1b10584517b'))

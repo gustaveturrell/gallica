@@ -6,7 +6,7 @@ import aiohttp
 import asyncio
 import logging
 import datetime
-from modules.oai import OAINUM
+from oai import OAINUM
 from pprint import pprint
 from aiohttp import ClientSession
 from collections import namedtuple
@@ -139,3 +139,5 @@ class Document:
 			error_files = [os.path.join(directory,x[1]) for x in filter(lambda x: x[0] == None, response)]
 			list(os.remove(path) for path in error_files if os.path.exists(path))
 
+
+Document("btv1b105845b")
