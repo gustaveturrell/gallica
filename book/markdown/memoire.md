@@ -288,13 +288,11 @@ Avec l'archive classique, la recherche à l'information était différente. Mêm
 Avec l'archive numérique on filtre et sélectionne pour nous, parce que la quantité d'informations est beaucoup trop importante. Mais derrière ces opérations herméneutiques se cachent logiques politiques, économiques et matérielles. Il faut donc renouer avec de nouveaux concepts et penser à une esthétique de l'information numérique, ouvrir cette boîte noire à l'utilisateur, lui montrer les mécanismes qui se cache derrière cette immédiateté de l'information, lui offrir la possibilité de parcourir d'autres chemins, de bifurquer. Car c'est dans cette bifurcation que se cache ce que Jean-Pierre Truchot appelle « l’instant fécond », le fait de chercher une chose précise mais d'en découvrir une autre par accident et sagacité, c'est ce qui fait de toute recherche le théâtre de surprise, de plaisir et qui permet de construire sa réflexion. Walpole nomme ça la sérendipité.
 
 
-
-
-Parler d'archive numérique et d'archive classique, c'est sous-entendre les mêmes dynamiques, de contrôle et de pouvoir, autour de la notion d'information.
-De pouvoir, car produire l'archive, c'est construire un récit, créer du sens, du savoir, à partir d'une information - la source primaire.
-De contrôle, car la production d'information est toujours le théâtre de délocalisation et relocalisation, à des fins de diffusion ou de captation.
-L'avènement du numérique a émancipé l'information de sa source primaire, cela a eu pour conséquence la production toujours plus grande d'information, mais a également eu des conséquences sur la manière dont nous structurons l'information. Comment créer du sens quand d'un point de vue binaire, une image ou du texte sont la même chose ? Ces questions sont aujourd'hui toujours ouvertes, même si de grandes initiatives sont en marche depuis plusieurs années, comme le Web Sémantique, les standards de métadonnées ou bien encore les réseaux de neurones profonds.
-Cette émancipation s'accompagne également d'une nouvelle écologie de la mémoire. Car avec le numérique, la notion d'incertitude est omniprésente, une incertitude spatiale et temporelle. Contrairement à l'imaginaire d'un monde numérique plus transparent, l'informatique est avant tout une boîte-noire dont les modes d'accès et de fermeture à l'archive sont difficilement compréhensibles.
+Parler d'archive numérique et d'archive classique, c'est sous-entendre les mêmes dynamiques de contrôle et de pouvoir autour de la notion d'information.
+De pouvoir, car produire l'archive, c'est construire un récit, créer du sens, du savoir à partir d'une information - la source primaire.
+De contrôle, car la production d'information est toujours le théâtre de délocalisations et de relocalisations, à des fins de diffusion ou de captation.
+L'avènement du numérique a émancipé l'information de sa source primaire, ce qui a entraîné une production toujours plus importante d'information, mais a également eu des conséquences sur la manière dont nous structurons l'information. Comment créer du sens quand, d'un point de vue binaire, une image ou du texte sont la même chose ? Ces questions sont aujourd'hui toujours ouvertes, même si de grandes initiatives sont en marche depuis plusieurs années, telles que le Web Sémantique, les standards de métadonnées ou encore les réseaux de neurones profonds.
+Cette émancipation s'accompagne également d'une nouvelle écologie de la mémoire, car avec le numérique, la notion d'incertitude est omniprésente, une incertitude spatiale et temporelle. Contrairement à l'imaginaire d'un monde numérique plus transparent, l'informatique est avant tout une boîte noire dont les modes d'accès et de fermeture à l'archive sont difficilement compréhensibles. 
 
 
 
