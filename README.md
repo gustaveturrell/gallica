@@ -1,3 +1,0 @@
-# Gallica Images
- 
- to built
