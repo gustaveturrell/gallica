@@ -1,4 +1,4 @@
-# Les enjeux dans le développement d'un jeux de donnée autour des fonds numérisés de la Bibliothèque Nationale de France
+# Les enjeux dans le développement d'un jeu de données autour des fonds numérisés de la Bibliothèque Nationale de France
 
 ## Contextualisation  
 
