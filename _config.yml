@@ -5,10 +5,10 @@
 
 #######################################################################################
 # Book settings
-title: Intership CESR 23 # The title of the book. Will be placed in the left navbar.
-author: Axel Martin # The author of the book
+title: Gallica Images [Pipeline Documentation] # The title of the book. Will be placed in the left navbar.
+author: Axel Martin et Jean-Philippe Moreux # The author of the book
 copyright: "2023" # Copyright year to be placed in the footer
-logo: './_static/logo-gallica.png' # A path to the book logo
+logo: "./_static/logo-gallica.png" # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 # Auto-exclude files not in the toc
@@ -50,13 +50,12 @@ sphinx:
     - sphinx.ext.imgconverter
 
   config:
-    pygments_style: 'emacs'
+    pygments_style: "emacs"
     html_theme: furo
-    bibtex_reference_style: author_year # config:cd 
+    bibtex_reference_style: author_year # config:cd
     # html_extra_path: ["CNAME", "robots.txt"]
 
-
-myst_enable_extensions: 
+myst_enable_extensions:
   - amsmath
   - colon_fence
   - deflist
@@ -76,4 +75,3 @@ bibtex_bibfiles:
 latex:
   use_jupyterbook_latex: false
   latex_engine: pdflatex
-
