@@ -116,3 +116,4 @@ ENV/
 .vscode/
 
 book/notebooks/data/
+book/markdown
