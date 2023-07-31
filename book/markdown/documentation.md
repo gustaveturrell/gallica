@@ -85,6 +85,7 @@ Il a donc fallu collecter dans l'entrepôt OAINUM, l'ensemble des métadonnées 
 7. Indication sur le nombre de vues
 
 
+
 Après l'analyse et l'exploration de ces caractéristiques, plusieurs constats sont établis. Premièrement, il est difficile d'obtenir des informations pertinentes pour l'ensemble de la population notamment, car ces indications étaient majoritairement absentes. Deuxièmement, l'application de listes d'autorités et de manipulations des informations soulève une question de véracité de l'information qui en a été extraite, car elle n'a pas été réalisée conjointement avec des experts du domaine. Et pour finir, on observe un effet de sédimentation qui s'applique par la temporalité des informations qui ont été télévisées. Sur de mêmes période on observe beaucoup d'erreurs de formatage communes, qui s'accompagnent parfois par un changement de granularité, notamment à travers différents référentiels qui sont actualisés ou mis à jour sans réactualisation des anciennes métadonnées.
 
 Lors de la fouille et l'analyse des métadonnées, les projections ont été réalisées sur un jeu de données comportant **30 000 documents** (et non d'images) par rapport à une population totale de **468 494 documents**.
